@@ -1,4 +1,5 @@
 import React from 'react';
+import { soundService } from '../../core/services/soundService';
 
 interface HeroButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'accent' | 'danger' | 'ghost';
@@ -12,9 +13,14 @@ export const HeroButton: React.FC<HeroButtonProps> = ({
   size = 'md',
   fullWidth = false,
   className = '',
+  onClick,
   children,
   ...props
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    soundService.playClickSound();
+    if (onClick) onClick(e);
+  };
   const baseClasses = 'inline-flex items-center justify-center font-heading font-bold rounded-xl transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]';
 
   const sizeClasses = {
@@ -35,6 +41,7 @@ export const HeroButton: React.FC<HeroButtonProps> = ({
 
   return (
     <button
+      onClick={handleClick}
       className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${widthClass} ${className}`}
       {...props}
     >

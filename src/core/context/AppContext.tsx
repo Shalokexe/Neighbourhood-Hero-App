@@ -8,6 +8,7 @@ import { CITIES_SEED, LOCALITIES_SEED } from '../config/citiesData';
 import { HERO_THEMES, PROFILE_BANNERS } from '../config/themeConfig';
 import { calculateGigCompletionReward, calculateHeroLevel, evaluateNewBadges, createLedgerEntry } from '../services/creditEngine';
 import { calculateDistanceKm } from '../services/geoService';
+import { soundService } from '../services/soundService';
 import confetti from 'canvas-confetti';
 
 interface AppContextType {
@@ -197,6 +198,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     setGigs(prev => prev.map(g => g.id === gigId ? updatedGig : g));
+    soundService.playAcceptSound();
 
     // Initialize or find Conversation
     let conv = conversations.find(c => c.gigId === gigId);
@@ -294,6 +296,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCreditTransactions(prev => [tx, ...prev]);
 
     // Trigger Celebrations & Confetti
+    soundService.playCompleteSound();
     try {
       confetti({
         particleCount: 100,
@@ -434,6 +437,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       newRedemption.id
     );
     setCreditTransactions(prev => [tx, ...prev]);
+    soundService.playCreditSound();
 
     return { 
       success: true, 

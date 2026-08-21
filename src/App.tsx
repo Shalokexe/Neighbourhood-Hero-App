@@ -10,6 +10,8 @@ import { ChatScreen } from './features/chat/ChatScreen';
 import { ProfileScreen } from './features/profile/ProfileScreen';
 import { RewardsScreen } from './features/rewards/RewardsScreen';
 import { AdminDashboard } from './features/admin/AdminDashboard';
+import { CustomCursor } from './shared/components/CustomCursor';
+import { DynamicHeroBg } from './shared/components/DynamicHeroBg';
 import { Gig } from './shared/types/domain';
 import { Sparkles, Trophy, X } from 'lucide-react';
 
@@ -34,6 +36,12 @@ const MainAppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#080B12] hero-grid-bg text-slate-100 relative selection:bg-[#00E5FF] selection:text-slate-950">
+      {/* Custom Cross-Platform Hover Cursor */}
+      <CustomCursor />
+
+      {/* Dynamic Animated Cyber Network Canvas Background */}
+      <DynamicHeroBg />
+
       {/* Top Header Navigation */}
       <HeaderNav 
         onOpenRewards={() => setViewOverlay('rewards')}
