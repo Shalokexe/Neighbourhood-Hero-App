@@ -23,14 +23,23 @@ export interface ProfileBanner {
 
 export const HERO_THEMES: HeroTheme[] = [
   {
+    id: 'theme_costar_monochrome',
+    name: 'Co-Star Stark Monochrome',
+    tagline: 'Minimalist editorial stark dark aesthetic with high-contrast typography.',
+    primaryColor: '#FFFFFF',
+    accentColor: '#A1A1AA',
+    bgGradient: 'linear-gradient(135deg, #18181B 0%, #000000 100%)',
+    cardGlow: '0 0 20px rgba(255, 255, 255, 0.15)',
+    isDefault: true
+  },
+  {
     id: 'theme_urban_cyan',
     name: 'Urban Hero (Cyan)',
     tagline: 'Classic neighborhood electric cyan theme.',
     primaryColor: '#00E5FF',
     accentColor: '#2563EB',
     bgGradient: 'linear-gradient(135deg, #00E5FF 0%, #2563EB 100%)',
-    cardGlow: '0 0 20px rgba(0, 229, 255, 0.35)',
-    isDefault: true
+    cardGlow: '0 0 20px rgba(0, 229, 255, 0.35)'
   },
   {
     id: 'theme_crimson',
@@ -80,11 +89,17 @@ export const HERO_THEMES: HeroTheme[] = [
 
 export const PROFILE_BANNERS: ProfileBanner[] = [
   {
+    id: 'banner_costar',
+    name: 'Co-Star Celestial Grid',
+    description: 'Stark monochrome celestial alignment grid.',
+    bgStyle: 'bg-black border-b border-white/20',
+    isDefault: true
+  },
+  {
     id: 'banner_grid',
     name: 'Neighborhood Grid',
     description: 'Classic connected neighborhood nodes pattern.',
-    bgStyle: 'bg-gradient-to-r from-[#121826] via-[#162035] to-[#121826]',
-    isDefault: true
+    bgStyle: 'bg-gradient-to-r from-[#121826] via-[#162035] to-[#121826]'
   },
   {
     id: 'banner_circuit',

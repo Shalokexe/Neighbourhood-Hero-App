@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { CITIES_SEED, LOCALITIES_SEED } from '../../core/config/citiesData';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { VoiceAssistantModal } from './VoiceAssistantModal';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
@@ -21,6 +22,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
 
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showVoiceModal, setShowVoiceModal] = useState(false);
 
   const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
   const activeLocalities = LOCALITIES_SEED.filter(l => l.cityId === selectedCityId);
@@ -61,8 +63,18 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
           </div>
         </div>
 
-        {/* Action Widgets: Rewards Counter & User Profile Switcher */}
+        {/* Action Widgets: Voice Assistant, Rewards Counter & User Profile Switcher */}
         <div className="flex items-center gap-2">
+          {/* AI Voice Assistant Mic Trigger */}
+          <button
+            onClick={() => setShowVoiceModal(true)}
+            className="bg-white/10 hover:bg-white/20 border border-white/20 p-2 rounded-xl text-white transition-all flex items-center gap-1"
+            title="Open AI Voice Assistant (Uber/Rapido style)"
+          >
+            <Mic className="w-4 h-4 text-white animate-pulse" />
+            <span className="text-[10px] font-bold hidden sm:inline">VOICE</span>
+          </button>
+
           {/* Rewards Credits Badge */}
           <button
             onClick={onOpenRewards}
@@ -197,6 +209,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
           </div>
         </div>
       )}
+
+      {/* Voice Assistant Modal */}
+      <VoiceAssistantModal
+        isOpen={showVoiceModal}
+        onClose={() => setShowVoiceModal(false)}
+      />
     </header>
   );
 };

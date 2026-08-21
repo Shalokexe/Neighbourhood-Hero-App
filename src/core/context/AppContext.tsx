@@ -321,10 +321,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   // Theme & Banner Customizations
-  const activeThemeId = currentUser.activeTheme || 'theme_urban_cyan';
-  const activeBannerId = currentUser.activeBanner || 'banner_grid';
-  const unlockedThemeIds = currentUser.unlockedThemes || ['theme_urban_cyan'];
-  const unlockedBannerIds = currentUser.unlockedBanners || ['banner_grid'];
+  const activeThemeId = currentUser.activeTheme || 'theme_costar_monochrome';
+  const activeBannerId = currentUser.activeBanner || 'banner_costar';
+  const unlockedThemeIds = currentUser.unlockedThemes || ['theme_costar_monochrome', 'theme_urban_cyan'];
+  const unlockedBannerIds = currentUser.unlockedBanners || ['banner_costar', 'banner_grid'];
 
   const setUserTheme = (themeId: string) => {
     setAllUsers(prev => prev.map(u => u.id === currentUser.id ? { ...u, activeTheme: themeId } : u));

@@ -3,7 +3,9 @@ import { useApp } from '../../core/context/AppContext';
 import { CITIES_SEED, LOCALITIES_SEED } from '../../core/config/citiesData';
 import { CATEGORY_ICONS } from '../../core/config/levelConfig';
 import { GigCategory, GigUrgency } from '../../shared/types/domain';
-import { PlusCircle, Zap, ShieldCheck, AlertTriangle } from 'lucide-react';
+import { VoiceAssistantModal } from '../../shared/components/VoiceAssistantModal';
+import { ParsedVoiceMission } from '../../core/services/voiceAssistant';
+import { PlusCircle, Zap, ShieldCheck, AlertTriangle, Mic, Sparkles } from 'lucide-react';
 
 interface PostGigScreenProps {
   onSuccess: () => void;
@@ -24,8 +26,16 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
   const [budget, setBudget] = useState<number | undefined>(150);
   const [urgency, setUrgency] = useState<GigUrgency>('TODAY');
   const [estimatedDuration, setEstimatedDuration] = useState('~30 min');
-  
+  const [showVoiceModal, setShowVoiceModal] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  const handleApplyVoiceMission = (parsed: ParsedVoiceMission) => {
+    setTitle(parsed.title);
+    setDescription(parsed.description);
+    setCategory(parsed.category as GigCategory);
+    setCreditReward(parsed.creditReward);
+    setUrgency(parsed.urgency);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,18 +74,30 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
 
   return (
     <div className="pb-24 pt-2 px-4 max-w-md mx-auto space-y-4">
-      <div className="flex items-center gap-2 mb-1">
-        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF2A54] to-[#00E5FF] p-0.5 flex items-center justify-center">
-          <PlusCircle className="w-5 h-5 text-white" />
+      <div className="flex items-center justify-between mb-1">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF2A54] to-[#00E5FF] p-0.5 flex items-center justify-center">
+            <PlusCircle className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h1 className="font-heading font-extrabold text-white text-xl">
+              POST A MISSION
+            </h1>
+            <p className="text-xs text-slate-400">
+              Micro-tasks usually take 30–45 seconds to post.
+            </p>
+          </div>
         </div>
-        <div>
-          <h1 className="font-heading font-extrabold text-white text-xl">
-            POST A MISSION
-          </h1>
-          <p className="text-xs text-slate-400">
-            Micro-tasks usually take 30–45 seconds to post.
-          </p>
-        </div>
+
+        {/* AI Voice Input Trigger Button */}
+        <button
+          type="button"
+          onClick={() => setShowVoiceModal(true)}
+          className="px-3 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-md hover:scale-105 transition-transform"
+        >
+          <Mic className="w-4 h-4 fill-slate-950" />
+          <span>DICTATE</span>
+        </button>
       </div>
 
       {errorMsg && (
@@ -257,6 +279,13 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
           PUBLISH MISSION NOW →
         </button>
       </form>
+
+      {/* AI Voice Assistant Modal for Dictating Tasks */}
+      <VoiceAssistantModal
+        isOpen={showVoiceModal}
+        onClose={() => setShowVoiceModal(false)}
+        onVoiceMissionParsed={handleApplyVoiceMission}
+      />
     </div>
   );
 };
