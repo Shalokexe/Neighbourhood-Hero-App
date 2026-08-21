@@ -2,14 +2,22 @@ import React, { useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { CITIES_SEED, LOCALITIES_SEED } from '../../core/config/citiesData';
 import { VoiceAssistantModal } from './VoiceAssistantModal';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic } from 'lucide-react';
+import { AuthModal } from '../../features/auth/AuthModal';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
   onOpenAdmin: () => void;
+  onOpenNotifications: () => void;
+  onOpenLeaderboard: () => void;
 }
 
-export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin }) => {
+export const HeaderNav: React.FC<HeaderNavProps> = ({ 
+  onOpenRewards, 
+  onOpenAdmin,
+  onOpenNotifications,
+  onOpenLeaderboard
+}) => {
   const { 
     currentUser, 
     allUsers, 
@@ -23,6 +31,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showVoiceModal, setShowVoiceModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
   const activeLocalities = LOCALITIES_SEED.filter(l => l.cityId === selectedCityId);
@@ -63,16 +72,35 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
           </div>
         </div>
 
-        {/* Action Widgets: Voice Assistant, Rewards Counter & User Profile Switcher */}
-        <div className="flex items-center gap-2">
+        {/* Action Widgets: Voice, Leaderboard, Notifications, Rewards & Auth */}
+        <div className="flex items-center gap-1.5">
           {/* AI Voice Assistant Mic Trigger */}
           <button
             onClick={() => setShowVoiceModal(true)}
             className="bg-white/10 hover:bg-white/20 border border-white/20 p-2 rounded-xl text-white transition-all flex items-center gap-1"
-            title="Open AI Voice Assistant (Uber/Rapido style)"
+            title="Open AI Voice Assistant"
           >
             <Mic className="w-4 h-4 text-white animate-pulse" />
-            <span className="text-[10px] font-bold hidden sm:inline">VOICE</span>
+          </button>
+
+          {/* Leaderboard Trophy Trigger */}
+          <button
+            onClick={onOpenLeaderboard}
+            className="bg-white/10 hover:bg-white/20 border border-white/20 p-2 rounded-xl text-amber-400 transition-all"
+            title="View Tricity Leaderboard & Squads"
+          >
+            <Trophy className="w-4 h-4 fill-amber-400" />
+          </button>
+
+          {/* Activity Center Bell Indicator */}
+          <button
+            onClick={onOpenNotifications}
+            className="bg-white/10 hover:bg-white/20 border border-white/20 p-2 rounded-xl text-white transition-all relative"
+            title="Activity Notifications"
+          >
+            <Bell className="w-4 h-4" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#FF2A54] animate-ping" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#FF2A54]" />
           </button>
 
           {/* Rewards Credits Badge */}
@@ -142,6 +170,17 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
                     ) : null}
                   </button>
                 ))}
+
+                <button
+                  onClick={() => {
+                    setShowUserDropdown(false);
+                    setShowAuthModal(true);
+                  }}
+                  className="w-full text-left px-2.5 py-2 text-xs font-semibold text-[#00E5FF] hover:bg-slate-800 rounded-xl flex items-center gap-2 border-t border-white/5 mt-1"
+                >
+                  <UserPlus className="w-4 h-4" />
+                  <span>Phone OTP / Email Login</span>
+                </button>
               </div>
             )}
           </div>
@@ -214,6 +253,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenRewards, onOpenAdmin
       <VoiceAssistantModal
         isOpen={showVoiceModal}
         onClose={() => setShowVoiceModal(false)}
+      />
+
+      {/* Phone / Email Auth Modal */}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
       />
     </header>
   );

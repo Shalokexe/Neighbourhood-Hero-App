@@ -10,6 +10,8 @@ import { ChatScreen } from './features/chat/ChatScreen';
 import { ProfileScreen } from './features/profile/ProfileScreen';
 import { RewardsScreen } from './features/rewards/RewardsScreen';
 import { AdminDashboard } from './features/admin/AdminDashboard';
+import { NotificationCenter } from './features/notifications/NotificationCenter';
+import { LeaderboardScreen } from './features/leaderboard/LeaderboardScreen';
 import { CustomCursor } from './shared/components/CustomCursor';
 import { DynamicHeroBg } from './shared/components/DynamicHeroBg';
 import { Gig } from './shared/types/domain';
@@ -21,7 +23,7 @@ const MainAppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [selectedGig, setSelectedGig] = useState<Gig | null>(null);
   const [activeChatGigId, setActiveChatGigId] = useState<string | undefined>(undefined);
-  const [viewOverlay, setViewOverlay] = useState<'rewards' | 'admin' | 'chat' | null>(null);
+  const [viewOverlay, setViewOverlay] = useState<'rewards' | 'admin' | 'chat' | 'notifications' | 'leaderboard' | null>(null);
 
   const unreadCount = conversations.reduce((acc, c) => acc + (c.unreadCount || 0), 0);
 
@@ -46,6 +48,8 @@ const MainAppContent: React.FC = () => {
       <HeaderNav 
         onOpenRewards={() => setViewOverlay('rewards')}
         onOpenAdmin={() => setViewOverlay('admin')}
+        onOpenNotifications={() => setViewOverlay('notifications')}
+        onOpenLeaderboard={() => setViewOverlay('leaderboard')}
       />
 
       {/* Main View Router */}
@@ -54,6 +58,10 @@ const MainAppContent: React.FC = () => {
           <RewardsScreen onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'admin' ? (
           <AdminDashboard onBack={() => setViewOverlay(null)} />
+        ) : viewOverlay === 'notifications' ? (
+          <NotificationCenter onBack={() => setViewOverlay(null)} />
+        ) : viewOverlay === 'leaderboard' ? (
+          <LeaderboardScreen onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'chat' ? (
           <ChatScreen 
             gigId={activeChatGigId} 
