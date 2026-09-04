@@ -1,14 +1,16 @@
 <div align="center">
 
-  <!-- Iconic Bully Maguire Header GIF -->
-  <p align="center">
-    <img src="https://media.giphy.com/media/cgFpL8vbhjvw65lGbf/giphy.gif" width="520" alt="Bully Maguire - I'm gonna put some dirt in your eye" />
-  </p>
-
-  <h2 align="center"><i>"I'm gonna put some dirt in your eye... if you don't help your neighborhood!"</i></h2>
-
   <!-- Glowing Spider-Man Theme Header Banner -->
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,35:00E5FF,70:A855F7,100:FFC72C&height=280&section=header&text=NEIGHBORHOOD%20HERO&fontSize=56&fontColor=ffffff&fontAlignY=35&desc=%F0%9F%95B7%EF%B8%8F%20EVERY%20STREET%20HAS%20A%20HERO%20%E2%80%A2%20YOU%20DON'T%20NEED%20A%20MASK&descAlignY=62&descSize=19" width="100%" alt="Neighborhood Hero Banner" />
+
+  <br/>
+
+  <!-- Tenor Bully Maguire GIF directly after NEIGHBORHOOD HERO header -->
+  <p align="center">
+    <img src="https://c.tenor.com/Y4rVf2PZJ38AAAAC/tenor.gif" width="500" alt="Bully Maguire - I'm gonna put some dirt in your eye" />
+  </p>
+
+  <h2 align="center"><i>"I'm gonna put some dirt in your eye..." — Bully Maguire</i></h2>
 
   <br/>
 
@@ -57,7 +59,7 @@
 ```
 
 <p align="center">
-  <img src="https://media.giphy.com/media/cgFpL8vbhjvw65lGbf/giphy.gif" width="450" alt="Bully Maguire GIF" />
+  <img src="https://c.tenor.com/Y4rVf2PZJ38AAAAC/tenor.gif" width="450" alt="Bully Maguire GIF" />
 </p>
 
 ---
@@ -148,7 +150,7 @@ python main.py
 
 <div align="center">
 
-  <img src="https://media.giphy.com/media/cgFpL8vbhjvw65lGbf/giphy.gif" width="420" alt="Bully Maguire Footer GIF" />
+  <img src="https://c.tenor.com/Y4rVf2PZJ38AAAAC/tenor.gif" width="420" alt="Bully Maguire Footer GIF" />
 
   <br/>
 
