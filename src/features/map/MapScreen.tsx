@@ -1,34 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { Gig } from '../../shared/types/domain';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
-import { LOCALITIES_SEED, CITIES_SEED } from '../../core/config/citiesData';
-import { formatApproximateLocation, getMaskedCoordinates } from '../../core/services/geoService';
-import { CATEGORY_ICONS } from '../../core/config/levelConfig';
-import { MapPin, Navigation, Zap, Clock, ShieldCheck, X } from 'lucide-react';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { MapPin, Navigation, Zap, ShieldAlert, Hexagon, Crosshair } from 'lucide-react';
 
-// Create custom leaflet markers
-const createCustomMarkerIcon = (color: string) => {
-  return L.divIcon({
-    className: 'custom-map-marker',
-    html: `
-      <div style="
-        width: 32px;
-        height: 32px;
-        background: #080B12;
-        border: 2px solid ${color};
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 15px ${color}80;
-      ">
-        <div style="width: 10px; height: 10px; background: ${color}; border-radius: 50%;"></div>
+// Custom FNSM Spider Pin Markers
+const createFnsmPinIcon = (category: string, isUrgent: boolean) => {
+  const color = isUrgent ? '#FF2A54' : '#00E5FF';
+  const html = `
+    <div style="position: relative; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
+      <div style="position: absolute; inset: 0; border-radius: 50%; background: ${color}33; border: 2px solid ${color}; box-shadow: 0 0 15px ${color}; animate: ping 2s infinite;"></div>
+      <div style="position: relative; width: 26px; height: 26px; border-radius: 50%; background: #000; border: 1.5px solid ${color}; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+        ${isUrgent ? '⚠️' : '🕷️'}
       </div>
-    `,
-    iconSize: [32, 32],
-    iconAnchor: [16, 16]
+    </div>
+  `;
+  return L.divIcon({
+    html,
+    className: 'fnsm-custom-marker',
+    iconSize: [34, 34],
+    iconAnchor: [17, 17]
   });
 };
 
@@ -37,143 +30,114 @@ interface MapScreenProps {
 }
 
 export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
-  const { filteredGigs, radiusKm, setRadiusKm, selectedCityId } = useApp();
-  const [selectedGigOnMap, setSelectedGigOnMap] = useState<Gig | null>(null);
+  const { filteredGigs, radiusKm, setRadiusKm, currentUser } = useApp();
+  const [selectedMapGig, setSelectedMapGig] = useState<Gig | null>(null);
 
-  const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
-  
-  // Default map center according to selected city
-  const cityCenters: Record<string, [number, number]> = {
-    'city_kharar': [30.7432, 76.6621],
-    'city_mohali': [30.7040, 76.7120],
-    'city_chandigarh': [30.7340, 76.7770],
-    'city_panchkula': [30.6890, 76.8580]
-  };
-
-  const centerCoords = cityCenters[selectedCityId] || cityCenters['city_kharar'];
+  // User Map Center (Default Kharar/Mohali coordinates)
+  const centerLat = 30.7485;
+  const centerLng = 76.6578;
 
   return (
-    <div className="relative w-full h-[calc(100vh-130px)] max-w-md mx-auto overflow-hidden">
-      {/* Top Floating Controls Bar */}
-      <div className="absolute top-3 left-3 right-3 z-[1000] flex items-center justify-between gap-2">
-        <div className="glass-card px-3 py-1.5 rounded-xl border border-white/10 flex items-center gap-2">
-          <Navigation className="w-4 h-4 text-[#00E5FF] animate-pulse" />
-          <span className="text-xs font-bold text-slate-100">
-            {activeCity.name}
-          </span>
-          <span className="text-[10px] text-slate-400">
-            ({filteredGigs.length} missions)
-          </span>
-        </div>
-
-        {/* Radius Options Filter */}
-        <div className="glass-card p-1 rounded-xl border border-white/10 flex items-center gap-1">
-          {[1, 3, 5, 10].map((r) => (
-            <button
-              key={r}
-              onClick={() => setRadiusKm(r)}
-              className={`text-[10px] font-bold px-2 py-1 rounded-lg transition-all ${
-                radiusKm === r
-                  ? 'bg-[#00E5FF] text-slate-950 font-extrabold shadow-[0_0_10px_rgba(0,229,255,0.4)]'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              {r}km
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Interactive Map Container */}
+    <div className="relative w-full h-[calc(100vh-140px)] font-fnsm overflow-hidden">
+      {/* 1. CONTRASTY & TRANSLUCENT SPIDER-MAN MAP */}
       <MapContainer
-        center={centerCoords}
+        center={[centerLat, centerLng]}
         zoom={13}
-        scrollWheelZoom={true}
+        className="w-full h-full translucent-map-tiles z-0"
         zoomControl={false}
-        className="w-full h-full"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          className="dark-leaflet-tiles"
+          attribution='&copy; OpenStreetMap'
         />
 
-        {/* Radius Circle Visualization */}
+        {/* User Location Radar Radius Circle */}
         <Circle
-          center={centerCoords}
+          center={[centerLat, centerLng]}
           radius={radiusKm * 1000}
           pathOptions={{
-            color: '#00E5FF',
-            fillColor: '#00E5FF',
+            color: '#FF2A54',
+            fillColor: '#FF2A54',
             fillOpacity: 0.08,
             weight: 1.5,
-            dashArray: '4, 8'
+            dashArray: '5, 10'
           }}
         />
 
-        {/* Gig Markers */}
+        {/* User Home Location Marker */}
+        <Marker
+          position={[centerLat, centerLng]}
+          icon={createFnsmPinIcon('User', false)}
+        />
+
+        {/* Gig Pins */}
         {filteredGigs.map((gig) => {
-          const catConfig = CATEGORY_ICONS[gig.category] || CATEGORY_ICONS['Other'];
-          const markerIcon = createCustomMarkerIcon(catConfig.color);
-          
+          if (!gig.latitude || !gig.longitude) return null;
+          const isUrgent = gig.urgency === 'URGENT';
           return (
             <Marker
               key={gig.id}
               position={[gig.latitude, gig.longitude]}
-              icon={markerIcon}
+              icon={createFnsmPinIcon(gig.category, isUrgent)}
               eventHandlers={{
-                click: () => setSelectedGigOnMap(gig)
+                click: () => setSelectedMapGig(gig)
               }}
-            >
-              <Popup className="dark-popup">
-                <div className="p-1 text-slate-900 font-sans">
-                  <div className="font-bold text-xs">{gig.title}</div>
-                  <div className="text-[10px] text-slate-600">+{gig.creditReward} Credits</div>
-                </div>
-              </Popup>
-            </Marker>
+            />
           );
         })}
       </MapContainer>
 
-      {/* Selected Gig Drawer Overlay Sheet */}
-      {selectedGigOnMap && (
-        <div className="absolute bottom-4 left-3 right-3 z-[1000] glass-card rounded-2xl p-4 border border-[#00E5FF]/40 shadow-2xl animate-in slide-in-from-bottom duration-200">
-          <button
-            onClick={() => setSelectedGigOnMap(null)}
-            className="absolute top-3 right-3 text-slate-400 hover:text-white p-1"
-          >
-            <X className="w-4 h-4" />
-          </button>
+      {/* 2. SPIDER RADAR RADIUS SELECTOR OVERLAY */}
+      <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between pointer-events-none">
+        <div className="glass-card p-1.5 rounded-xl border border-white/20 flex items-center gap-1 pointer-events-auto bg-black/80">
+          {[1, 3, 5, 10].map((r) => (
+            <button
+              key={r}
+              onClick={() => setRadiusKm(r)}
+              className={`px-2.5 py-1 rounded-lg font-black text-xs transition-all ${
+                radiusKm === r
+                  ? 'bg-[#FF2A54] text-white shadow-[0_0_10px_rgba(255,42,84,0.5)]'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              {r} KM
+            </button>
+          ))}
+        </div>
 
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-[10px] font-bold text-[#00E5FF] uppercase tracking-wider">
-              {selectedGigOnMap.category}
+        <div className="glass-card px-3 py-1.5 rounded-xl border border-[#00E5FF]/40 text-[#00E5FF] font-black text-xs flex items-center gap-1.5 bg-black/80">
+          <Crosshair className="w-3.5 h-3.5 animate-spin" />
+          <span>RADAR ACTIVE</span>
+        </div>
+      </div>
+
+      {/* 3. SELECTED GIG TRANSLUCENT FNSM GAME CARD PREVIEW */}
+      {selectedMapGig && (
+        <div className="absolute bottom-4 left-4 right-4 z-20 fnsm-app-container rounded-2xl p-4 border border-[#00E5FF] shadow-2xl space-y-2 bg-black/90 animate-bounce-short">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-extrabold text-[#00E5FF] uppercase tracking-wider">
+              {selectedMapGig.category}
             </span>
-            <span className="text-[10px] bg-amber-500/20 text-amber-300 font-bold px-2 py-0.5 rounded">
-              +{selectedGigOnMap.creditReward} CREDITS
-            </span>
+            <div className="flex items-center gap-1 text-amber-400 font-black">
+              <span>+{selectedMapGig.creditReward}</span>
+              <Hexagon className="w-3.5 h-3.5 fill-amber-400" />
+            </div>
           </div>
 
-          <h3 className="font-heading font-bold text-white text-sm mb-1 line-clamp-1">
-            {selectedGigOnMap.title}
-          </h3>
+          <h4 className="font-black text-white text-sm uppercase">
+            {selectedMapGig.title}
+          </h4>
 
-          <p className="text-slate-300 text-xs line-clamp-2 mb-3">
-            {selectedGigOnMap.description}
-          </p>
-
-          <div className="flex items-center justify-between border-t border-white/10 pt-3">
-            <div className="text-[11px] text-slate-400 flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-[#00E5FF]" />
-              <span>{formatApproximateLocation(selectedGigOnMap.localityName, selectedGigOnMap.cityName, selectedGigOnMap.distanceKm)}</span>
-            </div>
+          <div className="flex items-center justify-between pt-1 border-t border-white/10">
+            <span className="text-[11px] text-slate-400">
+              Distance: ~{selectedMapGig.distanceKm || 0.8} KM
+            </span>
 
             <button
-              onClick={() => onSelectGig(selectedGigOnMap)}
-              className="px-4 py-1.5 bg-[#00E5FF] text-slate-950 font-heading font-extrabold text-xs rounded-xl hover:bg-[#00B0FF] transition-colors"
+              onClick={() => onSelectGig(selectedMapGig)}
+              className="px-4 py-1.5 bg-gradient-to-r from-[#FF2A54] to-[#00E5FF] text-slate-950 font-black text-xs rounded-xl shadow-lg hover:scale-105"
             >
-              VIEW MISSION →
+              ACCEPT MISSION →
             </button>
           </div>
         </div>

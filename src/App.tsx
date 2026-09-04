@@ -82,6 +82,7 @@ const MainAppContent: React.FC = () => {
             {activeTab === 'home' && (
               <HomeScreen
                 onSelectGig={handleSelectGig}
+                onNavigateToPost={() => setActiveTab('post')}
                 onOpenRewards={() => setViewOverlay('rewards')}
                 onOpenMap={() => setActiveTab('map')}
               />

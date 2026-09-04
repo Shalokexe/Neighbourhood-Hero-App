@@ -4,88 +4,62 @@
 
 @layer base {
   body {
-    @apply bg-[#080B12] text-slate-100 antialiased selection:bg-[#FF2A54] selection:text-white;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply bg-black text-slate-100 antialiased selection:bg-[#FF2A54] selection:text-white;
+    font-family: 'Rajdhani', 'Inter', sans-serif;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, .font-heading {
-    font-family: 'Outfit', sans-serif;
+  h1, h2, h3, h4, .font-heading, .font-fnsm {
+    font-family: 'Orbitron', 'Rajdhani', sans-serif;
+    letter-spacing: 0.05em;
   }
 }
 
-/* Spider-Man Web Grid & Cyber City Background */
-.hero-grid-bg {
-  background-color: #05070D;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(255, 42, 84, 0.15) 0%, transparent 70%),
-    radial-gradient(circle at 100% 100%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+/* FNSM Spider-Man Game Phone Translucent Map Container */
+.fnsm-app-container {
+  background: rgba(5, 7, 13, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 42, 84, 0.3);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 42, 84, 0.1);
 }
 
-/* Spidey Corner Web Accent Graphic Overlay */
-.spidey-web-overlay {
-  position: relative;
+/* Slanted Polygon Active Tab (Exactly as seen in PS4 FNSM App) */
+.fnsm-tab-active {
+  background: linear-gradient(135deg, #FF2A54 0%, #D90429 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-.spidey-web-overlay::before {
-  content: '🕸️';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  font-size: 20px;
-  opacity: 0.4;
-  pointer-events: none;
-  filter: drop-shadow(0 0 5px #FF2A54);
+.fnsm-tab-inactive {
+  background: rgba(18, 24, 38, 0.8);
+  color: #94A3B8;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Glassmorphism Cards with Neon Spider Glow */
-.glass-card {
-  background: rgba(12, 16, 26, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+/* FNSM Teal/Cyan Activity Mission Card */
+.fnsm-card-teal {
+  background: rgba(0, 229, 255, 0.08);
+  border: 1.5px solid #00E5FF;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25), inset 0 0 10px rgba(0, 229, 255, 0.1);
 }
 
-.glass-card-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.fnsm-card-teal:hover {
+  background: rgba(0, 229, 255, 0.16);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.45);
+  transform: scale(1.01);
 }
 
-.glass-card-hover:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 42, 84, 0.4);
-  box-shadow: 0 12px 36px -4px rgba(255, 42, 84, 0.25);
+/* FNSM Red Crime/Urgent Card */
+.fnsm-card-red {
+  background: rgba(255, 42, 84, 0.1);
+  border: 1.5px solid #FF2A54;
+  box-shadow: 0 0 15px rgba(255, 42, 84, 0.3);
 }
 
-/* Spidey Neon Glowing Text & Badges */
-.glow-spidey-red {
-  text-shadow: 0 0 12px rgba(255, 42, 84, 0.7);
-}
-
-.glow-spidey-cyan {
-  text-shadow: 0 0 12px rgba(0, 229, 255, 0.7);
-}
-
-/* Leaflet Map Spidey Dark Filter */
-.leaflet-container {
-  background: #080B12 !important;
-  font-family: inherit;
-}
-
-.dark-tiles {
-  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
-}
-
-/* Pulse animation for Spidey pins */
-@keyframes spidey-pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.3); opacity: 0.3; }
-  100% { transform: scale(1); opacity: 0.8; }
-}
-
-.spidey-pin-pulse {
-  animation: spidey-pulse 2s infinite ease-in-out;
+/* Translucent Map Tile Styling */
+.translucent-map-tiles {
+  filter: brightness(0.4) contrast(2.2) invert(0.9) hue-rotate(190deg) saturate(0.5);
+  opacity: 0.85;
 }
