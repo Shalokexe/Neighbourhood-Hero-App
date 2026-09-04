@@ -5,9 +5,12 @@
 
   <br/>
 
-  <!-- Tenor Bully Maguire GIF directly after NEIGHBORHOOD HERO header -->
+  <!-- Bully Maguire MP4 Video Embedded Directly After Header -->
   <p align="center">
-    <img src="https://c.tenor.com/Y4rVf2PZJ38AAAAC/tenor.gif" width="500" alt="Bully Maguire - I'm gonna put some dirt in your eye" />
+    <video width="640" height="360" autoplay loop muted playsinline src="./public/assets/dirt_in_your_eye.mp4">
+      <source src="./public/assets/dirt_in_your_eye.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </p>
 
   <h2 align="center"><i>"I'm gonna put some dirt in your eye..." — Bully Maguire</i></h2>
@@ -59,7 +62,9 @@
 ```
 
 <p align="center">
-  <img src="https://c.tenor.com/Y4rVf2PZJ38AAAAC/tenor.gif" width="450" alt="Bully Maguire GIF" />
+  <video width="480" height="270" autoplay loop muted playsinline src="./public/assets/dirt_in_your_eye.mp4">
+    <source src="./public/assets/dirt_in_your_eye.mp4" type="video/mp4">
+  </video>
 </p>
 
 ---
@@ -75,7 +80,7 @@
   │  ┌──────────────────────────┐          ┌──────────────────────────┐                       │
   │  │ 🎁 MERCH & CAFÉ PASSES   │ ◄─────── │ 🏆 LEVEL UP & XP STREAKS │ ◄─────────────────────┘
   │  │ (Free Vouchers & Shirts) │          │  (Daily Spin & Bounties) │
-  └─►└──────────────────────────┘          └──────────────────────────┘
+  └─►└──────────────────────────┘          └────────────┬─────────────┘
 ```
 
 <p align="center">
@@ -150,7 +155,9 @@ python main.py
 
 <div align="center">
 
-  <img src="https://c.tenor.com/Y4rVf2PZJ38AAAAC/tenor.gif" width="420" alt="Bully Maguire Footer GIF" />
+  <video width="480" height="270" autoplay loop muted playsinline src="./public/assets/dirt_in_your_eye.mp4">
+    <source src="./public/assets/dirt_in_your_eye.mp4" type="video/mp4">
+  </video>
 
   <br/>
 
