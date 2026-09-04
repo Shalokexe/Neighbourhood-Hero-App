@@ -12,6 +12,7 @@ import { RewardsScreen } from './features/rewards/RewardsScreen';
 import { AdminDashboard } from './features/admin/AdminDashboard';
 import { NotificationCenter } from './features/notifications/NotificationCenter';
 import { LeaderboardScreen } from './features/leaderboard/LeaderboardScreen';
+import { ImpactDashboard } from './features/impact/ImpactDashboard';
 import { CustomCursor } from './shared/components/CustomCursor';
 import { DynamicHeroBg } from './shared/components/DynamicHeroBg';
 import { Gig } from './shared/types/domain';
@@ -23,7 +24,7 @@ const MainAppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [selectedGig, setSelectedGig] = useState<Gig | null>(null);
   const [activeChatGigId, setActiveChatGigId] = useState<string | undefined>(undefined);
-  const [viewOverlay, setViewOverlay] = useState<'rewards' | 'admin' | 'chat' | 'notifications' | 'leaderboard' | null>(null);
+  const [viewOverlay, setViewOverlay] = useState<'rewards' | 'admin' | 'chat' | 'notifications' | 'leaderboard' | 'impact' | null>(null);
 
   const unreadCount = conversations.reduce((acc, c) => acc + (c.unreadCount || 0), 0);
 
@@ -50,10 +51,11 @@ const MainAppContent: React.FC = () => {
         onOpenAdmin={() => setViewOverlay('admin')}
         onOpenNotifications={() => setViewOverlay('notifications')}
         onOpenLeaderboard={() => setViewOverlay('leaderboard')}
+        onOpenImpact={() => setViewOverlay('impact')}
       />
 
       {/* Main View Router */}
-      <main className="w-full">
+      <main className="pt-20">
         {viewOverlay === 'rewards' ? (
           <RewardsScreen onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'admin' ? (
@@ -62,6 +64,8 @@ const MainAppContent: React.FC = () => {
           <NotificationCenter onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'leaderboard' ? (
           <LeaderboardScreen onBack={() => setViewOverlay(null)} />
+        ) : viewOverlay === 'impact' ? (
+          <ImpactDashboard onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'chat' ? (
           <ChatScreen 
             gigId={activeChatGigId} 

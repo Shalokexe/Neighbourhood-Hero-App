@@ -3,20 +3,23 @@ import { useApp } from '../../core/context/AppContext';
 import { CITIES_SEED, LOCALITIES_SEED } from '../../core/config/citiesData';
 import { VoiceAssistantModal } from './VoiceAssistantModal';
 import { AuthModal } from '../../features/auth/AuthModal';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus } from 'lucide-react';
+import { DailyBountiesModal } from '../../features/bounties/DailyBountiesModal';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
   onOpenAdmin: () => void;
   onOpenNotifications: () => void;
   onOpenLeaderboard: () => void;
+  onOpenImpact: () => void;
 }
 
 export const HeaderNav: React.FC<HeaderNavProps> = ({ 
   onOpenRewards, 
   onOpenAdmin,
   onOpenNotifications,
-  onOpenLeaderboard
+  onOpenLeaderboard,
+  onOpenImpact
 }) => {
   const { 
     currentUser, 
@@ -32,6 +35,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showVoiceModal, setShowVoiceModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showBountiesModal, setShowBountiesModal] = useState(false);
 
   const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
   const activeLocalities = LOCALITIES_SEED.filter(l => l.cityId === selectedCityId);
@@ -72,7 +76,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           </div>
         </div>
 
-        {/* Action Widgets: Voice, Leaderboard, Notifications, Rewards & Auth */}
+        {/* Action Widgets: Voice, Spin Wheel, Impact, Leaderboard, Notifications, Rewards & Auth */}
         <div className="flex items-center gap-1.5">
           {/* AI Voice Assistant Mic Trigger */}
           <button
@@ -81,6 +85,24 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             title="Open AI Voice Assistant"
           >
             <Mic className="w-4 h-4 text-white animate-pulse" />
+          </button>
+
+          {/* Daily Spin Wheel & Bounties Trigger */}
+          <button
+            onClick={() => setShowBountiesModal(true)}
+            className="bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 p-2 rounded-xl transition-all shadow-md hover:scale-105"
+            title="Daily Hero Spin Wheel & Bounties"
+          >
+            <Gift className="w-4 h-4 fill-slate-950" />
+          </button>
+
+          {/* Impact & Sustainability Trigger */}
+          <button
+            onClick={onOpenImpact}
+            className="bg-white/10 hover:bg-white/20 border border-white/20 p-2 rounded-xl text-emerald-400 transition-all"
+            title="Community Sustainability & Impact Dashboard"
+          >
+            <Leaf className="w-4 h-4 fill-emerald-400" />
           </button>
 
           {/* Leaderboard Trophy Trigger */}
@@ -259,6 +281,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
+      />
+
+      {/* Daily Bounties & Spin Wheel Modal */}
+      <DailyBountiesModal
+        isOpen={showBountiesModal}
+        onClose={() => setShowBountiesModal(false)}
       />
     </header>
   );

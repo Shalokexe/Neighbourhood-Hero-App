@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { Gig } from '../../shared/types/domain';
 import { CATEGORY_ICONS } from '../../core/config/levelConfig';
-import { formatApproximateLocation } from '../../core/services/geoService';
+import { ProofOfWorkModal } from './ProofOfWorkModal';
 import { 
   ArrowLeft, MapPin, Clock, Zap, Star, Shield, MessageSquare, 
-  CheckCircle2, AlertTriangle, User, Flag, Lock, Sparkles 
+  CheckCircle2, AlertTriangle, User, Flag, Lock, Sparkles, Camera 
 } from 'lucide-react';
 import * as Icons from 'lucide-react';
 
@@ -32,6 +32,8 @@ export const GigDetailScreen: React.FC<GigDetailScreenProps> = ({
   const [ratingInput, setRatingInput] = useState(5);
   const [commentInput, setCommentInput] = useState('');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showProofModal, setShowProofModal] = useState(false);
+  const [proofPhoto, setProofPhoto] = useState<string | null>(null);
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportReason, setReportReason] = useState('Inappropriate Task');
   const [reportDesc, setReportDesc] = useState('');
@@ -294,6 +296,33 @@ export const GigDetailScreen: React.FC<GigDetailScreenProps> = ({
               Rate your helper's work to release their Gig Credits + bonuses!
             </p>
 
+              {/* Action Buttons */}
+              <div className="space-y-2 pt-2">
+                {/* Proof of Work Photo Attachment Trigger */}
+                {isHelper && (
+                  <button
+                    onClick={() => setShowProofModal(true)}
+                    className="w-full py-2.5 bg-slate-900 border border-white/20 text-slate-200 font-semibold text-xs rounded-xl flex items-center justify-center gap-2 hover:border-white/40"
+                  >
+                    <Camera className="w-4 h-4 text-[#00E5FF]" />
+                    <span>{proofPhoto ? 'CHANGE PROOF OF WORK PHOTO' : 'ATTACH PROOF OF WORK PHOTO'}</span>
+                  </button>
+                )}
+
+                {/* Display Proof Photo Preview if attached */}
+                {proofPhoto && (
+                  <div className="p-2.5 bg-slate-900/80 rounded-xl border border-emerald-500/30 flex items-center gap-3">
+                    <img src={proofPhoto} alt="Proof" className="w-12 h-12 rounded-lg object-cover border border-white/20" />
+                    <div>
+                      <span className="text-[10px] font-bold text-emerald-400 uppercase flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3" /> Photo Proof Verified
+                      </span>
+                      <p className="text-[10px] text-slate-400">Attached photo evidence ready for confirmation</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
             {/* Star Rating Input */}
             <div className="flex items-center justify-center gap-2 py-2">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -383,6 +412,12 @@ export const GigDetailScreen: React.FC<GigDetailScreenProps> = ({
           </div>
         </div>
       )}
+      {/* Proof of Work Photo Verification Modal */}
+      <ProofOfWorkModal
+        isOpen={showProofModal}
+        onClose={() => setShowProofModal(false)}
+        onSubmitProof={(photoUrl) => setProofPhoto(photoUrl)}
+      />
     </div>
   );
 };

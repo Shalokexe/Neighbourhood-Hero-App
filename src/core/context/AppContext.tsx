@@ -44,6 +44,7 @@ interface AppContextType {
   
   // Credit Ledger & Progression
   creditTransactions: CreditTransaction[];
+  awardBonusCredits: (amount: number, reason: string) => void;
   
   // Customization Themes & Banners
   activeThemeId: string;
@@ -320,7 +321,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setGigs(prev => prev.map(g => g.id === gigId ? { ...g, status: 'CANCELLED', cancelledAt: new Date().toISOString() } : g));
   };
 
-  // Theme & Banner Customizations
+  // Award Bonus Credits
+  const awardBonusCredits = (amount: number, reason: string) => {
+    setAllUsers(prev => prev.map(u => {
+      if (u.id === currentUser.id) {
+        const newLifetime = u.lifetimeCredits + amount;
+        const levelInfo = calculateHeroLevel(newLifetime);
+        return {
+          ...u,
+          totalCredits: u.totalCredits + amount,
+          lifetimeCredits: newLifetime,
+          level: levelInfo.level,
+          levelName: levelInfo.levelName
+        };
+      }
+      return u;
+    }));
+
+    const tx = createLedgerEntry(currentUser.id, amount, 'BONUS', reason);
+    setCreditTransactions(prev => [tx, ...prev]);
+  };
   const activeThemeId = currentUser.activeTheme || 'theme_costar_monochrome';
   const activeBannerId = currentUser.activeBanner || 'banner_costar';
   const unlockedThemeIds = currentUser.unlockedThemes || ['theme_costar_monochrome', 'theme_urban_cyan'];
@@ -562,6 +582,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         confirmGigCompletion,
         cancelGig,
         creditTransactions,
+        awardBonusCredits,
         activeThemeId,
         activeBannerId,
         unlockedThemeIds,
