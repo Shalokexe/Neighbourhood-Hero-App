@@ -1,22 +1,21 @@
 <div align="center">
 
-  <!-- Gen-Z Superhero High-Octane Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,30:00E5FF,65:A855F7,100:FFC72C&height=280&section=header&text=NEIGHBORHOOD%20HERO&fontSize=56&fontColor=ffffff&fontAlignY=35&desc=%F0%9F%95B7%EF%B8%8F%20EVERY%20STREET%20HAS%20A%20HERO%20%E2%80%A2%20YOU%20DON'T%20NEED%20A%20MASK&descAlignY=62&descSize=19" width="100%" alt="Neighborhood Hero Banner" />
+  <!-- Top Spider-Man Swinging Motion Graphic Banner -->
+  <p align="center">
+    <img src="https://media.giphy.com/media/105OwsN7a4UQ2Q/giphy.gif" width="480" height="270" alt="Spider-Man Swinging Motion Graphic" />
+  </p>
+
+  <!-- Glowing Spider-Man Theme Header Banner -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,35:00E5FF,70:A855F7,100:FFC72C&height=280&section=header&text=NEIGHBORHOOD%20HERO&fontSize=56&fontColor=ffffff&fontAlignY=35&desc=%F0%9F%95B7%EF%B8%8F%20EVERY%20STREET%20HAS%20A%20HERO%20%E2%80%A2%20YOU%20DON'T%20NEED%20A%20MASK&descAlignY=62&descSize=19" width="100%" alt="Neighborhood Hero Banner" />
 
   <br/>
 
-  <!-- Superhero Animated Motion Graphics & GIFs -->
+  <!-- Spider-Web Animated Typing SVG -->
   <p align="center">
-    <img src="https://media.giphy.com/media/l41K3tokvXSxXvVUQ/giphy.gif" width="300" height="170" alt="Superhero Motion Graphic 1" />
-    &nbsp;&nbsp;&nbsp;
-    <img src="https://media.giphy.com/media/105OwsN7a4UQ2Q/giphy.gif" width="300" height="170" alt="Superhero Motion Graphic 2" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+SPIDER-MAN+GAMIFIED+NEIGHBORHOOD+APP;WE+ARE+THE+NEW+BHARAT.;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
   </p>
 
-  <!-- Gen-Z Manifesto Animated Typing -->
-  <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=WE+ARE+THE+NEW+BHARAT.;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Post+Problems.+Help+Neighbors.+Earn+Merch.+Level+Up.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Gen-Z Manifesto Typing" />
-  </p>
-
+  <!-- Dynamic Shields Badges -->
   <p align="center">
     <a href="https://github.com/Shalokexe/Neighbourhood-Hero-App">
       <img src="https://img.shields.io/github/stars/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=FF2A54&logo=github" alt="Stars" />
@@ -37,57 +36,77 @@
 
 </div>
 
----
-
-## ✊ THE NEW BHARAT MANIFESTO
-
-> *"We don't wait for corrupted political systems or slow bureaucracy to fix our streets. We are the **NEW BHARAT** — a generation of unmasked everyday superheroes taking charge of our neighborhoods. Whether someone needs emergency grocery runs, elderly support, tutoring, or raising local community issues, we show up, solve it, level up, and earn exclusive rewards!"*
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="Spider-Web Divider Line" />
+</p>
 
 ---
 
-## 🕷️ THE HERO ACTION LOOP
+## 🕸️ THE NEW BHARAT MANIFESTO
 
 ```text
-  ┌──────────────────────────┐         ┌──────────────────────────┐         ┌──────────────────────────┐
-  │ 🎙️ POST ISSUES / TASKS  │ ──────► │ 🛰️ SPATIAL RADAR MAP    │ ──────► │ ⚡ UNMASKED HERO ACTION  │
-  │ (Voice Dictation / Text) │         │ (Kharar/Mohali/Chd/Pkl) │         │  (Real-Time Chat & Proof)│
-  └──────────────────────────┘         └──────────────────────────┘         └────────────┬─────────────┘
-                                                                                         │
-  ┌──────────────────────────┐         ┌──────────────────────────┐                      │
-  │ 🎁 MERCH & CAFÉ PASSES   │ ◄────── │ 🏆 LEVEL UP & XP STREAKS │ ◄────────────────────┘
-  │ (Free Vouchers & Shirts) │         │  (Daily Spin & Bounties) │
-  └──────────────────────────┘         └──────────────────────────┘
+               🕸️ ───────────────────────────────────────────────────────────── 🕸️
+              |  "We don't wait for corrupted political systems or slow          |
+              |   bureaucracy to fix our streets. We are the NEW BHARAT —        |
+              |   a generation of unmasked everyday superheroes taking charge     |
+              |   of our neighborhoods in Kharar, Mohali, Chandigarh & Panchkula.|
+              |   Post Problems • Help Neighbors • Level Up • Earn Merch!"       |
+               🕸️ ───────────────────────────────────────────────────────────── 🕸️
 ```
+
+<p align="center">
+  <img src="https://media.giphy.com/media/l41K3tokvXSxXvVUQ/giphy.gif" width="380" height="210" alt="Spider-Man Web Action Graphic" />
+</p>
 
 ---
 
-## 🔥 POWER-UP FEATURES
+## 🕷️ SPIDER-WEB ACTION LOOP
+
+```text
+  🕸️ ┌──────────────────────────┐      🕸️ ┌──────────────────────────┐      🕸️ ┌──────────────────────────┐
+  │  │ 🎙️ VOICE / TEXT POST   │ ──────►  │ 🛰️ HYPERLOCAL RADAR MAP  │ ──────►  │ ⚡ UNMASKED HERO ACTION  │
+  │  │ (English/Hindi/Panj)  │          │ (Kharar/Mohali/Chd/Pkl)  │          │  (Real-Time Chat & Proof)│
+  │  └──────────────────────────┘          └──────────────────────────┘          └────────────┬─────────────┘
+  │                                                                                           │
+  │  ┌──────────────────────────┐          ┌──────────────────────────┐                       │
+  │  │ 🎁 MERCH & CAFÉ PASSES   │ ◄─────── │ 🏆 LEVEL UP & XP STREAKS │ ◄─────────────────────┘
+  │  │ (Free Vouchers & Shirts) │          │  (Daily Spin & Bounties) │
+  └─►└──────────────────────────┘          └──────────────────────────┘
+```
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="Spider-Web Divider Line" />
+</p>
+
+---
+
+## 🕸️ POWER-UP GAMIFIED FEATURES
 
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
       <h3>🎙️ Multilingual AI Voice Assistant</h3>
-      <p>Uber / Rapido style voice input supporting <b>English</b>, <b>Hindi (हिन्दी)</b>, and <b>Punjabi (ਪੰਜਾਬੀ)</b>. Speak your task and AI automatically categorizes and estimates rewards!</p>
+      <p>Uber / Rapido style voice dictation supporting <b>English</b>, <b>Hindi (हिन्दी)</b>, and <b>Punjabi (ਪੰਜਾਬੀ)</b>. Speak your task and AI automatically parses title, category, and credit rewards!</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🌌 Co-Star Stark Monochrome UI</h3>
-      <p>Minimalist editorial dark luxury theme inspired by Co-Star astrology app aesthetics with high-contrast typography and celestial grid cards.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🎁 Daily Hero Spin Wheel & Quests</h3>
-      <p>Spin the daily wheel for free <b>+10 to +50 Gig Credits</b>, maintain 3-day streaks 🔥, and claim bonus rewards!</p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>📸 Proof-of-Work Verification</h3>
-      <p>Helpers upload photo evidence (package handed over, desk assembled, items repaired) before claiming credits!</p>
+      <h3>🌌 Co-Star Stark Monochrome Theme</h3>
+      <p>Minimalist editorial dark luxury styling inspired by Co-Star astrology app aesthetics with high-contrast typography and celestial grid cards.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3>🌱 Community Impact & CO2 Saved</h3>
-      <p>Track community impact: <b>184.5 kg CO2 saved</b> via walking errands & <b>92 household items repaired</b>.</p>
+      <h3>🎁 Daily Hero Spin Wheel & Bounties</h3>
+      <p>Spin the daily wheel for free <b>+10 to +50 Gig Credits</b>, maintain 3-day streaks 🔥, and claim bonus merchandise rewards!</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>📸 Proof-of-Work Photo Verification</h3>
+      <p>Helpers upload photo evidence (package handed over, desk assembled, plants watered) before claiming rewards!</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🌱 Community Sustainability Dashboard</h3>
+      <p>Track community metrics: <b>184.5 kg CO2 saved</b> via walking errands & <b>92 household items repaired</b>.</p>
     </td>
     <td width="50%" valign="top">
       <h3>🎬 [ROADMAP] Hero Insta-Reels Engine</h3>
@@ -98,7 +117,7 @@
 
 ---
 
-## 📄 DETAILED PROJECT REPORT ("NED'S GUY IN THE CHAIR DOSSIER")
+## 📄 DETAILED TECHNICAL PROJECT REPORT
 
 Check out the full technical dossier & architectural blueprint in [`PROJECT_REPORT.md`](./PROJECT_REPORT.md).
 
@@ -127,9 +146,14 @@ python main.py
 
 <div align="center">
 
+  <!-- Bottom Spider-Man Web Swinging GIF Footer -->
+  <p align="center">
+    <img src="https://media.giphy.com/media/105OwsN7a4UQ2Q/giphy.gif" width="420" height="235" alt="Spider-Man Swinging Footer" />
+  </p>
+
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,50:2563EB,100:00E5FF&height=120&section=footer" width="100%" alt="Footer Banner" />
 
   <br/>
-  <sub><b>NEIGHBORHOOD HERO</b> — Unmasked Superheroes for a Stronger, Self-Reliant Bharat.</sub>
+  <sub><b>NEIGHBORHOOD HERO</b> — Unmasked Superheroes for a Stronger, Self-Reliant Bharat. 🕸️</sub>
 
 </div>
