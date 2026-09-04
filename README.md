@@ -1,21 +1,28 @@
 <div align="center">
 
-  <!-- Pixel Art Animated Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00E5FF,35:2563EB,70:A855F7,100:FF2A54&height=240&section=header&text=NEIGHBORHOOD%20HERO&fontSize=52&fontColor=ffffff&fontAlignY=35&desc=%E2%9A%A1%20POST%20%E2%80%A2%20HELP%20%E2%80%A2%20EARN%20%E2%80%A2%20LEVEL%20UP%20%E2%9A%A1&descAlignY=62&descSize=18" width="100%" alt="Neighborhood Hero Banner" />
+  <!-- Gen-Z Superhero High-Octane Header Banner -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,30:00E5FF,65:A855F7,100:FFC72C&height=280&section=header&text=NEIGHBORHOOD%20HERO&fontSize=56&fontColor=ffffff&fontAlignY=35&desc=%F0%9F%95B7%EF%B8%8F%20EVERY%20STREET%20HAS%20A%20HERO%20%E2%80%A2%20YOU%20DON'T%20NEED%20A%20MASK&descAlignY=62&descSize=19" width="100%" alt="Neighborhood Hero Banner" />
 
   <br/>
 
-  <!-- Pixel Motion Artwork & Badges -->
+  <!-- Superhero Animated Motion Graphics & GIFs -->
   <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=22&pause=1000&color=00E5FF&center=true&vCenter=true&width=650&lines=Every+neighborhood+has+heroes.;Hyperlocal+Task+Marketplace+%2B+Gamified+Ecosystem;Voice+Assistant+%E2%80%A2+Co-Star+Stark+Aesthetic;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Typing SVG" />
+    <img src="https://media.giphy.com/media/l41K3tokvXSxXvVUQ/giphy.gif" width="300" height="170" alt="Superhero Motion Graphic 1" />
+    &nbsp;&nbsp;&nbsp;
+    <img src="https://media.giphy.com/media/105OwsN7a4UQ2Q/giphy.gif" width="300" height="170" alt="Superhero Motion Graphic 2" />
+  </p>
+
+  <!-- Gen-Z Manifesto Animated Typing -->
+  <p align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=WE+ARE+THE+NEW+BHARAT.;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Post+Problems.+Help+Neighbors.+Earn+Merch.+Level+Up.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Gen-Z Manifesto Typing" />
   </p>
 
   <p align="center">
     <a href="https://github.com/Shalokexe/Neighbourhood-Hero-App">
-      <img src="https://img.shields.io/github/stars/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=00E5FF&logo=github" alt="Stars" />
+      <img src="https://img.shields.io/github/stars/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=FF2A54&logo=github" alt="Stars" />
     </a>
     <a href="https://github.com/Shalokexe/Neighbourhood-Hero-App/network/members">
-      <img src="https://img.shields.io/github/forks/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=FF2A54&logo=github" alt="Forks" />
+      <img src="https://img.shields.io/github/forks/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=00E5FF&logo=github" alt="Forks" />
     </a>
     <a href="https://reactjs.org/">
       <img src="https://img.shields.io/badge/Frontend-React%2018%20%2B%20TypeScript-00E5FF?style=for-the-badge&logo=react" alt="React" />
@@ -32,130 +39,89 @@
 
 ---
 
-## 🕹️ Pixel Motion Graphic Workflow
+## ✊ THE NEW BHARAT MANIFESTO
+
+> *"We don't wait for corrupted political systems or slow bureaucracy to fix our streets. We are the **NEW BHARAT** — a generation of unmasked everyday superheroes taking charge of our neighborhoods. Whether someone needs emergency grocery runs, elderly support, tutoring, or raising local community issues, we show up, solve it, level up, and earn exclusive rewards!"*
+
+---
+
+## 🕷️ THE HERO ACTION LOOP
 
 ```text
-  ┌────────────────────────┐         ┌────────────────────────┐         ┌────────────────────────┐
-  │ 🎙️ VOICE / TEXT POST   │ ──────► │ 🛰️ HYPERLOCAL RADAR    │ ──────► │ ⚡ HERO TASK MATCH     │
-  │  (English/Hindi/Panj)  │         │   (Kharar/Mohali/Chd)  │         │  (Real-Time Chat & SOS)│
-  └────────────────────────┘         └────────────────────────┘         └───────────┬────────────┘
-                                                                                    │
-  ┌────────────────────────┐         ┌────────────────────────┐                     │
-  │ 🎁 CAFÉ VOUCHERS PASS  │ ◄────── │ 🏆 LEVEL UP & CREDITS  │ ◄───────────────────┘
-  │   (8-Digit QR Wallet)  │         │  (Spin Wheel & Quests) │
-  └────────────────────────┘         └────────────────────────┘
+  ┌──────────────────────────┐         ┌──────────────────────────┐         ┌──────────────────────────┐
+  │ 🎙️ POST ISSUES / TASKS  │ ──────► │ 🛰️ SPATIAL RADAR MAP    │ ──────► │ ⚡ UNMASKED HERO ACTION  │
+  │ (Voice Dictation / Text) │         │ (Kharar/Mohali/Chd/Pkl) │         │  (Real-Time Chat & Proof)│
+  └──────────────────────────┘         └──────────────────────────┘         └────────────┬─────────────┘
+                                                                                         │
+  ┌──────────────────────────┐         ┌──────────────────────────┐                      │
+  │ 🎁 MERCH & CAFÉ PASSES   │ ◄────── │ 🏆 LEVEL UP & XP STREAKS │ ◄────────────────────┘
+  │ (Free Vouchers & Shirts) │         │  (Daily Spin & Bounties) │
+  └──────────────────────────┘         └──────────────────────────┘
 ```
 
 ---
 
-## 🚀 Core Features & High-Tech Capabilities
+## 🔥 POWER-UP FEATURES
 
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
       <h3>🎙️ Multilingual AI Voice Assistant</h3>
-      <ul>
-        <li><b>Uber / Rapido Style Dictation:</b> Tap mic to speak tasks in <b>English</b>, <b>Hindi (हिन्दी)</b>, or <b>Punjabi (ਪੰਜਾਬੀ)</b>.</li>
-        <li><b>Smart NLP Parsing:</b> Automatically extracts mission title, category, budget, and credit reward.</li>
-        <li><b>Spoken Audio App Guide:</b> Text-to-Speech audio guide explaining how to navigate and earn rewards.</li>
-      </ul>
+      <p>Uber / Rapido style voice input supporting <b>English</b>, <b>Hindi (हिन्दी)</b>, and <b>Punjabi (ਪੰਜਾਬੀ)</b>. Speak your task and AI automatically categorizes and estimates rewards!</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🌌 Co-Star Stark Monochrome UI Aesthetic</h3>
-      <ul>
-        <li><b>Editorial Dark Luxury Look:</b> High-contrast stark black aesthetic with crisp white typography.</li>
-        <li><b>Celestial Alignment Grid Banners:</b> Thin geometric borders & celestial header cards.</li>
-        <li><b>Dynamic Theme Switcher:</b> Switch between <i>Co-Star Monochrome</i>, <i>Urban Cyan</i>, <i>Crimson Red</i>, <i>Solar Gold</i>, <i>Cyber Purple</i>, and <i>Eco Green</i>.</li>
-      </ul>
+      <h3>🌌 Co-Star Stark Monochrome UI</h3>
+      <p>Minimalist editorial dark luxury theme inspired by Co-Star astrology app aesthetics with high-contrast typography and celestial grid cards.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3>🎁 Daily Hero Spin Wheel & Quests</h3>
-      <ul>
-        <li><b>Daily Login Wheel:</b> Spin once a day to win <b>+10, +15, +25, or +50 free Gig Credits</b>.</li>
-        <li><b>Daily Hero Quests:</b> Earn bonus rewards for completing errand tasks and maintaining streaks.</li>
-      </ul>
+      <p>Spin the daily wheel for free <b>+10 to +50 Gig Credits</b>, maintain 3-day streaks 🔥, and claim bonus rewards!</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🌱 Sustainability & CO2 Impact Dashboard</h3>
-      <ul>
-        <li><b>184.5 kg CO2 Saved:</b> Track carbon offset from walking/cycling errand deliveries.</li>
-        <li><b>92 Items Repaired:</b> Keep items out of landfills via community repair missions.</li>
-      </ul>
+      <h3>📸 Proof-of-Work Verification</h3>
+      <p>Helpers upload photo evidence (package handed over, desk assembled, items repaired) before claiming credits!</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🌱 Community Impact & CO2 Saved</h3>
+      <p>Track community impact: <b>184.5 kg CO2 saved</b> via walking errands & <b>92 household items repaired</b>.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🎬 [ROADMAP] Hero Insta-Reels Engine</h3>
+      <p>Upcoming Gen-Z short video clips feed allowing heroes to showcase 15-second mission highlights and build community clout!</p>
     </td>
   </tr>
 </table>
 
 ---
 
-## 📸 Proof-of-Work Verification & Security
+## 📄 DETAILED PROJECT REPORT ("NED'S GUY IN THE CHAIR DOSSIER")
 
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=121826&stroke=00E5FF&strokeWidth=2&height=90&text=%F0%9F%93%B8%20PROOF-OF-WORK%20PHOTO%20VERIFICATION%20SYSTEM&fontSize=22&fontColor=00E5FF" width="100%" alt="Proof of work header" />
-</div>
-
-- **Photo Evidence Attachment:** Helpers upload a completion photo (package delivered, desk assembled, plants watered) before claiming rewards.
-- **Location Privacy Engine:** Exact street address remains fuzzy (`"Near Sector 125, Kharar ~0.8 km"`) until a mission is accepted.
-- **Deterministic Credit Engine:** Server-side audit ledger enforcing base reward, 5-star rating bonus (+5), urgency bonus (+5), and streak bonus (+5).
+Check out the full technical dossier & architectural blueprint in [`PROJECT_REPORT.md`](./PROJECT_REPORT.md).
 
 ---
 
-## 🛠️ Multi-Language Architecture
+## ⚡ QUICK LAUNCH COMMANDS
 
-```text
-NEIGHBORHOOD HERO REPOSITORY
-├── frontend/ (Mobile & Web PWA App)
-│   ├── React 18 + TypeScript + Vite
-│   ├── Tailwind CSS + Co-Star Stark Design System
-│   ├── Leaflet & React-Leaflet (Interactive Dark Maps & Radar)
-│   ├── Web Audio API & Native Haptic Sound Engine
-│   └── Canvas-Confetti (Hero Particle Celebrations)
-│
-├── backend/ (Python Microservice API)
-│   ├── FastAPI + Uvicorn + Pydantic
-│   ├── services/credit_engine.py  (Deterministic Credit Engine)
-│   ├── services/ai_matcher.py     (AI Task Categorizer & Reward Estimator)
-│   └── main.py                    (REST API & Haversine Distance API)
-│
-└── supabase/ (Database & Spatial Infrastructure)
-    └── schema.sql                 (PostgreSQL + PostGIS spatial indexing)
-```
-
----
-
-## ⚡ Quick Launch Guide
-
-### 1️⃣ Frontend Web App (React 18 + Vite)
+### 1️⃣ Launch Frontend (React 18 + Vite)
 
 ```bash
-# Clone the repository
-git clone https://github.com/Shalokexe/Neighbourhood-Hero-App.git
-cd Neighbourhood-Hero-App
-
-# Install dependencies
 npm install
-
-# Launch Vite local dev server
 npm run dev
 ```
-👉 *Open `http://localhost:5173` in your browser.*
+👉 *App URL: `http://localhost:5173`*
 
----
-
-### 2️⃣ Backend Microservice (Python FastAPI)
+### 2️⃣ Launch Backend Microservice (Python FastAPI)
 
 ```bash
-# Navigate to backend directory
 cd backend
-
-# Install Python requirements
 pip install -r requirements.txt
-
-# Start FastAPI server
 python main.py
 ```
-👉 *API Docs available at `http://localhost:8000/docs`*
+👉 *API Docs: `http://localhost:8000/docs`*
 
 ---
 
@@ -164,6 +130,6 @@ python main.py
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,50:2563EB,100:00E5FF&height=120&section=footer" width="100%" alt="Footer Banner" />
 
   <br/>
-  <sub>Built with ❤️ for every hero in Kharar, Mohali, Chandigarh & Panchkula.</sub>
+  <sub><b>NEIGHBORHOOD HERO</b> — Unmasked Superheroes for a Stronger, Self-Reliant Bharat.</sub>
 
 </div>
