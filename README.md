@@ -1,16 +1,20 @@
 <div align="center">
 
-  <!-- Glowing Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00E5FF,50:2563EB,100:FF2A54&height=220&section=header&text=NEIGHBORHOOD%20HERO&fontSize=55&fontColor=ffffff&fontAlignY=35&desc=POST%20%E2%80%A2%20HELP%20%E2%80%A2%20EARN%20%E2%80%A2%20LEVEL%20UP&descAlignY=62&descSize=20" width="100%" alt="Neighborhood Hero Banner" />
+  <!-- Pixel Art Animated Header Banner -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00E5FF,35:2563EB,70:A855F7,100:FF2A54&height=240&section=header&text=NEIGHBORHOOD%20HERO&fontSize=52&fontColor=ffffff&fontAlignY=35&desc=%E2%9A%A1%20POST%20%E2%80%A2%20HELP%20%E2%80%A2%20EARN%20%E2%80%A2%20LEVEL%20UP%20%E2%9A%A1&descAlignY=62&descSize=18" width="100%" alt="Neighborhood Hero Banner" />
 
   <br/>
 
-  <!-- Badges Grid -->
+  <!-- Pixel Motion Artwork & Badges -->
+  <p align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=22&pause=1000&color=00E5FF&center=true&vCenter=true&width=650&lines=Every+neighborhood+has+heroes.;Hyperlocal+Task+Marketplace+%2B+Gamified+Ecosystem;Voice+Assistant+%E2%80%A2+Co-Star+Stark+Aesthetic;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Typing SVG" />
+  </p>
+
   <p align="center">
     <a href="https://github.com/Shalokexe/Neighbourhood-Hero-App">
       <img src="https://img.shields.io/github/stars/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=00E5FF&logo=github" alt="Stars" />
     </a>
-    <a href="https://github.com/Shalokexe/Neighbourhood-Hero-App/stargazers">
+    <a href="https://github.com/Shalokexe/Neighbourhood-Hero-App/network/members">
       <img src="https://img.shields.io/github/forks/Shalokexe/Neighbourhood-Hero-App?style=for-the-badge&color=FF2A54&logo=github" alt="Forks" />
     </a>
     <a href="https://reactjs.org/">
@@ -20,96 +24,109 @@
       <img src="https://img.shields.io/badge/Backend-Python%20FastAPI-10B981?style=for-the-badge&logo=fastapi" alt="FastAPI" />
     </a>
     <a href="https://www.postgresql.org/">
-      <img src="https://img.shields.io/badge/Database-PostgreSQL%20%2B%20PostGIS-336791?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
+      <img src="https://img.shields.io/badge/Spatial%20DB-PostgreSQL%20%2B%20PostGIS-336791?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
     </a>
-  </p>
-
-  <h3>Every neighborhood has heroes.</h3>
-
-  <p align="center">
-    <b>A hyperlocal task marketplace, community network & gamified hero progression engine built for the Tricity region.</b><br/>
-    <i>Kharar • Mohali • Chandigarh • Panchkula</i>
   </p>
 
 </div>
 
 ---
 
-## ⚡ The Hero Experience Loop
+## 🕹️ Pixel Motion Graphic Workflow
 
 ```text
-  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-  │  POST A MISSION │ ───►  │ DISCOVER NEARBY │ ───►  │ TAKE ACTION &   │
-  │  (30-sec form)  │       │ (Interactive Map)│      │ COORDINATE CHAT │
-  └─────────────────┘       └─────────────────┘       └────────┬────────┘
-                                                               │
-  ┌─────────────────┐       ┌─────────────────┐                │
-  │ REDEEM REWARDS  │ ◄───  │ LEVEL UP HERO   │ ◄──────────────┘
-  │ (Café Vouchers) │       │ (Earn Credits)  │
-  └─────────────────┘       └─────────────────┘
+  ┌────────────────────────┐         ┌────────────────────────┐         ┌────────────────────────┐
+  │ 🎙️ VOICE / TEXT POST   │ ──────► │ 🛰️ HYPERLOCAL RADAR    │ ──────► │ ⚡ HERO TASK MATCH     │
+  │  (English/Hindi/Panj)  │         │   (Kharar/Mohali/Chd)  │         │  (Real-Time Chat & SOS)│
+  └────────────────────────┘         └────────────────────────┘         └───────────┬────────────┘
+                                                                                    │
+  ┌────────────────────────┐         ┌────────────────────────┐                     │
+  │ 🎁 CAFÉ VOUCHERS PASS  │ ◄────── │ 🏆 LEVEL UP & CREDITS  │ ◄───────────────────┘
+  │   (8-Digit QR Wallet)  │         │  (Spin Wheel & Quests) │
+  └────────────────────────┘         └────────────────────────┘
 ```
 
 ---
 
-## 🔥 Key Features & Capabilities
+## 🚀 Core Features & High-Tech Capabilities
 
-### 📍 1. Hyperlocal Geospatial Engine
-- **Initial Launch Focus:** Seeded database mapping for **Kharar**, **Mohali**, **Chandigarh**, and **Panchkula**.
-- **Interactive Dark Map:** Leaflet dark map with category color-coded pins and dynamic radius selector (`1 km`, `3 km`, `5 km`, `10 km`).
-- **Location Privacy Standard:** Before mission acceptance, exact GPS coordinates are masked (`"Near Sector 125, Kharar ~0.8 km"`). Exact street addresses unlock only upon mission acceptance.
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🎙️ Multilingual AI Voice Assistant</h3>
+      <ul>
+        <li><b>Uber / Rapido Style Dictation:</b> Tap mic to speak tasks in <b>English</b>, <b>Hindi (हिन्दी)</b>, or <b>Punjabi (ਪੰਜਾਬੀ)</b>.</li>
+        <li><b>Smart NLP Parsing:</b> Automatically extracts mission title, category, budget, and credit reward.</li>
+        <li><b>Spoken Audio App Guide:</b> Text-to-Speech audio guide explaining how to navigate and earn rewards.</li>
+      </ul>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🌌 Co-Star Stark Monochrome UI Aesthetic</h3>
+      <ul>
+        <li><b>Editorial Dark Luxury Look:</b> High-contrast stark black aesthetic with crisp white typography.</li>
+        <li><b>Celestial Alignment Grid Banners:</b> Thin geometric borders & celestial header cards.</li>
+        <li><b>Dynamic Theme Switcher:</b> Switch between <i>Co-Star Monochrome</i>, <i>Urban Cyan</i>, <i>Crimson Red</i>, <i>Solar Gold</i>, <i>Cyber Purple</i>, and <i>Eco Green</i>.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🎁 Daily Hero Spin Wheel & Quests</h3>
+      <ul>
+        <li><b>Daily Login Wheel:</b> Spin once a day to win <b>+10, +15, +25, or +50 free Gig Credits</b>.</li>
+        <li><b>Daily Hero Quests:</b> Earn bonus rewards for completing errand tasks and maintaining streaks.</li>
+      </ul>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🌱 Sustainability & CO2 Impact Dashboard</h3>
+      <ul>
+        <li><b>184.5 kg CO2 Saved:</b> Track carbon offset from walking/cycling errand deliveries.</li>
+        <li><b>92 Items Repaired:</b> Keep items out of landfills via community repair missions.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-### 🛡️ 2. State Machine Mission Lifecycle
-- Enforces valid state transitions: `OPEN` ➔ `ACCEPTED` ➔ `IN_PROGRESS` ➔ `COMPLETED` ➔ `REVIEWED`.
-- **Anti-Abuse Protections:** Self-gig prevention (users cannot accept their own missions) & single active helper constraints.
+---
 
-### 💬 3. Mission Coordination Messaging
-- Real-time chat channel per accepted mission with timestamped messaging and quick action reply chips.
+## 📸 Proof-of-Work Verification & Security
 
-### 🎮 4. Gamified Credits & Hero Level Engine
-- **10 Hero Level Ranks:** Level 1: *New Hero* to Level 10: *Neighborhood Guardian*.
-- **Auditable Transaction Ledger:** Complete audit trail logging every `EARN`, `BONUS`, `REDEMPTION`, and `ADMIN_ADJUSTMENT`.
-- **Badge Unlocking System:** Includes *First Mission*, *Helping Hand*, *Super Helper*, *Tech Fixer*, *Errand Runner*, *Night Watcher*, *Five-Star Hero*, and *Local Legend*.
-- **Particle Celebrations:** Canvas-confetti celebrations trigger on mission completion and level ups!
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=121826&stroke=00E5FF&strokeWidth=2&height=90&text=%F0%9F%93%B8%20PROOF-OF-WORK%20PHOTO%20VERIFICATION%20SYSTEM&fontSize=22&fontColor=00E5FF" width="100%" alt="Proof of work header" />
+</div>
 
-### 🎨 5. Hero Theme & Profile Banner Customization
-- **5 Hero Color Schemes:** Urban Cyan (`#00E5FF`), Crimson Guardian (`#FF2A54`), Solar Champion (`#FFC72C`), Cyber Legend (`#A855F7`), Eco Guardian (`#10B981`).
-- **Custom Profile Banners:** Neighborhood Grid, Cyber Circuit Pulse, Solar Crest, and Flame Hero Streak.
-- **Earn or Buy with Credits:** Unlocked by reaching Hero Levels or purchasing with earned Gig Credits as achievement tokens!
-
-### 🎁 6. In-App Rewards Store & Voucher Pass Wallet
-- Exchange Gig Credits for real local partner vouchers (₹100 Café Vouchers, Sticker Packs, Hero Tech T-Shirts, Restaurant Passes).
-- Unique 8-digit redemption pass generation (`HERO-CAFE-XXXX`).
-
-### 🛡️ 7. Admin Moderation & Operations Panel
-- Real-time metrics dashboard, User Block/Unblock toggle, Gig removal, Safety report queue, and Manual Credit Audit adjustments.
+- **Photo Evidence Attachment:** Helpers upload a completion photo (package delivered, desk assembled, plants watered) before claiming rewards.
+- **Location Privacy Engine:** Exact street address remains fuzzy (`"Near Sector 125, Kharar ~0.8 km"`) until a mission is accepted.
+- **Deterministic Credit Engine:** Server-side audit ledger enforcing base reward, 5-star rating bonus (+5), urgency bonus (+5), and streak bonus (+5).
 
 ---
 
 ## 🛠️ Multi-Language Architecture
 
-```
+```text
 NEIGHBORHOOD HERO REPOSITORY
-├── frontend/ (Mobile & Web App)
+├── frontend/ (Mobile & Web PWA App)
 │   ├── React 18 + TypeScript + Vite
-│   ├── Tailwind CSS + Custom Urban Hero Design Tokens
-│   ├── Leaflet & React-Leaflet (Interactive Dark Maps)
-│   └── Canvas-Confetti (Hero Level Celebrations)
+│   ├── Tailwind CSS + Co-Star Stark Design System
+│   ├── Leaflet & React-Leaflet (Interactive Dark Maps & Radar)
+│   ├── Web Audio API & Native Haptic Sound Engine
+│   └── Canvas-Confetti (Hero Particle Celebrations)
 │
 ├── backend/ (Python Microservice API)
 │   ├── FastAPI + Uvicorn + Pydantic
-│   ├── services/credit_engine.py  (Deterministic Python Credit Engine)
-│   ├── services/ai_matcher.py     (AI Task Categorization & Reward Estimator)
-│   └── main.py                    (REST Endpoints & Haversine Distance API)
+│   ├── services/credit_engine.py  (Deterministic Credit Engine)
+│   ├── services/ai_matcher.py     (AI Task Categorizer & Reward Estimator)
+│   └── main.py                    (REST API & Haversine Distance API)
 │
 └── supabase/ (Database & Spatial Infrastructure)
-    └── schema.sql                 (PostgreSQL + PostGIS spatial indexing & RLS)
+    └── schema.sql                 (PostgreSQL + PostGIS spatial indexing)
 ```
 
 ---
 
-## 🚀 Quick Start Guide
+## ⚡ Quick Launch Guide
 
-### 1. Frontend (React 18 + Vite)
+### 1️⃣ Frontend Web App (React 18 + Vite)
 
 ```bash
 # Clone the repository
@@ -119,14 +136,14 @@ cd Neighbourhood-Hero-App
 # Install dependencies
 npm install
 
-# Run Vite dev server
+# Launch Vite local dev server
 npm run dev
 ```
-*Open `http://localhost:5173` in your browser.*
+👉 *Open `http://localhost:5173` in your browser.*
 
 ---
 
-### 2. Backend (Python FastAPI Microservice)
+### 2️⃣ Backend Microservice (Python FastAPI)
 
 ```bash
 # Navigate to backend directory
@@ -138,15 +155,7 @@ pip install -r requirements.txt
 # Start FastAPI server
 python main.py
 ```
-*API documentation available at `http://localhost:8000/docs`*
-
----
-
-## 🗄️ Database Setup (PostgreSQL + PostGIS)
-
-1. Open your PostgreSQL / Supabase SQL Editor.
-2. Execute the script in [`supabase/schema.sql`](./supabase/schema.sql).
-3. Initializes PostGIS spatial extensions, tables, index GISTs, and radius search functions (`get_nearby_gigs`).
+👉 *API Docs available at `http://localhost:8000/docs`*
 
 ---
 
