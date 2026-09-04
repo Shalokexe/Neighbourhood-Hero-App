@@ -1,9 +1,11 @@
 <div align="center">
 
-  <!-- Top Spider-Man Swinging Motion Graphic Banner -->
+  <!-- Iconic Bully Maguire Header GIF -->
   <p align="center">
-    <img src="https://media.giphy.com/media/105OwsN7a4UQ2Q/giphy.gif" width="480" height="270" alt="Spider-Man Swinging Motion Graphic" />
+    <img src="https://media.giphy.com/media/cgFpL8vbhjvw65lGbf/giphy.gif" width="520" alt="Bully Maguire - I'm gonna put some dirt in your eye" />
   </p>
+
+  <h2 align="center"><i>"I'm gonna put some dirt in your eye... if you don't help your neighborhood!"</i></h2>
 
   <!-- Glowing Spider-Man Theme Header Banner -->
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,35:00E5FF,70:A855F7,100:FFC72C&height=280&section=header&text=NEIGHBORHOOD%20HERO&fontSize=56&fontColor=ffffff&fontAlignY=35&desc=%F0%9F%95B7%EF%B8%8F%20EVERY%20STREET%20HAS%20A%20HERO%20%E2%80%A2%20YOU%20DON'T%20NEED%20A%20MASK&descAlignY=62&descSize=19" width="100%" alt="Neighborhood Hero Banner" />
@@ -12,7 +14,7 @@
 
   <!-- Spider-Web Animated Typing SVG -->
   <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+SPIDER-MAN+GAMIFIED+NEIGHBORHOOD+APP;WE+ARE+THE+NEW+BHARAT.;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+BULLY+MAGUIRE+APPROVED+NEIGHBORHOOD+APP;WE+ARE+THE+NEW+BHARAT.;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
   </p>
 
   <!-- Dynamic Shields Badges -->
@@ -55,7 +57,7 @@
 ```
 
 <p align="center">
-  <img src="https://media.giphy.com/media/l41K3tokvXSxXvVUQ/giphy.gif" width="380" height="210" alt="Spider-Man Web Action Graphic" />
+  <img src="https://media.giphy.com/media/cgFpL8vbhjvw65lGbf/giphy.gif" width="450" alt="Bully Maguire GIF" />
 </p>
 
 ---
@@ -146,10 +148,9 @@ python main.py
 
 <div align="center">
 
-  <!-- Bottom Spider-Man Web Swinging GIF Footer -->
-  <p align="center">
-    <img src="https://media.giphy.com/media/105OwsN7a4UQ2Q/giphy.gif" width="420" height="235" alt="Spider-Man Swinging Footer" />
-  </p>
+  <img src="https://media.giphy.com/media/cgFpL8vbhjvw65lGbf/giphy.gif" width="420" alt="Bully Maguire Footer GIF" />
+
+  <br/>
 
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF2A54,50:2563EB,100:00E5FF&height=120&section=footer" width="100%" alt="Footer Banner" />
 
