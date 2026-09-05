@@ -13,6 +13,7 @@ import { AdminDashboard } from './features/admin/AdminDashboard';
 import { NotificationCenter } from './features/notifications/NotificationCenter';
 import { LeaderboardScreen } from './features/leaderboard/LeaderboardScreen';
 import { ImpactDashboard } from './features/impact/ImpactDashboard';
+import { HeroReelsFeed } from './features/reels/HeroReelsFeed';
 import { CustomCursor } from './shared/components/CustomCursor';
 import { DynamicHeroBg } from './shared/components/DynamicHeroBg';
 import { Gig } from './shared/types/domain';
@@ -24,7 +25,7 @@ const MainAppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [selectedGig, setSelectedGig] = useState<Gig | null>(null);
   const [activeChatGigId, setActiveChatGigId] = useState<string | undefined>(undefined);
-  const [viewOverlay, setViewOverlay] = useState<'rewards' | 'admin' | 'chat' | 'notifications' | 'leaderboard' | 'impact' | null>(null);
+  const [viewOverlay, setViewOverlay] = useState<'rewards' | 'admin' | 'chat' | 'notifications' | 'leaderboard' | 'impact' | 'reels' | null>(null);
 
   const unreadCount = conversations.reduce((acc, c) => acc + (c.unreadCount || 0), 0);
 
@@ -52,6 +53,7 @@ const MainAppContent: React.FC = () => {
         onOpenNotifications={() => setViewOverlay('notifications')}
         onOpenLeaderboard={() => setViewOverlay('leaderboard')}
         onOpenImpact={() => setViewOverlay('impact')}
+        onOpenReels={() => setViewOverlay('reels')}
       />
 
       {/* Main View Router */}
@@ -66,6 +68,8 @@ const MainAppContent: React.FC = () => {
           <LeaderboardScreen onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'impact' ? (
           <ImpactDashboard onBack={() => setViewOverlay(null)} />
+        ) : viewOverlay === 'reels' ? (
+          <HeroReelsFeed onBack={() => setViewOverlay(null)} />
         ) : viewOverlay === 'chat' ? (
           <ChatScreen 
             gigId={activeChatGigId} 

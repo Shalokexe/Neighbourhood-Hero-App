@@ -4,7 +4,7 @@ import { CITIES_SEED, LOCALITIES_SEED } from '../../core/config/citiesData';
 import { VoiceAssistantModal } from './VoiceAssistantModal';
 import { AuthModal } from '../../features/auth/AuthModal';
 import { DailyBountiesModal } from '../../features/bounties/DailyBountiesModal';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf } from 'lucide-react';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
@@ -12,6 +12,7 @@ interface HeaderNavProps {
   onOpenNotifications: () => void;
   onOpenLeaderboard: () => void;
   onOpenImpact: () => void;
+  onOpenReels: () => void;
 }
 
 export const HeaderNav: React.FC<HeaderNavProps> = ({ 
@@ -19,7 +20,8 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onOpenAdmin,
   onOpenNotifications,
   onOpenLeaderboard,
-  onOpenImpact
+  onOpenImpact,
+  onOpenReels
 }) => {
   const { 
     currentUser, 
@@ -85,6 +87,15 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             title="Open AI Voice Assistant"
           >
             <Mic className="w-4 h-4 text-white animate-pulse" />
+          </button>
+
+          {/* Hero Insta-Reels Feed Trigger */}
+          <button
+            onClick={onOpenReels}
+            className="bg-[#FF2A54]/20 hover:bg-[#FF2A54]/30 border border-[#FF2A54]/40 p-2 rounded-xl text-[#FF2A54] transition-all shadow-sm"
+            title="Gen-Z Hero Insta-Reels Short Video Feed"
+          >
+            <Sparkles className="w-4 h-4 fill-[#FF2A54]" />
           </button>
 
           {/* Daily Spin Wheel & Bounties Trigger */}
