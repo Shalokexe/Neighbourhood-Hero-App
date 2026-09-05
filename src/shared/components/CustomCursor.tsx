@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { HERO_THEMES } from '../../core/config/themeConfig';
 
+interface WebBurst {
+  id: number;
+  x: number;
+  y: number;
+}
+
 export const CustomCursor: React.FC = () => {
   const { activeThemeId } = useApp();
   const activeTheme = HERO_THEMES.find(t => t.id === activeThemeId) || HERO_THEMES[0];
@@ -11,6 +17,7 @@ export const CustomCursor: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [webBursts, setWebBursts] = useState<WebBurst[]>([]);
 
   useEffect(() => {
     // Detect touch device (iOS / Android) -> Hide custom mouse cursor on touch
@@ -31,7 +38,8 @@ export const CustomCursor: React.FC = () => {
         target.closest('select') ||
         target.closest('textarea') ||
         target.closest('.glass-card-hover') ||
-        target.closest('.leaflet-marker-icon')
+        target.closest('.leaflet-marker-icon') ||
+        target.closest('.cursor-pointer')
       ) {
         setIsHovered(true);
       } else {
@@ -39,7 +47,24 @@ export const CustomCursor: React.FC = () => {
       }
     };
 
-    const onMouseDown = () => setIsClicked(true);
+    const onMouseDown = (e: MouseEvent) => {
+      setIsClicked(true);
+
+      // Trigger Web Shoot burst at click location
+      const newBurst: WebBurst = {
+        id: Date.now() + Math.random(),
+        x: e.clientX,
+        y: e.clientY
+      };
+
+      setWebBursts(prev => [...prev.slice(-6), newBurst]);
+
+      // Remove web burst after animation finishes
+      setTimeout(() => {
+        setWebBursts(prev => prev.filter(b => b.id !== newBurst.id));
+      }, 500);
+    };
+
     const onMouseUp = () => setIsClicked(false);
 
     window.addEventListener('mousemove', onMouseMove);
@@ -53,7 +78,7 @@ export const CustomCursor: React.FC = () => {
     };
   }, []);
 
-  // Smooth lag animation for trailing outer glow ring
+  // Smooth lag animation for trailing outer web target ring
   useEffect(() => {
     if (isTouchDevice) return;
     let animationFrameId: number;
@@ -74,30 +99,60 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
-      {/* Inner Precision Pointer Dot */}
+      {/* CLICK ANIMATED SPIDER-WEB SHOOT BURST EFFECTS */}
+      {webBursts.map((burst) => (
+        <div
+          key={burst.id}
+          className="fixed pointer-events-none z-[9998]"
+          style={{ left: `${burst.x}px`, top: `${burst.y}px` }}
+        >
+          {/* Expanding Web Mesh */}
+          <div className="absolute -translate-x-1/2 -translate-y-1/2 text-2xl animate-ping opacity-90 filter drop-shadow-[0_0_8px_#00E5FF]">
+            🕸️
+          </div>
+
+          {/* 8 Radial Web Strands Shooting Out */}
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+            <div
+              key={angle}
+              className="absolute top-0 left-0 h-[1.5px] bg-gradient-to-r from-white via-[#00E5FF] to-transparent origin-left animate-web-strand"
+              style={{
+                width: '45px',
+                transform: `rotate(${angle}deg)`
+              }}
+            />
+          ))}
+        </div>
+      ))}
+
+      {/* Spider Icon Pointer Dot */}
       <div
-        className="fixed w-3 h-3 rounded-full transition-transform duration-75 ease-out shadow-lg"
+        className="fixed w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-75 ease-out shadow-lg text-xs"
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isClicked ? 0.7 : isHovered ? 1.5 : 1})`,
-          backgroundColor: activeTheme.primaryColor,
-          boxShadow: `0 0 10px ${activeTheme.primaryColor}`
+          transform: `translate(-50%, -50%) scale(${isClicked ? 0.7 : isHovered ? 1.4 : 1})`,
+          backgroundColor: activeTheme.primaryColor === '#FFFFFF' ? '#FF2A54' : activeTheme.primaryColor,
+          boxShadow: `0 0 12px ${activeTheme.primaryColor === '#FFFFFF' ? '#FF2A54' : activeTheme.primaryColor}`
         }}
-      />
+      >
+        🕷️
+      </div>
 
-      {/* Outer Trailing Energy Pulse Ring */}
+      {/* Outer Web Shooter Target Ring */}
       <div
-        className="fixed w-8 h-8 rounded-full border border-opacity-60 transition-transform duration-100 ease-out"
+        className="fixed w-9 h-9 rounded-full border border-opacity-70 flex items-center justify-center transition-transform duration-100 ease-out"
         style={{
           left: `${trailingPos.x}px`,
           top: `${trailingPos.y}px`,
-          transform: `translate(-50%, -50%) scale(${isClicked ? 0.8 : isHovered ? 2.2 : 1})`,
-          borderColor: activeTheme.primaryColor,
-          backgroundColor: isHovered ? `${activeTheme.primaryColor}15` : 'transparent',
-          boxShadow: isHovered ? `0 0 25px ${activeTheme.primaryColor}` : 'none'
+          transform: `translate(-50%, -50%) scale(${isClicked ? 0.8 : isHovered ? 2.0 : 1})`,
+          borderColor: activeTheme.primaryColor === '#FFFFFF' ? '#00E5FF' : activeTheme.primaryColor,
+          backgroundColor: isHovered ? `${activeTheme.primaryColor}20` : 'transparent',
+          boxShadow: isHovered ? `0 0 20px ${activeTheme.primaryColor}` : 'none'
         }}
-      />
+      >
+        <span className="text-[10px] opacity-40">🕸️</span>
+      </div>
     </div>
   );
 };
