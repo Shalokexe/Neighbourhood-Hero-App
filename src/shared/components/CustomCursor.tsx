@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { HERO_THEMES } from '../../core/config/themeConfig';
+import { soundService } from '../../core/services/soundService';
 
 interface WebBurst {
   id: number;
@@ -49,6 +50,7 @@ export const CustomCursor: React.FC = () => {
 
     const onMouseDown = (e: MouseEvent) => {
       setIsClicked(true);
+      soundService.playWebThwipSound();
 
       // Trigger Web Shoot burst at click location
       const newBurst: WebBurst = {

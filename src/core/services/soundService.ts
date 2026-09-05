@@ -138,6 +138,32 @@ class SoundService {
       osc.stop(now + 0.2);
     } catch (e) {}
   }
+
+  // Spidey Web Shooter Thwip Sound Effect
+  playWebThwipSound() {
+    this.triggerHaptic([15, 30]);
+    const ctx = this.getAudioContext();
+    if (!ctx) return;
+
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(1400, now);
+      osc.frequency.exponentialRampToValueAtTime(120, now + 0.08);
+
+      gain.gain.setValueAtTime(0.18, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } catch (e) {}
+  }
 }
 
 export const soundService = new SoundService();
