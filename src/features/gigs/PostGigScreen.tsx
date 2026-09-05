@@ -5,7 +5,7 @@ import { CATEGORY_ICONS } from '../../core/config/levelConfig';
 import { GigCategory, GigUrgency } from '../../shared/types/domain';
 import { VoiceAssistantModal } from '../../shared/components/VoiceAssistantModal';
 import { ParsedVoiceMission } from '../../core/services/voiceAssistant';
-import { PlusCircle, Zap, ShieldCheck, AlertTriangle, Mic, Sparkles } from 'lucide-react';
+import { PlusCircle, Zap, ShieldCheck, AlertTriangle, Mic, Radio, Hexagon } from 'lucide-react';
 
 interface PostGigScreenProps {
   onSuccess: () => void;
@@ -73,18 +73,19 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
   };
 
   return (
-    <div className="pb-24 pt-2 px-4 max-w-md mx-auto space-y-4">
-      <div className="flex items-center justify-between mb-1">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF2A54] to-[#00E5FF] p-0.5 flex items-center justify-center">
-            <PlusCircle className="w-5 h-5 text-white" />
+    <div className="pb-24 pt-2 px-4 max-w-md mx-auto space-y-4 font-fnsm text-slate-100">
+      {/* Top Header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl bg-[#05070D] border border-cyan-400/50 p-0.5 flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.3)]">
+            <Radio className="w-5 h-5 text-cyan-400 animate-pulse" />
           </div>
           <div>
-            <h1 className="font-heading font-extrabold text-white text-xl">
-              POST A MISSION
+            <h1 className="font-orbitron font-extrabold text-white text-base tracking-wider uppercase flex items-center gap-1.5">
+              CITIZEN DISPATCH COMMS
             </h1>
-            <p className="text-xs text-slate-400">
-              Micro-tasks usually take 30–45 seconds to post.
+            <p className="text-[10px] text-cyan-400 font-bold tracking-widest font-orbitron">
+              BROADCAST NEW NEIGHBORHOOD ACTIVITY
             </p>
           </div>
         </div>
@@ -93,25 +94,25 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
         <button
           type="button"
           onClick={() => setShowVoiceModal(true)}
-          className="px-3 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-md hover:scale-105 transition-transform"
+          className="px-3 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-orbitron font-black rounded-xl text-xs flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,229,255,0.4)] hover:scale-105 transition-transform"
         >
-          <Mic className="w-4 h-4 fill-slate-950" />
-          <span>DICTATE</span>
+          <Mic className="w-3.5 h-3.5 fill-slate-950" />
+          <span>🎙️ DICTATE</span>
         </button>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 text-red-300 px-3 py-2 rounded-xl text-xs flex items-center gap-2">
-          <AlertTriangle className="w-4 h-4 shrink-0" />
+        <div className="bg-red-500/10 border border-red-500/40 text-red-300 px-3 py-2 rounded-xl text-xs flex items-center gap-2 font-orbitron">
+          <AlertTriangle className="w-4 h-4 shrink-0 text-red-400" />
           <span>{errorMsg}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="fnsm-app-container rounded-2xl p-4 border border-cyan-500/30 space-y-4">
         {/* Category Picker */}
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-            Mission Category
+          <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-2 uppercase tracking-wider">
+            ACTIVITY CATEGORY
           </label>
           <div className="grid grid-cols-3 gap-2">
             {Object.keys(CATEGORY_ICONS).slice(0, 9).map((catName) => {
@@ -121,10 +122,10 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
                   type="button"
                   key={catName}
                   onClick={() => setCategory(catName as GigCategory)}
-                  className={`p-2.5 rounded-xl border text-left text-xs font-semibold transition-all ${
+                  className={`p-2.5 rounded-xl border text-left text-xs font-orbitron font-bold transition-all uppercase ${
                     isSelected
-                      ? 'bg-[#00E5FF]/15 border-[#00E5FF] text-[#00E5FF] font-bold shadow-[0_0_10px_rgba(0,229,255,0.2)]'
-                      : 'bg-[#121826] border-white/10 text-slate-300 hover:border-slate-600'
+                      ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_12px_rgba(0,229,255,0.3)]'
+                      : 'bg-[#05070D]/80 border-slate-700 text-slate-400 hover:border-slate-500 hover:text-slate-200'
                   }`}
                 >
                   {catName}
@@ -136,37 +137,37 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
 
         {/* Title */}
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">
-            Mission Title
+          <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+            DISPATCH TITLE
           </label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Need help carrying groceries upstairs"
-            className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#00E5FF]"
+            placeholder="e.g. Help needed carrying grocery supplies to floor 3..."
+            className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-fnsm"
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">
-            Mission Details & Instructions
+          <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+            MISSION DETAILS & BRIEFING
           </label>
           <textarea
             rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Describe what needs to be done, meeting spot, or specific requirements..."
-            className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#00E5FF]"
+            placeholder="Specify meeting location, entry codes, or special instructions..."
+            className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-fnsm"
           />
         </div>
 
         {/* Location Selection */}
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              City
+            <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+              TARGET CITY
             </label>
             <select
               value={cityId}
@@ -175,7 +176,7 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
                 const firstLoc = LOCALITIES_SEED.find(l => l.cityId === e.target.value);
                 if (firstLoc) setLocalityId(firstLoc.id);
               }}
-              className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00E5FF]"
+              className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400 font-orbitron font-bold"
             >
               {CITIES_SEED.map(c => (
                 <option key={c.id} value={c.id}>{c.name}</option>
@@ -184,13 +185,13 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Locality
+            <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+              LOCALITY RADAR
             </label>
             <select
               value={localityId}
               onChange={(e) => setLocalityId(e.target.value)}
-              className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00E5FF]"
+              className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400 font-orbitron font-bold"
             >
               {cityLocalities.map(l => (
                 <option key={l.id} value={l.id}>{l.name}</option>
@@ -202,14 +203,14 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
         {/* Reward & Budget */}
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1 flex items-center gap-1">
-              <Zap className="w-3.5 h-3.5 text-amber-400" />
-              Gig Credits Reward
+            <label className="block text-xs font-orbitron font-extrabold text-amber-300 mb-1 flex items-center gap-1 uppercase tracking-wider">
+              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+              ⬡ CREDITS BOUNTY
             </label>
             <select
               value={creditReward}
               onChange={(e) => setCreditReward(Number(e.target.value))}
-              className="w-full bg-[#121826] border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-amber-300 font-bold focus:outline-none focus:border-amber-400"
+              className="w-full bg-[#05070D] border border-amber-500/40 rounded-xl px-3 py-2 text-xs text-amber-300 font-orbitron font-bold focus:outline-none focus:border-amber-400"
             >
               <option value={10}>10 Credits (Tiny Task ~15m)</option>
               <option value={25}>25 Credits (Small Task ~30m)</option>
@@ -219,15 +220,15 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Cash Budget (Optional ₹)
+            <label className="block text-xs font-orbitron font-extrabold text-emerald-300 mb-1 uppercase tracking-wider">
+              CASH OFFER (₹ OPTIONAL)
             </label>
             <input
               type="number"
               value={budget || ''}
               onChange={(e) => setBudget(e.target.value ? Number(e.target.value) : undefined)}
               placeholder="e.g. 150"
-              className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2 text-xs text-emerald-400 font-bold placeholder-slate-500 focus:outline-none focus:border-[#00E5FF]"
+              className="w-full bg-[#05070D] border border-emerald-500/30 rounded-xl px-3 py-2 text-xs text-emerald-400 font-orbitron font-bold placeholder-slate-500 focus:outline-none focus:border-emerald-400"
             />
           </div>
         </div>
@@ -235,13 +236,13 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
         {/* Urgency & Duration */}
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Urgency
+            <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+              PRIORITY LEVEL
             </label>
             <select
               value={urgency}
               onChange={(e) => setUrgency(e.target.value as GigUrgency)}
-              className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00E5FF]"
+              className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400 font-orbitron font-bold"
             >
               <option value="FLEXIBLE">Flexible</option>
               <option value="TODAY">Today</option>
@@ -251,32 +252,32 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Estimated Duration
+            <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+              ESTIMATED TIME
             </label>
             <input
               type="text"
               value={estimatedDuration}
               onChange={(e) => setEstimatedDuration(e.target.value)}
               placeholder="~30 min"
-              className="w-full bg-[#121826] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00E5FF]"
+              className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400 font-orbitron font-bold"
             />
           </div>
         </div>
 
         {/* Safety Note */}
-        <div className="bg-[#121826]/60 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
-          <ShieldCheck className="w-4 h-4 text-[#00E5FF] shrink-0 mt-0.5" />
-          <p className="text-[11px] text-slate-400 leading-normal">
-            Keep tasks legal, respectful, and safe. Exact location details are shared only with your accepted helper.
+        <div className="bg-[#05070D]/80 border border-cyan-500/20 p-3 rounded-xl flex items-start gap-2.5">
+          <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+          <p className="text-[11px] text-slate-400 leading-normal font-fnsm">
+            Encrypted connection active. Exact GPS details are strictly disclosed to approved Spidey helpers only.
           </p>
         </div>
 
         <button
           type="submit"
-          className="w-full py-3.5 bg-gradient-to-r from-[#FF2A54] to-[#00E5FF] text-slate-950 font-heading font-extrabold rounded-xl text-sm shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:scale-[1.01] transition-transform"
+          className="w-full py-3.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-orbitron font-black rounded-xl text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all hover:scale-[1.01]"
         >
-          PUBLISH MISSION NOW →
+          BROADCAST DISPATCH TO HERO NETWORK →
         </button>
       </form>
 
@@ -289,3 +290,4 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
     </div>
   );
 };
+
