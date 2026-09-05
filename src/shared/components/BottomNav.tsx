@@ -1,5 +1,6 @@
 import React from 'react';
-import { Home, Map, PlusCircle, MessageSquare, User } from 'lucide-react';
+import { Home, Map, PlusCircle, MessageSquare, User, Radio, Triangle } from 'lucide-react';
+import { soundService } from '../../core/services/soundService';
 
 export type TabType = 'home' | 'map' | 'post' | 'messages' | 'profile';
 
@@ -15,16 +16,21 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   unreadMessagesCount
 }) => {
   const tabs = [
-    { id: 'home', label: 'HOME', icon: Home },
-    { id: 'map', label: 'MAP', icon: Map },
-    { id: 'post', label: 'POST', icon: PlusCircle, isCenter: true },
-    { id: 'messages', label: 'CHAT', icon: MessageSquare, badge: unreadMessagesCount },
-    { id: 'profile', label: 'MY HERO', icon: User }
+    { id: 'home', label: 'FNSM OS', icon: Home, psPrompt: 'Ⓛ1' },
+    { id: 'map', label: 'RADAR', icon: Map, psPrompt: 'Ⓛ2' },
+    { id: 'post', label: 'DISPATCH', icon: PlusCircle, isCenter: true },
+    { id: 'messages', label: 'COMMS', icon: MessageSquare, badge: unreadMessagesCount, psPrompt: 'Ⓡ2' },
+    { id: 'profile', label: 'HERO', icon: User, psPrompt: 'Ⓡ1' }
   ];
 
+  const handleTabClick = (tabId: TabType) => {
+    soundService.playClickSound();
+    setActiveTab(tabId);
+  };
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 max-w-md mx-auto px-4 pb-3 pt-2">
-      <nav className="glass-nav rounded-2xl px-3 py-2 flex items-center justify-around shadow-2xl border border-white/10 relative">
+    <div className="fixed bottom-0 left-0 right-0 z-40 max-w-md mx-auto px-2 pb-2 pt-1 font-fnsm">
+      <nav className="fnsm-app-container rounded-2xl px-2 py-1.5 flex items-center justify-around shadow-2xl border border-white/20 relative bg-black/90">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -33,16 +39,16 @@ export const BottomNav: React.FC<BottomNavProps> = ({
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as TabType)}
+                onClick={() => handleTabClick(tab.id as TabType)}
                 className="relative -top-5 flex flex-col items-center justify-center group focus:outline-none"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#FF2A54] via-[#00E5FF] to-[#00E5FF] p-0.5 shadow-[0_0_20px_rgba(0,229,255,0.4)] group-hover:scale-105 transition-transform">
-                  <div className="w-full h-full bg-[#080B12] rounded-[14px] flex items-center justify-center text-white group-hover:bg-[#121826] transition-colors">
-                    <PlusCircle className="w-7 h-7 text-[#00E5FF]" />
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#FF2A54] via-[#00E5FF] to-emerald-400 p-0.5 shadow-[0_0_25px_rgba(255,42,84,0.5)] group-hover:scale-105 transition-transform">
+                  <div className="w-full h-full bg-black rounded-[14px] flex items-center justify-center text-white group-hover:bg-slate-900 transition-colors">
+                    <PlusCircle className="w-7 h-7 text-[#FF2A54] animate-pulse" />
                   </div>
                 </div>
-                <span className="text-[10px] font-heading font-extrabold text-[#00E5FF] mt-1 tracking-wider">
-                  MISSION
+                <span className="text-[9px] font-black text-[#FF2A54] mt-0.5 tracking-wider uppercase">
+                  POST DISPATCH
                 </span>
               </button>
             );
@@ -51,25 +57,30 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as TabType)}
-              className={`flex flex-col items-center gap-1 px-3 py-1 rounded-xl transition-all relative ${
-                isActive ? 'text-[#00E5FF]' : 'text-slate-400 hover:text-slate-200'
+              onClick={() => handleTabClick(tab.id as TabType)}
+              className={`flex-1 py-1.5 px-2 rounded-xl transition-all relative flex flex-col items-center gap-0.5 ${
+                isActive
+                  ? 'fnsm-tab-active shadow-[0_0_12px_rgba(255,42,84,0.4)]'
+                  : 'fnsm-tab-inactive hover:text-white'
               }`}
             >
-              <div className="relative">
-                <Icon className={`w-5 h-5 transition-transform ${isActive ? 'scale-110' : ''}`} />
+              <div className="relative flex items-center gap-1">
+                <Icon className={`w-4 h-4 transition-transform ${isActive ? 'scale-110 text-white' : 'text-slate-400'}`} />
                 {tab.badge && tab.badge > 0 ? (
-                  <span className="absolute -top-1.5 -right-2 w-4 h-4 bg-[#FF2A54] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1.5 -right-2.5 w-4 h-4 bg-[#FF2A54] text-white text-[9px] font-black rounded-full flex items-center justify-center">
                     {tab.badge}
                   </span>
                 ) : null}
               </div>
-              <span className={`text-[10px] font-heading font-bold tracking-wider ${isActive ? 'text-[#00E5FF]' : 'text-slate-400'}`}>
+
+              <span className={`text-[10px] font-black tracking-wider uppercase ${isActive ? 'text-white' : 'text-slate-400'}`}>
                 {tab.label}
               </span>
-              {isActive && (
-                <div className="w-1 h-1 rounded-full bg-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
-              )}
+
+              {/* PS Controller Prompt Indicator */}
+              <span className="text-[8px] font-mono text-slate-500 opacity-60">
+                {tab.psPrompt}
+              </span>
             </button>
           );
         })}
