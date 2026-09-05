@@ -11,11 +11,22 @@ import { calculateDistanceKm } from '../services/geoService';
 import { soundService } from '../services/soundService';
 import confetti from 'canvas-confetti';
 
+export type HeroCursorType = 'spiderman' | 'miles' | 'gwen' | 'wolverine' | 'captain_america';
+
 interface AppContextType {
   currentUser: UserProfile;
   allUsers: UserProfile[];
   switchUser: (userId: string) => void;
   updateUserProfile: (updates: Partial<UserProfile>) => void;
+
+  // Custom Marvel Hero Cursor
+  activeHeroCursor: HeroCursorType;
+  setHeroCursor: (cursor: HeroCursorType) => void;
+
+  // Community Friends & Connections
+  userFriends: string[];
+  toggleFriendConnection: (friendId: string) => void;
+  isFriend: (friendId: string) => boolean;
   
   // City & Locality Selection
   selectedCityId: string;
@@ -107,8 +118,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
   const [reports, setReports] = useState<SafetyReport[]>([]);
-  
   const [celebrationEvent, setCelebrationEvent] = useState<{ title: string; subtitle: string; credits?: number } | null>(null);
+  
+  const [activeHeroCursor, setActiveHeroCursor] = useState<HeroCursorType>('spiderman');
+  const [userFriends, setUserFriends] = useState<string[]>(['user_simran']);
+
+  const setHeroCursor = (cursor: HeroCursorType) => {
+    setActiveHeroCursor(cursor);
+  };
+
+  const toggleFriendConnection = (friendId: string) => {
+    setUserFriends(prev => 
+      prev.includes(friendId) ? prev.filter(id => id !== friendId) : [...prev, friendId]
+    );
+  };
+
+  const isFriend = (friendId: string) => userFriends.includes(friendId);
 
   // User Profile Switcher
   const switchUser = (userId: string) => {
@@ -561,6 +586,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         allUsers,
         switchUser,
         updateUserProfile,
+        activeHeroCursor,
+        setHeroCursor,
+        userFriends,
+        toggleFriendConnection,
+        isFriend,
         selectedCityId,
         setSelectedCityId,
         selectedLocalityId,

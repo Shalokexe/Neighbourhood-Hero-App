@@ -12,6 +12,7 @@ import * as Icons from 'lucide-react';
 export const ProfileScreen: React.FC = () => {
   const { 
     currentUser, 
+    allUsers,
     creditTransactions, 
     updateUserProfile,
     activeThemeId,
@@ -21,16 +22,18 @@ export const ProfileScreen: React.FC = () => {
     setUserTheme,
     setUserBanner,
     unlockTheme,
-    unlockBanner
+    unlockBanner,
+    userFriends
   } = useApp();
 
-  const [activeSubTab, setActiveSubTab] = useState<'themes' | 'badges' | 'ledger' | 'about'>('themes');
+  const [activeSubTab, setActiveSubTab] = useState<'themes' | 'badges' | 'ledger' | 'friends'>('themes');
   const [showEditModal, setShowEditModal] = useState(false);
   const [editBio, setEditBio] = useState(currentUser.bio || '');
 
   const unlockedBadgeIds = new Set(currentUser.badges.map(b => b.badgeId));
   const activeThemeObj = HERO_THEMES.find(t => t.id === activeThemeId) || HERO_THEMES[0];
   const activeBannerObj = PROFILE_BANNERS.find(b => b.id === activeBannerId) || PROFILE_BANNERS[0];
+  const connectedFriends = allUsers.filter(u => userFriends.includes(u.id));
 
   const handleSaveProfile = () => {
     updateUserProfile({ bio: editBio });
@@ -104,9 +107,10 @@ export const ProfileScreen: React.FC = () => {
       {/* FNSM SUB-TABS NAVIGATION */}
       <div className="flex items-center justify-around bg-slate-950 p-1 rounded-xl border border-white/10 text-xs font-black">
         {[
-          { id: 'themes', label: 'SUITS & THEMES', icon: Sparkles },
+          { id: 'themes', label: 'SUITS', icon: Sparkles },
+          { id: 'friends', label: 'ALLIES', icon: HeartHandshake },
           { id: 'badges', label: 'BADGES', icon: Award },
-          { id: 'ledger', label: 'XP AUDIT', icon: History }
+          { id: 'ledger', label: 'AUDIT', icon: History }
         ].map((tab) => {
           const Icon = tab.icon;
           const isActive = activeSubTab === tab.id;
@@ -114,7 +118,7 @@ export const ProfileScreen: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id as any)}
-              className={`flex-1 py-2 px-2 rounded-lg transition-all flex items-center justify-center gap-1 ${
+              className={`flex-1 py-2 px-1 rounded-lg transition-all flex items-center justify-center gap-1 ${
                 isActive
                   ? 'fnsm-tab-active shadow-[0_0_10px_rgba(255,42,84,0.5)]'
                   : 'fnsm-tab-inactive'
@@ -126,6 +130,57 @@ export const ProfileScreen: React.FC = () => {
           );
         })}
       </div>
+
+      {/* TAB: SPIDEY ALLIES & COMMUNITY FRIENDS */}
+      {activeSubTab === 'friends' && (
+        <div className="space-y-2.5">
+          <h3 className="text-xs font-orbitron font-extrabold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
+            <HeartHandshake className="w-4 h-4 text-cyan-400" />
+            CONNECTED SPIDEY ALLIES ({connectedFriends.length})
+          </h3>
+
+          {connectedFriends.length === 0 ? (
+            <div className="fnsm-app-container p-6 rounded-2xl text-center space-y-2 border border-slate-700">
+              <UserCheck className="w-8 h-8 text-cyan-400/50 mx-auto" />
+              <h4 className="font-orbitron font-bold text-white text-xs">NO SPIDEY ALLIES YET</h4>
+              <p className="text-xs text-slate-400 font-fnsm">
+                Browse activities or urgent tasks and click CONNECT on helper profiles to build your local hero network!
+              </p>
+            </div>
+          ) : (
+            connectedFriends.map((friend) => (
+              <div
+                key={friend.id}
+                className="fnsm-app-container p-3 rounded-2xl border border-cyan-500/30 flex items-center justify-between shadow-md"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={friend.profileImageUrl}
+                    alt={friend.name}
+                    className="w-10 h-10 rounded-full object-cover border border-cyan-400"
+                  />
+                  <div>
+                    <h4 className="font-orbitron font-bold text-white text-xs flex items-center gap-1">
+                      {friend.name}
+                      <span className="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-1 py-0.2 rounded">
+                        CONNECTED
+                      </span>
+                    </h4>
+                    <p className="text-[10px] text-cyan-400 font-orbitron">
+                      {friend.localityName}, {friend.cityName} · ★ {friend.rating}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-1 text-[10px] font-orbitron font-bold text-cyan-300 bg-cyan-500/10 px-2 py-1 rounded-lg border border-cyan-500/30">
+                  <UserCheck className="w-3 h-3 text-cyan-400" />
+                  <span>ALLIED</span>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
 
       {/* TAB 1: HERO SUITS & THEMES CONSOLE */}
       {activeSubTab === 'themes' && (

@@ -13,12 +13,12 @@ interface HomeScreenProps {
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateToPost }) => {
   const { filteredGigs, gigs, currentUser, selectedCategory, setSelectedCategory } = useApp();
-  const [activeFnsmTab, setActiveFnsmTab] = useState<'ACTIVITIES' | 'CRIMES'>('ACTIVITIES');
+  const [activeFnsmTab, setActiveFnsmTab] = useState<'ACTIVITIES' | 'URGENT_TASKS'>('ACTIVITIES');
 
-  // Filter Gigs for Activities vs Urgent Crimes
+  // Filter Gigs for Activities vs Urgent Tasks
   const activitiesGigs = filteredGigs.filter(g => g.urgency !== 'URGENT');
-  const crimesGigs = filteredGigs.filter(g => g.urgency === 'URGENT');
-  const displayedGigs = activeFnsmTab === 'ACTIVITIES' ? activitiesGigs : crimesGigs;
+  const urgentGigs = filteredGigs.filter(g => g.urgency === 'URGENT');
+  const displayedGigs = activeFnsmTab === 'ACTIVITIES' ? activitiesGigs : urgentGigs;
 
   const myActiveMission = gigs.find(
     g => (g.acceptedBy === currentUser.id || g.posterId === currentUser.id) &&
@@ -30,7 +30,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateT
       {/* 1. TOP PHONE STATUS BAR (Matches PS4 FNSM App top bar) */}
       <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 px-2 py-0.5 border-b border-white/10">
         <div className="flex items-center gap-1">
-          <Signal className="w-3 h-3 text-[#00E5FF]" />
+          <Signal className="w-3 h-3 text-cyan-400 animate-pulse" />
           <span>FNSM OS v4.2</span>
         </div>
         <div className="flex items-center gap-1 font-bold text-slate-200">
@@ -40,33 +40,33 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateT
       </div>
 
       {/* 2. DISPATCH COMMS QUOTE HEADER CARD */}
-      <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black">
+      <div className="relative rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl bg-black">
         {/* City Subways/Bridge Background Photo */}
         <div className="h-28 w-full relative">
           <img
             src="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=800&q=80"
             alt="City comms dispatch"
-            className="w-full h-full object-cover brightness-75 contrast-125"
+            className="w-full h-full object-cover brightness-75 contrast-125 opacity-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent" />
           
-          <div className="absolute top-2 left-2 flex items-center gap-1 bg-black/70 px-2 py-0.5 rounded text-[10px] text-[#00E5FF] font-bold border border-[#00E5FF]/40">
+          <div className="absolute top-2 left-2 flex items-center gap-1 bg-[#05070D]/90 px-2 py-0.5 rounded text-[10px] text-cyan-300 font-orbitron font-bold border border-cyan-500/40 shadow-md">
             <Radio className="w-3 h-3 animate-pulse text-[#FF2A54]" />
             <span>DISPATCH COMMS</span>
           </div>
         </div>
 
         {/* Live Dispatch Quote Text */}
-        <div className="p-3 bg-black/90 border-t border-white/10 text-xs text-slate-200 space-y-1">
-          <p className="font-semibold text-rose-400 flex items-start gap-1">
+        <div className="p-3 bg-[#05070D] border-t border-cyan-500/20 text-xs text-slate-200 space-y-1">
+          <p className="font-orbitron font-bold text-cyan-300 flex items-start gap-1.5 leading-relaxed">
             <span className="text-[#FF2A54] font-black">►</span>
-            <span>Emergency comms active in {currentUser.cityName}. Neighbors requesting immediate support!</span>
+            <span>Live help dispatch active in {currentUser.cityName}. Neighbors requesting immediate support!</span>
           </p>
         </div>
       </div>
 
       {/* 3. SLANTED POLYGON TABS (Matches PS4 FNSM App Tabs) */}
-      <div className="flex items-center justify-between bg-slate-950 p-1 rounded-xl border border-white/10">
+      <div className="flex items-center justify-between bg-[#05070D] p-1 rounded-xl border border-cyan-500/30">
         <button
           onClick={() => setActiveFnsmTab('ACTIVITIES')}
           className="p-2 text-slate-400 hover:text-white"
@@ -78,38 +78,38 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateT
           {/* ACTIVITIES TAB */}
           <button
             onClick={() => setActiveFnsmTab('ACTIVITIES')}
-            className={`flex-1 py-2 px-3 rounded-lg font-black text-xs transition-all flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-2 px-3 rounded-lg font-orbitron font-black text-xs transition-all flex items-center justify-center gap-1.5 uppercase ${
               activeFnsmTab === 'ACTIVITIES'
                 ? 'fnsm-tab-active shadow-[0_0_15px_rgba(255,42,84,0.5)]'
                 : 'fnsm-tab-inactive'
             }`}
           >
-            <span className="text-sm">👽</span>
+            <span className="text-sm">🤝</span>
             <span>ACTIVITIES</span>
             <span className="text-[10px] bg-black/40 px-1.5 rounded ml-1 font-mono">
               {activitiesGigs.length}
             </span>
           </button>
 
-          {/* CRIMES / URGENT TAB */}
+          {/* URGENT TASKS TAB */}
           <button
-            onClick={() => setActiveFnsmTab('CRIMES')}
-            className={`flex-1 py-2 px-3 rounded-lg font-black text-xs transition-all flex items-center justify-center gap-1.5 ${
-              activeFnsmTab === 'CRIMES'
+            onClick={() => setActiveFnsmTab('URGENT_TASKS')}
+            className={`flex-1 py-2 px-3 rounded-lg font-orbitron font-black text-xs transition-all flex items-center justify-center gap-1.5 uppercase ${
+              activeFnsmTab === 'URGENT_TASKS'
                 ? 'fnsm-tab-active shadow-[0_0_15px_rgba(255,42,84,0.5)]'
                 : 'fnsm-tab-inactive'
             }`}
           >
             <ShieldAlert className="w-3.5 h-3.5 text-rose-300" />
-            <span>CRIMES</span>
+            <span>URGENT TASKS</span>
             <span className="text-[10px] bg-black/40 px-1.5 rounded ml-1 font-mono">
-              {crimesGigs.length}
+              {urgentGigs.length}
             </span>
           </button>
         </div>
 
         <button
-          onClick={() => setActiveFnsmTab('CRIMES')}
+          onClick={() => setActiveFnsmTab('URGENT_TASKS')}
           className="p-2 text-slate-400 hover:text-white"
         >
           <ChevronRight className="w-5 h-5" />
