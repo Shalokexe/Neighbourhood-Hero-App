@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
-import { CITIES_SEED, LOCALITIES_SEED } from '../../core/config/citiesData';
-import { Smartphone, Mail, ShieldCheck, ArrowRight, X, CheckCircle2 } from 'lucide-react';
+import { Smartphone, Mail, ArrowRight, X, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -46,84 +45,84 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="glass-card max-w-sm w-full rounded-3xl p-5 border border-white/20 shadow-2xl space-y-4 relative overflow-hidden bg-black text-white">
+      <div className="fnsm-app-container max-w-sm w-full rounded-2xl p-5 border border-cyan-500/40 shadow-[0_0_30px_rgba(0,229,255,0.2)] space-y-4 relative overflow-hidden text-white font-fnsm">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white"
+          className="absolute top-4 right-4 text-cyan-400/70 hover:text-cyan-300 transition-colors p-1"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="text-center space-y-1">
-          <div className="w-10 h-10 rounded-2xl bg-white text-black font-black flex items-center justify-center mx-auto text-lg">
-            ⚡
+          <div className="w-10 h-10 rounded-xl bg-[#05070D] border border-cyan-400 text-cyan-300 font-orbitron font-black flex items-center justify-center mx-auto text-lg shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+            🕷️
           </div>
-          <h3 className="font-heading font-extrabold text-white text-lg">
-            {step === 'ONBOARDING' ? 'COMPLETE YOUR HERO PROFILE' : 'NEIGHBORHOOD HERO LOGIN'}
+          <h3 className="font-orbitron font-extrabold text-white text-base tracking-wider uppercase">
+            {step === 'ONBOARDING' ? 'CONFIGURE SPIDEY DOSSIER' : 'FNSM HERO AUTHENTICATION'}
           </h3>
-          <p className="text-xs text-slate-400">
-            {step === 'INPUT' && 'Enter your mobile number for fast 1-tap OTP authentication.'}
-            {step === 'OTP' && `Sent 4-digit verification code to ${phoneInput}`}
-            {step === 'ONBOARDING' && 'Set up your hero identity for Kharar, Mohali, Chandigarh & Panchkula.'}
+          <p className="text-[11px] text-cyan-400 font-orbitron font-bold tracking-wider">
+            {step === 'INPUT' && 'SELECT LOGIN FREQUENCY FOR 1-TAP VERIFICATION'}
+            {step === 'OTP' && `SECURITY OTP TRANSMITTED TO ${phoneInput}`}
+            {step === 'ONBOARDING' && 'SET UP HERO IDENTITY FOR TRICITY DISPATCH NETWORK'}
           </p>
         </div>
 
         {/* STEP 1: PHONE / EMAIL INPUT */}
         {step === 'INPUT' && (
           <form onSubmit={handleSendOtp} className="space-y-3">
-            <div className="flex items-center justify-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-white/10">
+            <div className="flex items-center justify-center gap-1.5 bg-[#05070D] p-1 rounded-xl border border-cyan-500/30">
               <button
                 type="button"
                 onClick={() => setAuthMode('PHONE')}
-                className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1 ${
-                  authMode === 'PHONE' ? 'bg-white text-black' : 'text-slate-400'
+                className={`flex-1 py-1.5 rounded-lg text-xs font-orbitron font-bold transition-all flex items-center justify-center gap-1 uppercase ${
+                  authMode === 'PHONE' ? 'bg-cyan-500 text-slate-950 shadow-[0_0_10px_rgba(0,229,255,0.4)]' : 'text-slate-400'
                 }`}
               >
                 <Smartphone className="w-3.5 h-3.5" />
-                <span>Phone OTP</span>
+                <span>PHONE OTP</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setAuthMode('EMAIL')}
-                className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1 ${
-                  authMode === 'EMAIL' ? 'bg-white text-black' : 'text-slate-400'
+                className={`flex-1 py-1.5 rounded-lg text-xs font-orbitron font-bold transition-all flex items-center justify-center gap-1 uppercase ${
+                  authMode === 'EMAIL' ? 'bg-cyan-500 text-slate-950 shadow-[0_0_10px_rgba(0,229,255,0.4)]' : 'text-slate-400'
                 }`}
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>Email</span>
+                <span>EMAIL CHANNEL</span>
               </button>
             </div>
 
             {authMode === 'PHONE' ? (
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Mobile Number</label>
+                <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">MOBILE FREQUENCY</label>
                 <input
                   type="text"
                   value={phoneInput}
                   onChange={(e) => setPhoneInput(e.target.value)}
                   placeholder="+91 98765 43210"
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white"
+                  className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-fnsm"
                 />
               </div>
             ) : (
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">EMAIL ADDRESS</label>
                 <input
                   type="email"
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
-                  placeholder="name@example.com"
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white"
+                  placeholder="hero@fnsm-network.com"
+                  className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-fnsm"
                 />
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full py-3 bg-white text-black font-heading font-extrabold text-xs rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5"
+              className="w-full py-3 bg-cyan-500 text-slate-950 font-orbitron font-black text-xs rounded-xl hover:bg-cyan-400 transition-all flex items-center justify-center gap-1.5 uppercase tracking-widest shadow-[0_0_15px_rgba(0,229,255,0.4)]"
             >
-              <span>SEND OTP CODE</span>
+              <span>TRANSMIT OTP CODE</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
@@ -138,15 +137,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               value={otpInput}
               onChange={(e) => setOtpInput(e.target.value)}
               placeholder="4 2 8 0"
-              className="w-48 bg-slate-900 border border-white/20 rounded-xl px-4 py-3 text-center text-lg font-mono font-bold tracking-widest text-white mx-auto focus:outline-none focus:border-white"
+              className="w-48 bg-[#05070D] border border-cyan-500/40 rounded-xl px-4 py-3 text-center text-lg font-mono font-bold tracking-widest text-cyan-300 mx-auto focus:outline-none focus:border-cyan-400 shadow-inner"
             />
-            <p className="text-[11px] text-slate-400">Demo OTP Code: Enter any 4 digits</p>
+            <p className="text-[11px] text-slate-400 font-orbitron">TEST SIGNAL CODE: ENTER ANY 4 DIGITS</p>
 
             <button
               type="submit"
-              className="w-full py-3 bg-white text-black font-heading font-extrabold text-xs rounded-xl hover:bg-slate-200 transition-colors"
+              className="w-full py-3 bg-cyan-500 text-slate-950 font-orbitron font-black text-xs rounded-xl hover:bg-cyan-400 transition-all uppercase tracking-widest shadow-[0_0_15px_rgba(0,229,255,0.4)]"
             >
-              VERIFY & CONTINUE →
+              AUTHENTICATE SIGNAL →
             </button>
           </form>
         )}
@@ -155,32 +154,32 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {step === 'ONBOARDING' && (
           <form onSubmit={handleCompleteOnboarding} className="space-y-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
+              <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">HERO FULL NAME</label>
               <input
                 type="text"
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"
+                className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400 font-fnsm"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Hero Bio</label>
+              <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">HERO BIO & SPECIALTIES</label>
               <textarea
                 rows={2}
                 value={bioInput}
                 onChange={(e) => setBioInput(e.target.value)}
-                placeholder="Tell neighbors how you can help..."
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"
+                placeholder="Specify your skills and assistance capability..."
+                className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400 font-fnsm"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-white text-black font-heading font-extrabold text-xs rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5"
+              className="w-full py-3 bg-cyan-500 text-slate-950 font-orbitron font-black text-xs rounded-xl hover:bg-cyan-400 transition-all flex items-center justify-center gap-1.5 uppercase tracking-widest shadow-[0_0_15px_rgba(0,229,255,0.4)]"
             >
               <CheckCircle2 className="w-4 h-4" />
-              <span>SAVE PROFILE & LAUNCH</span>
+              <span>INITIALIZE DOSSIER & LAUNCH</span>
             </button>
           </form>
         )}
@@ -188,3 +187,4 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+

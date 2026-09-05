@@ -32,42 +32,42 @@ export const ProofOfWorkModal: React.FC<ProofOfWorkModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="glass-card max-w-sm w-full rounded-3xl p-5 border border-white/20 shadow-2xl space-y-4 relative overflow-hidden bg-black text-white">
+      <div className="fnsm-app-container max-w-sm w-full rounded-2xl p-5 border border-cyan-500/40 shadow-[0_0_30px_rgba(0,229,255,0.2)] space-y-4 relative overflow-hidden text-white font-fnsm">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#00E5FF] to-emerald-400 p-0.5 flex items-center justify-center">
-              <Camera className="w-4 h-4 text-slate-950" />
+            <div className="w-8 h-8 rounded-xl bg-[#05070D] border border-cyan-400 p-0.5 flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.3)]">
+              <Camera className="w-4 h-4 text-cyan-400" />
             </div>
             <div>
-              <h3 className="font-heading font-extrabold text-white text-sm">
-                PROOF OF WORK PHOTO
+              <h3 className="font-orbitron font-extrabold text-white text-sm tracking-wider uppercase">
+                PROOF OF WORK DOSSIER
               </h3>
-              <p className="text-[10px] text-slate-400">
-                Attach photo evidence to claim your credits
+              <p className="text-[10px] text-cyan-400 font-orbitron font-bold tracking-wider">
+                ATTACH PHOTO EVIDENCE TO CLAIM ⬡ REWARDS
               </p>
             </div>
           </div>
 
-          <button onClick={onClose} className="p-1 text-slate-400 hover:text-white rounded-lg">
+          <button onClick={onClose} className="p-1 text-slate-400 hover:text-white rounded-lg transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Selected Image Preview */}
-        <div className="w-full h-44 rounded-2xl overflow-hidden relative border border-white/20 group">
-          <img src={selectedPhoto} alt="Proof preview" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <span className="text-xs font-bold text-white flex items-center gap-1 bg-black/70 px-3 py-1.5 rounded-xl border border-white/20">
-              <UploadCloud className="w-4 h-4 text-[#00E5FF]" /> Change Photo
+        <div className="w-full h-44 rounded-xl overflow-hidden relative border border-cyan-500/30 group">
+          <img src={selectedPhoto} alt="Proof preview" className="w-full h-full object-cover opacity-90" />
+          <div className="absolute inset-0 bg-[#05070D]/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="text-xs font-orbitron font-bold text-white flex items-center gap-1 bg-[#05070D]/90 px-3 py-1.5 rounded-xl border border-cyan-500/40 shadow-lg uppercase">
+              <UploadCloud className="w-4 h-4 text-cyan-400" /> CHANGE PHOTO
             </span>
           </div>
         </div>
 
         {/* Sample Proof Presets Selector */}
         <div>
-          <label className="block text-[11px] font-semibold text-slate-300 mb-1.5">
-            Select Photo Evidence / Camera Photo:
+          <label className="block text-[11px] font-orbitron font-extrabold text-cyan-300 mb-1.5 uppercase tracking-wider">
+            SELECT PHOTO EVIDENCE / CAMERA CAPTURE:
           </label>
           <div className="grid grid-cols-2 gap-2">
             {SAMPLE_PROOF_PHOTOS.map((item) => (
@@ -75,14 +75,14 @@ export const ProofOfWorkModal: React.FC<ProofOfWorkModalProps> = ({
                 key={item.id}
                 type="button"
                 onClick={() => setSelectedPhoto(item.url)}
-                className={`p-2 rounded-xl border text-left flex items-center gap-2 transition-all ${
+                className={`p-2 rounded-xl border text-left flex items-center gap-2 transition-all font-orbitron ${
                   selectedPhoto === item.url
-                    ? 'border-[#00E5FF] bg-[#00E5FF]/10 text-white font-bold'
-                    : 'border-white/10 bg-slate-900/60 text-slate-400 hover:text-white'
+                    ? 'border-cyan-400 bg-cyan-500/20 text-cyan-300 font-bold shadow-[0_0_10px_rgba(0,229,255,0.3)]'
+                    : 'border-slate-700 bg-[#05070D]/80 text-slate-400 hover:text-slate-200'
                 }`}
               >
-                <ImageIcon className="w-3.5 h-3.5 text-[#00E5FF] shrink-0" />
-                <span className="text-[10px] truncate">{item.title}</span>
+                <ImageIcon className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <span className="text-[10px] truncate uppercase">{item.title}</span>
               </button>
             ))}
           </div>
@@ -90,26 +90,27 @@ export const ProofOfWorkModal: React.FC<ProofOfWorkModalProps> = ({
 
         {/* Completion Note */}
         <div>
-          <label className="block text-[11px] font-semibold text-slate-300 mb-1">
-            Completion Note (Optional):
+          <label className="block text-[11px] font-orbitron font-extrabold text-cyan-300 mb-1 uppercase tracking-wider">
+            COMPLETION BRIEFING (OPTIONAL):
           </label>
           <textarea
             rows={2}
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white"
+            className="w-full bg-[#05070D] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-fnsm"
           />
         </div>
 
         {/* Action Button */}
         <button
           onClick={handleSubmit}
-          className="w-full py-3 bg-gradient-to-r from-[#00E5FF] to-emerald-400 text-slate-950 font-heading font-extrabold text-xs rounded-xl hover:scale-[1.01] transition-transform flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(0,229,255,0.3)]"
+          className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-orbitron font-black text-xs rounded-xl uppercase tracking-widest transition-all flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:scale-[1.01]"
         >
           <ShieldCheck className="w-4 h-4" />
-          <span>VERIFY PROOF & SUBMIT MISSION</span>
+          <span>VERIFY EVIDENCE & COMPLETE MISSION →</span>
         </button>
       </div>
     </div>
   );
 };
+
