@@ -62,26 +62,6 @@
   animation: spidey-pulse 2s infinite ease-in-out;
 }
 
-/* Spider-Man Web Shooter Radial Strand Animation */
-@keyframes webStrandExpand {
-  0% {
-    opacity: 1;
-    transform: scaleX(0.2) rotate(var(--tw-rotate));
-  }
-  50% {
-    opacity: 0.9;
-    transform: scaleX(1.2) rotate(var(--tw-rotate));
-  }
-  100% {
-    opacity: 0;
-    transform: scaleX(1.6) rotate(var(--tw-rotate));
-  }
-}
-
-.animate-web-strand {
-  animation: webStrandExpand 0.45s ease-out forwards;
-}
-
 /* FNSM Red Crime/Urgent Card */
 .fnsm-card-red {
   background: rgba(255, 42, 84, 0.1);

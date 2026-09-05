@@ -108,22 +108,13 @@ export const CustomCursor: React.FC = () => {
           className="fixed pointer-events-none z-[9998]"
           style={{ left: `${burst.x}px`, top: `${burst.y}px` }}
         >
-          {/* Expanding Web Mesh */}
-          <div className="absolute -translate-x-1/2 -translate-y-1/2 text-2xl animate-ping opacity-90 filter drop-shadow-[0_0_8px_#00E5FF]">
+          {/* Expanding Web Emoji Mesh */}
+          <div className="absolute -translate-x-1/2 -translate-y-1/2 text-2xl animate-ping opacity-90 filter drop-shadow-[0_0_10px_#00E5FF]">
             🕸️
           </div>
 
-          {/* 8 Radial Web Strands Shooting Out */}
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
-            <div
-              key={angle}
-              className="absolute top-0 left-0 h-[1.5px] bg-gradient-to-r from-white via-[#00E5FF] to-transparent origin-left animate-web-strand"
-              style={{
-                width: '45px',
-                transform: `rotate(${angle}deg)`
-              }}
-            />
-          ))}
+          {/* Expanding Radial Web Shockwave Ring */}
+          <div className="absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-cyan-400 animate-ping opacity-75 shadow-[0_0_15px_rgba(0,229,255,0.8)]" />
         </div>
       ))}
 
