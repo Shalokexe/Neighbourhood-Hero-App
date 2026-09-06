@@ -13,15 +13,13 @@ import confetti from 'canvas-confetti';
 
 export type HeroCursorType = 
   | 'spiderman' 
+  | 'miles' 
+  | 'gwen' 
   | 'hulk' 
   | 'captain_america' 
   | 'batman' 
   | 'superman' 
   | 'flash' 
-  | 'spiderman_alt' 
-  | 'superman_alt' 
-  | 'miles' 
-  | 'gwen' 
   | 'wolverine';
 
 interface AppContextType {

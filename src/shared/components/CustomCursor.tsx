@@ -59,7 +59,6 @@ export const CustomCursor: React.FC = () => {
           soundService.playBatmanBatarangSound();
           break;
         case 'superman':
-        case 'superman_alt':
           soundService.playSupermanLaserSound();
           break;
         case 'flash':
@@ -78,7 +77,6 @@ export const CustomCursor: React.FC = () => {
           soundService.playShieldClackSound();
           break;
         case 'spiderman':
-        case 'spiderman_alt':
         default:
           soundService.playWebThwipSound();
           break;
@@ -140,6 +138,18 @@ export const CustomCursor: React.FC = () => {
       shadowColor: '#FF2A54',
       burstIcon: '🕸️'
     },
+    miles: {
+      imageSrc: '/cursors/miles.png',
+      borderColor: '#FF2A54',
+      shadowColor: '#00E5FF',
+      burstIcon: '⚡'
+    },
+    gwen: {
+      imageSrc: '/cursors/gwen.png',
+      borderColor: '#00E5FF',
+      shadowColor: '#FF80BF',
+      burstIcon: '💖'
+    },
     hulk: {
       imageSrc: '/cursors/hulk.png',
       borderColor: '#22C55E',
@@ -169,30 +179,6 @@ export const CustomCursor: React.FC = () => {
       borderColor: '#FACC15',
       shadowColor: '#EF4444',
       burstIcon: '⚡'
-    },
-    spiderman_alt: {
-      imageSrc: '/cursors/spiderman_alt.png',
-      borderColor: '#00E5FF',
-      shadowColor: '#DC2626',
-      burstIcon: '🕸️'
-    },
-    superman_alt: {
-      imageSrc: '/cursors/superman_alt.png',
-      borderColor: '#DC2626',
-      shadowColor: '#1D4ED8',
-      burstIcon: '✨'
-    },
-    miles: {
-      imageSrc: '/cursors/miles.png',
-      borderColor: '#FF2A54',
-      shadowColor: '#00E5FF',
-      burstIcon: '⚡'
-    },
-    gwen: {
-      imageSrc: '/cursors/gwen.png',
-      borderColor: '#00E5FF',
-      shadowColor: '#FF80BF',
-      burstIcon: '💖'
     },
     wolverine: {
       imageSrc: '/cursors/wolverine.png',

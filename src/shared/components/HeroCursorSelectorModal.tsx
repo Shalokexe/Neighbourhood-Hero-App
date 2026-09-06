@@ -28,6 +28,26 @@ export const HERO_CURSOR_OPTIONS: {
     borderColor: '#00E5FF'
   },
   {
+    id: 'miles',
+    name: 'Miles Morales',
+    heroName: 'Spider-Man (Miles)',
+    universe: 'MARVEL • 1610',
+    imageSrc: '/cursors/miles.png',
+    description: 'Stealth Black suit mask with Venom Blast bio-electric shockwave.',
+    themeColor: '#111318',
+    borderColor: '#FF2A54'
+  },
+  {
+    id: 'gwen',
+    name: 'Gwen Stacy',
+    heroName: 'Ghost-Spider (Gwen)',
+    universe: 'MARVEL • 65',
+    imageSrc: '/cursors/gwen.png',
+    description: 'Neon Pink Ghost Suit mask with dimensional portal ripple.',
+    themeColor: '#FF80BF',
+    borderColor: '#00E5FF'
+  },
+  {
     id: 'hulk',
     name: 'Bruce Banner',
     heroName: 'The Incredible Hulk',
@@ -76,46 +96,6 @@ export const HERO_CURSOR_OPTIONS: {
     description: 'Speedforce Lightning Bolt emblem with Speed Whoosh audio.',
     themeColor: '#EF4444',
     borderColor: '#FACC15'
-  },
-  {
-    id: 'spiderman_alt',
-    name: 'Peter Parker',
-    heroName: 'Vintage Spidey Mask',
-    universe: 'MARVEL • RETRO',
-    imageSrc: '/cursors/spiderman_alt.png',
-    description: 'Classic Spider-Man Eyes emblem with web shooter sound.',
-    themeColor: '#DC2626',
-    borderColor: '#0284C7'
-  },
-  {
-    id: 'superman_alt',
-    name: 'Clark Kent',
-    heroName: 'Golden Age Superman',
-    universe: 'DC • EARTH-2',
-    imageSrc: '/cursors/superman_alt.png',
-    description: 'Golden Age Kryptonian Crest emblem with laser audio.',
-    themeColor: '#1D4ED8',
-    borderColor: '#DC2626'
-  },
-  {
-    id: 'miles',
-    name: 'Miles Morales',
-    heroName: 'Spider-Man (Miles)',
-    universe: 'MARVEL • 1610',
-    imageSrc: '/cursors/miles.png',
-    description: 'Stealth Black suit with Venom Blast bio-electric voltage shockwave.',
-    themeColor: '#111318',
-    borderColor: '#FF2A54'
-  },
-  {
-    id: 'gwen',
-    name: 'Gwen Stacy',
-    heroName: 'Ghost-Spider',
-    universe: 'MARVEL • 65',
-    imageSrc: '/cursors/gwen.png',
-    description: 'Neon Pink & White Ghost Suit with dimensional portal ripple.',
-    themeColor: '#FF80BF',
-    borderColor: '#00E5FF'
   },
   {
     id: 'wolverine',
