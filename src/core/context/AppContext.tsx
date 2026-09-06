@@ -11,7 +11,18 @@ import { calculateDistanceKm } from '../services/geoService';
 import { soundService } from '../services/soundService';
 import confetti from 'canvas-confetti';
 
-export type HeroCursorType = 'spiderman' | 'miles' | 'gwen' | 'wolverine' | 'captain_america';
+export type HeroCursorType = 
+  | 'spiderman' 
+  | 'hulk' 
+  | 'captain_america' 
+  | 'batman' 
+  | 'superman' 
+  | 'flash' 
+  | 'spiderman_alt' 
+  | 'superman_alt' 
+  | 'miles' 
+  | 'gwen' 
+  | 'wolverine';
 
 interface AppContextType {
   currentUser: UserProfile;

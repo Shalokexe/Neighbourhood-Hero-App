@@ -12,7 +12,7 @@ export const HERO_CURSOR_OPTIONS: {
   name: string;
   heroName: string;
   universe: string;
-  icon: string;
+  imageSrc: string;
   description: string;
   themeColor: string;
   borderColor: string;
@@ -21,18 +21,88 @@ export const HERO_CURSOR_OPTIONS: {
     id: 'spiderman',
     name: 'Peter Parker',
     heroName: 'Classic Spider-Man',
-    universe: 'Earth-616',
-    icon: '🕷️',
+    universe: 'MARVEL • 616',
+    imageSrc: '/cursors/spiderman.png',
     description: 'Classic Red & Blue web-shooter emblem with Web Thwip sound effects.',
     themeColor: '#FF2A54',
     borderColor: '#00E5FF'
   },
   {
+    id: 'hulk',
+    name: 'Bruce Banner',
+    heroName: 'The Incredible Hulk',
+    universe: 'MARVEL • 616',
+    imageSrc: '/cursors/hulk.png',
+    description: 'Gamma Green Fist emblem with Hulk Smash ground pound sound.',
+    themeColor: '#22C55E',
+    borderColor: '#166534'
+  },
+  {
+    id: 'captain_america',
+    name: 'Steve Rogers',
+    heroName: 'Captain America',
+    universe: 'MARVEL • 616',
+    imageSrc: '/cursors/captain_america.png',
+    description: 'Vibranium Shield emblem with kinetic ricochet pulse sound.',
+    themeColor: '#2563EB',
+    borderColor: '#EF4444'
+  },
+  {
+    id: 'batman',
+    name: 'Bruce Wayne',
+    heroName: 'Dark Knight Batman',
+    universe: 'DC • GOTHAM',
+    imageSrc: '/cursors/batman.png',
+    description: 'Yellow & Black Bat Symbol emblem with Batarang Swish sound.',
+    themeColor: '#EAB308',
+    borderColor: '#1E293B'
+  },
+  {
+    id: 'superman',
+    name: 'Clark Kent',
+    heroName: 'Man of Steel Superman',
+    universe: 'DC • METROPOLIS',
+    imageSrc: '/cursors/superman.png',
+    description: 'Kryptonian S Shield emblem with Heat Vision beam audio.',
+    themeColor: '#0284C7',
+    borderColor: '#EF4444'
+  },
+  {
+    id: 'flash',
+    name: 'Barry Allen',
+    heroName: 'The Flash',
+    universe: 'DC • CENTRAL CITY',
+    imageSrc: '/cursors/flash.png',
+    description: 'Speedforce Lightning Bolt emblem with Speed Whoosh audio.',
+    themeColor: '#EF4444',
+    borderColor: '#FACC15'
+  },
+  {
+    id: 'spiderman_alt',
+    name: 'Peter Parker',
+    heroName: 'Vintage Spidey Mask',
+    universe: 'MARVEL • RETRO',
+    imageSrc: '/cursors/spiderman_alt.png',
+    description: 'Classic Spider-Man Eyes emblem with web shooter sound.',
+    themeColor: '#DC2626',
+    borderColor: '#0284C7'
+  },
+  {
+    id: 'superman_alt',
+    name: 'Clark Kent',
+    heroName: 'Golden Age Superman',
+    universe: 'DC • EARTH-2',
+    imageSrc: '/cursors/superman_alt.png',
+    description: 'Golden Age Kryptonian Crest emblem with laser audio.',
+    themeColor: '#1D4ED8',
+    borderColor: '#DC2626'
+  },
+  {
     id: 'miles',
     name: 'Miles Morales',
-    heroName: 'Spin / Spider-Man',
-    universe: 'Earth-1610',
-    icon: '⚡',
+    heroName: 'Spider-Man (Miles)',
+    universe: 'MARVEL • 1610',
+    imageSrc: '/cursors/miles.png',
     description: 'Stealth Black suit with Venom Blast bio-electric voltage shockwave.',
     themeColor: '#111318',
     borderColor: '#FF2A54'
@@ -41,8 +111,8 @@ export const HERO_CURSOR_OPTIONS: {
     id: 'gwen',
     name: 'Gwen Stacy',
     heroName: 'Ghost-Spider',
-    universe: 'Earth-65',
-    icon: '💖',
+    universe: 'MARVEL • 65',
+    imageSrc: '/cursors/gwen.png',
     description: 'Neon Pink & White Ghost Suit with dimensional portal ripple.',
     themeColor: '#FF80BF',
     borderColor: '#00E5FF'
@@ -51,21 +121,11 @@ export const HERO_CURSOR_OPTIONS: {
     id: 'wolverine',
     name: 'Logan',
     heroName: 'Wolverine (X-Men)',
-    universe: 'Earth-616',
-    icon: '⚔️',
+    universe: 'MARVEL • X-MEN',
+    imageSrc: '/cursors/wolverine.png',
     description: 'Adamantium Claws slash cursor with metallic Snikt audio effects!',
     themeColor: '#EAB308',
     borderColor: '#1E293B'
-  },
-  {
-    id: 'captain_america',
-    name: 'Steve Rogers',
-    heroName: 'Captain America',
-    universe: 'Earth-616',
-    icon: '🛡️',
-    description: 'Vibranium Shield emblem with kinetic ricochet pulse sound.',
-    themeColor: '#2563EB',
-    borderColor: '#EF4444'
   }
 ];
 
@@ -76,19 +136,19 @@ export const HeroCursorSelectorModal: React.FC<HeroCursorSelectorModalProps> = (
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="fnsm-app-container max-w-sm w-full rounded-2xl p-5 border border-cyan-500/40 shadow-[0_0_30px_rgba(0,229,255,0.25)] space-y-4 relative overflow-hidden text-white font-fnsm">
+      <div className="fnsm-app-container max-w-md w-full rounded-2xl p-5 border border-cyan-500/40 shadow-[0_0_30px_rgba(0,229,255,0.25)] space-y-4 relative overflow-hidden text-white font-fnsm">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-[#05070D] border border-cyan-400 p-0.5 flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.3)]">
-              <Sparkles className="w-4 h-4 text-cyan-400" />
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-[#05070D] border border-cyan-400 p-0.5 flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.3)]">
+              <Sparkles className="w-5 h-5 text-cyan-400" />
             </div>
             <div>
               <h3 className="font-orbitron font-extrabold text-white text-sm tracking-wider uppercase">
                 HERO CURSOR SELECTOR
               </h3>
               <p className="text-[10px] text-cyan-400 font-orbitron font-bold tracking-wider">
-                SELECT YOUR MARVEL HERO EMBLEM
+                MARVEL & DC OFFICIAL EMBLEM CURSORS
               </p>
             </div>
           </div>
@@ -98,8 +158,8 @@ export const HeroCursorSelectorModal: React.FC<HeroCursorSelectorModalProps> = (
           </button>
         </div>
 
-        {/* Hero Cursors List */}
-        <div className="space-y-2.5 max-h-[360px] overflow-y-auto pr-1 scrollbar-thin">
+        {/* Hero Cursors Grid / List */}
+        <div className="space-y-2.5 max-h-[420px] overflow-y-auto pr-1 scrollbar-thin">
           {HERO_CURSOR_OPTIONS.map((hero) => {
             const isSelected = activeHeroCursor === hero.id;
             return (
@@ -115,10 +175,14 @@ export const HeroCursorSelectorModal: React.FC<HeroCursorSelectorModalProps> = (
                 }`}
               >
                 <div 
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-md border"
-                  style={{ backgroundColor: hero.themeColor, borderColor: hero.borderColor }}
+                  className="w-11 h-11 rounded-full overflow-hidden p-0.5 shrink-0 shadow-md border bg-black/50 flex items-center justify-center"
+                  style={{ borderColor: hero.borderColor }}
                 >
-                  {hero.icon}
+                  <img 
+                    src={hero.imageSrc} 
+                    alt={hero.heroName} 
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
 
                 <div className="flex-1 min-w-0">

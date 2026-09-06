@@ -52,6 +52,19 @@ export const CustomCursor: React.FC = () => {
 
       // Play Sound depending on active hero cursor
       switch (activeHeroCursor) {
+        case 'hulk':
+          soundService.playHulkSmashSound();
+          break;
+        case 'batman':
+          soundService.playBatmanBatarangSound();
+          break;
+        case 'superman':
+        case 'superman_alt':
+          soundService.playSupermanLaserSound();
+          break;
+        case 'flash':
+          soundService.playFlashSpeedSound();
+          break;
         case 'miles':
           soundService.playVenomBlastSound();
           break;
@@ -65,6 +78,7 @@ export const CustomCursor: React.FC = () => {
           soundService.playShieldClackSound();
           break;
         case 'spiderman':
+        case 'spiderman_alt':
         default:
           soundService.playWebThwipSound();
           break;
@@ -118,47 +132,73 @@ export const CustomCursor: React.FC = () => {
 
   if (isTouchDevice) return null;
 
-  // Hero Cursor Config Mapping
-  const cursorConfigs = {
+  // Hero Cursor Config Mapping with extracted PNG logos
+  const cursorConfigs: Record<string, { imageSrc: string; borderColor: string; shadowColor: string; burstIcon: string }> = {
     spiderman: {
-      icon: '🕷️',
-      bgColor: '#FF2A54',
+      imageSrc: '/cursors/spiderman.png',
       borderColor: '#00E5FF',
       shadowColor: '#FF2A54',
-      trailIcon: '🕸️',
       burstIcon: '🕸️'
     },
+    hulk: {
+      imageSrc: '/cursors/hulk.png',
+      borderColor: '#22C55E',
+      shadowColor: '#166534',
+      burstIcon: '💥'
+    },
+    captain_america: {
+      imageSrc: '/cursors/captain_america.png',
+      borderColor: '#EF4444',
+      shadowColor: '#2563EB',
+      burstIcon: '🛡️'
+    },
+    batman: {
+      imageSrc: '/cursors/batman.png',
+      borderColor: '#EAB308',
+      shadowColor: '#EAB308',
+      burstIcon: '🦇'
+    },
+    superman: {
+      imageSrc: '/cursors/superman.png',
+      borderColor: '#EF4444',
+      shadowColor: '#0284C7',
+      burstIcon: '⚡'
+    },
+    flash: {
+      imageSrc: '/cursors/flash.png',
+      borderColor: '#FACC15',
+      shadowColor: '#EF4444',
+      burstIcon: '⚡'
+    },
+    spiderman_alt: {
+      imageSrc: '/cursors/spiderman_alt.png',
+      borderColor: '#00E5FF',
+      shadowColor: '#DC2626',
+      burstIcon: '🕸️'
+    },
+    superman_alt: {
+      imageSrc: '/cursors/superman_alt.png',
+      borderColor: '#DC2626',
+      shadowColor: '#1D4ED8',
+      burstIcon: '✨'
+    },
     miles: {
-      icon: '⚡',
-      bgColor: '#111318',
+      imageSrc: '/cursors/miles.png',
       borderColor: '#FF2A54',
       shadowColor: '#00E5FF',
-      trailIcon: '⚡',
       burstIcon: '⚡'
     },
     gwen: {
-      icon: '💖',
-      bgColor: '#FF80BF',
+      imageSrc: '/cursors/gwen.png',
       borderColor: '#00E5FF',
       shadowColor: '#FF80BF',
-      trailIcon: '✨',
       burstIcon: '💖'
     },
     wolverine: {
-      icon: '⚔️',
-      bgColor: '#EAB308',
+      imageSrc: '/cursors/wolverine.png',
       borderColor: '#1E293B',
       shadowColor: '#EAB308',
-      trailIcon: '💥',
       burstIcon: '⚔️'
-    },
-    captain_america: {
-      icon: '🛡️',
-      bgColor: '#2563EB',
-      borderColor: '#EF4444',
-      shadowColor: '#2563EB',
-      trailIcon: '🌟',
-      burstIcon: '🛡️'
     }
   };
 
@@ -173,7 +213,7 @@ export const CustomCursor: React.FC = () => {
           className="fixed pointer-events-none z-[9998]"
           style={{ left: `${burst.x}px`, top: `${burst.y}px` }}
         >
-          {/* Expanding Hero Emoji Mesh */}
+          {/* Expanding Hero Burst Icon */}
           <div className="absolute -translate-x-1/2 -translate-y-1/2 text-2xl animate-ping opacity-90 filter drop-shadow-[0_0_10px_#00E5FF]">
             {currentConfig.burstIcon}
           </div>
@@ -186,23 +226,27 @@ export const CustomCursor: React.FC = () => {
         </div>
       ))}
 
-      {/* Hero Icon Pointer Dot */}
+      {/* Hero Image Pointer Icon */}
       <div
-        className="fixed w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-75 ease-out shadow-lg text-xs"
+        className="fixed w-8 h-8 rounded-full overflow-hidden transition-transform duration-75 ease-out shadow-lg p-0.5 border bg-black/60 flex items-center justify-center"
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isClicked ? 0.7 : isHovered ? 1.4 : 1})`,
-          backgroundColor: currentConfig.bgColor,
-          boxShadow: `0 0 14px ${currentConfig.shadowColor}`
+          transform: `translate(-50%, -50%) scale(${isClicked ? 0.75 : isHovered ? 1.4 : 1})`,
+          borderColor: currentConfig.borderColor,
+          boxShadow: `0 0 16px ${currentConfig.shadowColor}`
         }}
       >
-        {currentConfig.icon}
+        <img 
+          src={currentConfig.imageSrc} 
+          alt="Hero Cursor" 
+          className="w-full h-full object-cover rounded-full pointer-events-none"
+        />
       </div>
 
       {/* Outer Hero Target Ring */}
       <div
-        className="fixed w-9 h-9 rounded-full border border-opacity-70 flex items-center justify-center transition-transform duration-100 ease-out"
+        className="fixed w-10 h-10 rounded-full border border-opacity-70 flex items-center justify-center transition-transform duration-100 ease-out pointer-events-none"
         style={{
           left: `${trailingPos.x}px`,
           top: `${trailingPos.y}px`,
@@ -212,7 +256,10 @@ export const CustomCursor: React.FC = () => {
           boxShadow: isHovered ? `0 0 20px ${currentConfig.borderColor}` : 'none'
         }}
       >
-        <span className="text-[10px] opacity-40">{currentConfig.trailIcon}</span>
+        <div 
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ backgroundColor: currentConfig.borderColor }}
+        />
       </div>
     </div>
   );
