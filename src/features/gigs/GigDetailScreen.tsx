@@ -142,6 +142,33 @@ export const GigDetailScreen: React.FC<GigDetailScreenProps> = ({
           {gig.title}
         </h1>
 
+        {/* Community Event Banner & Squad RSVP */}
+        {gig.isCommunityEvent && (
+          <div className="p-3.5 rounded-xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-400/40 space-y-2">
+            <div className="flex items-center justify-between text-xs font-orbitron">
+              <span className="font-extrabold text-emerald-300 flex items-center gap-1.5">
+                📅 {gig.eventDate || 'ORGANIZED HUSTLE DRIVE'}
+              </span>
+              <span className="text-cyan-300 font-extrabold bg-cyan-500/20 px-2 py-0.5 rounded border border-cyan-400/30">
+                COMMUNITY DRIVE
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between pt-1.5 border-t border-emerald-500/20 text-xs">
+              <span className="text-slate-300 font-bold">
+                👥 VOLUNTEER SQUAD: {gig.joinedVolunteersCount || 5} / {gig.requiredVolunteers || 10} HEROES
+              </span>
+
+              <button
+                onClick={handleAccept}
+                className="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-orbitron font-extrabold text-xs rounded-lg shadow-md transition-all uppercase"
+              >
+                + JOIN VOLUNTEER SQUAD
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Full Description */}
         <p className="text-slate-300 text-xs leading-relaxed whitespace-pre-line">
           {gig.description}

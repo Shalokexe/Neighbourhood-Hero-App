@@ -16,18 +16,23 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState<GigCategory>('Groceries');
+  const [category, setCategory] = useState<GigCategory>('Civic Clean Drive 🧹');
   const [cityId, setCityId] = useState(selectedCityId);
   
   const cityLocalities = LOCALITIES_SEED.filter(l => l.cityId === cityId);
   const [localityId, setLocalityId] = useState(cityLocalities[0]?.id || 'loc_kh_sec125');
 
-  const [creditReward, setCreditReward] = useState(25);
-  const [budget, setBudget] = useState<number | undefined>(150);
-  const [urgency, setUrgency] = useState<GigUrgency>('TODAY');
-  const [estimatedDuration, setEstimatedDuration] = useState('~30 min');
+  const [creditReward, setCreditReward] = useState(350);
+  const [budget, setBudget] = useState<number | undefined>(undefined);
+  const [urgency, setUrgency] = useState<GigUrgency>('URGENT');
+  const [estimatedDuration, setEstimatedDuration] = useState('~2 hours');
   const [showVoiceModal, setShowVoiceModal] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Community Event State
+  const [isCommunityEvent, setIsCommunityEvent] = useState(true);
+  const [eventDate, setEventDate] = useState('SUNDAY • 8:00 AM');
+  const [requiredVolunteers, setRequiredVolunteers] = useState(10);
 
   const handleApplyVoiceMission = (parsed: ParsedVoiceMission) => {
     setTitle(parsed.title);
@@ -66,7 +71,11 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
       budget: budget ? Number(budget) : undefined,
       creditReward,
       urgency,
-      estimatedDuration
+      estimatedDuration,
+      isCommunityEvent,
+      eventDate: isCommunityEvent ? eventDate : undefined,
+      requiredVolunteers: isCommunityEvent ? requiredVolunteers : undefined,
+      joinedVolunteersCount: isCommunityEvent ? 1 : undefined
     });
 
     onSuccess();
@@ -112,17 +121,26 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
         {/* Category Picker */}
         <div>
           <label className="block text-xs font-orbitron font-extrabold text-cyan-300 mb-2 uppercase tracking-wider">
-            ACTIVITY CATEGORY
+            MISSION & CIVIC CATEGORY
           </label>
-          <div className="grid grid-cols-3 gap-2">
-            {Object.keys(CATEGORY_ICONS).slice(0, 9).map((catName) => {
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              'Civic Clean Drive 🧹',
+              'Medical Emergency 🩸',
+              'Environmental 🌿',
+              'Public Safety 🛡️',
+              'Animal Rescue 🐾',
+              'Community Welfare 🤝',
+              'Infrastructure Repair ⚡',
+              'Events'
+            ].map((catName) => {
               const isSelected = category === catName;
               return (
                 <button
                   type="button"
                   key={catName}
                   onClick={() => setCategory(catName as GigCategory)}
-                  className={`p-2.5 rounded-xl border text-left text-xs font-orbitron font-bold transition-all uppercase ${
+                  className={`p-2.5 rounded-xl border text-left text-xs font-orbitron font-bold transition-all uppercase truncate ${
                     isSelected
                       ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_12px_rgba(0,229,255,0.3)]'
                       : 'bg-[#05070D]/80 border-slate-700 text-slate-400 hover:border-slate-500 hover:text-slate-200'
@@ -133,6 +151,51 @@ export const PostGigScreen: React.FC<PostGigScreenProps> = ({ onSuccess }) => {
               );
             })}
           </div>
+        </div>
+
+        {/* Community Drive / Event Toggle */}
+        <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-400/30 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="font-orbitron font-extrabold text-cyan-300 text-xs uppercase tracking-wider flex items-center gap-1.5">
+              📅 ORGANIZED COMMUNITY DRIVE (HUSTLE DAY)
+            </span>
+            <input
+              type="checkbox"
+              checked={isCommunityEvent}
+              onChange={(e) => setIsCommunityEvent(e.target.checked)}
+              className="w-4 h-4 accent-cyan-400 cursor-pointer"
+            />
+          </div>
+
+          {isCommunityEvent && (
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-cyan-400/20">
+              <div>
+                <label className="block text-[10px] font-orbitron font-bold text-slate-300 mb-1 uppercase">
+                  EVENT SCHEDULE DATE
+                </label>
+                <input
+                  type="text"
+                  value={eventDate}
+                  onChange={(e) => setEventDate(e.target.value)}
+                  placeholder="SUNDAY • 8:00 AM"
+                  className="w-full bg-[#05070D] border border-cyan-400/40 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none font-orbitron"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-orbitron font-bold text-slate-300 mb-1 uppercase">
+                  VOLUNTEERS NEEDED
+                </label>
+                <input
+                  type="number"
+                  value={requiredVolunteers}
+                  onChange={(e) => setRequiredVolunteers(Number(e.target.value))}
+                  placeholder="10"
+                  className="w-full bg-[#05070D] border border-cyan-400/40 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none font-orbitron"
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Title */}

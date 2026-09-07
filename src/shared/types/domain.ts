@@ -46,17 +46,13 @@ export interface Locality {
 }
 
 export type GigCategory = 
-  | 'Errands'
-  | 'Groceries'
-  | 'Pets'
-  | 'Tutoring'
-  | 'Tech Help'
-  | 'Repairs'
-  | 'Moving/Carrying'
-  | 'Delivery/Pickup'
-  | 'Household'
-  | 'Student Help'
-  | 'Local Business'
+  | 'Civic Clean Drive 🧹'
+  | 'Medical Emergency 🩸'
+  | 'Environmental 🌿'
+  | 'Public Safety 🛡️'
+  | 'Animal Rescue 🐾'
+  | 'Community Welfare 🤝'
+  | 'Infrastructure Repair ⚡'
   | 'Events'
   | 'Other';
 
@@ -106,6 +102,10 @@ export interface Gig {
   completedAt?: string;
   cancelledAt?: string;
   distanceKm?: number;
+  isCommunityEvent?: boolean;
+  eventDate?: string;
+  requiredVolunteers?: number;
+  joinedVolunteersCount?: number;
 }
 
 export type CreditTxType = 

@@ -11,22 +11,36 @@ import {
 import { soundService } from '../../core/services/soundService';
 
 // Custom FNSM Holographic Pin Markers
-const createFnsmPinIcon = (category: string, isUrgent: boolean, creditReward: number) => {
-  const primaryColor = isUrgent ? '#FF2A54' : '#00E5FF';
-  const badgeText = `+${creditReward}`;
+const createFnsmPinIcon = (category: string, isUrgent: boolean, creditReward: number, isEvent?: boolean) => {
+  const primaryColor = isUrgent ? '#FF2A54' : isEvent ? '#22C55E' : '#00E5FF';
+  const badgeText = `+${creditReward} CR`;
+  
+  const iconEmoji = isUrgent 
+    ? '⚠️' 
+    : category.includes('Civic') 
+    ? '🧹' 
+    : category.includes('Emergency') 
+    ? '🩸' 
+    : category.includes('Environmental') 
+    ? '🌿' 
+    : category.includes('Safety') 
+    ? '🛡️' 
+    : category.includes('Animal') 
+    ? '🐾' 
+    : '🕷️';
   
   const html = `
-    <div class="relative group cursor-pointer" style="width: 44px; height: 50px;">
-      <!-- Glowing Sonar Ring -->
-      <div style="position: absolute; top: 0; left: 5px; width: 34px; height: 34px; border-radius: 50%; background: ${primaryColor}25; border: 2px solid ${primaryColor}; box-shadow: 0 0 16px ${primaryColor}; animate: ping 2s infinite;"></div>
+    <div class="relative group cursor-pointer" style="width: 48px; height: 52px;">
+      <!-- Glowing Sonar Pulse Ring -->
+      <div style="position: absolute; top: 0; left: 7px; width: 34px; height: 34px; border-radius: 50%; background: ${primaryColor}30; border: 2px solid ${primaryColor}; box-shadow: 0 0 18px ${primaryColor};"></div>
       
       <!-- Icon Core -->
-      <div style="position: absolute; top: 4px; left: 9px; width: 26px; height: 26px; border-radius: 50%; background: #05070D; border: 1.5px solid ${primaryColor}; display: flex; align-items: center; justify-content: center; font-size: 13px; shadow: 0 0 10px rgba(0,0,0,0.8);">
-        ${isUrgent ? '⚠️' : category === 'Delivery/Pickup' ? '📦' : category === 'Tutoring' || category === 'Tech Help' ? '💻' : '🕷️'}
+      <div style="position: absolute; top: 4px; left: 11px; width: 26px; height: 26px; border-radius: 50%; background: #05070D; border: 1.5px solid ${primaryColor}; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+        ${iconEmoji}
       </div>
       
       <!-- Credit Badge -->
-      <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); background: #05070D; border: 1px solid ${primaryColor}; color: ${primaryColor}; font-size: 9px; font-weight: 900; font-family: Orbitron, sans-serif; padding: 1px 5px; border-radius: 6px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.9);">
+      <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); background: #05070D; border: 1px solid ${primaryColor}; color: ${primaryColor}; font-size: 9px; font-weight: 900; font-family: Orbitron, sans-serif; padding: 1px 6px; border-radius: 6px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.9);">
         ${badgeText}
       </div>
     </div>
@@ -34,8 +48,8 @@ const createFnsmPinIcon = (category: string, isUrgent: boolean, creditReward: nu
   return L.divIcon({
     html,
     className: 'fnsm-custom-marker',
-    iconSize: [44, 50],
-    iconAnchor: [22, 25]
+    iconSize: [48, 52],
+    iconAnchor: [24, 26]
   });
 };
 
@@ -46,7 +60,7 @@ interface MapScreenProps {
 export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
   const { filteredGigs, radiusKm, setRadiusKm, currentUser, userFriends } = useApp();
   const [selectedMapGig, setSelectedMapGig] = useState<Gig | null>(null);
-  const [mapFilter, setMapFilter] = useState<'ALL' | 'URGENT' | 'DELIVERY' | 'ALLIES'>('ALL');
+  const [mapFilter, setMapFilter] = useState<'ALL' | 'CIVIC' | 'EMERGENCY' | 'EVENTS' | 'ALLIES'>('ALL');
   const [isScanning, setIsScanning] = useState<boolean>(true);
 
   // User Map Center (Kharar/Mohali coordinates)
@@ -64,8 +78,9 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
 
   // Filtered Gigs for Radar Map
   const displayedGigs = filteredGigs.filter(gig => {
-    if (mapFilter === 'URGENT') return gig.urgency === 'URGENT';
-    if (mapFilter === 'DELIVERY') return gig.category === 'Delivery/Pickup' || gig.category === 'Errands';
+    if (mapFilter === 'CIVIC') return gig.category.includes('Civic') || gig.category.includes('Environmental');
+    if (mapFilter === 'EMERGENCY') return gig.urgency === 'URGENT' || gig.category.includes('Emergency');
+    if (mapFilter === 'EVENTS') return gig.isCommunityEvent === true;
     if (mapFilter === 'ALLIES') return userFriends.includes(gig.posterId);
     return true;
   });
@@ -76,7 +91,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
       <MapContainer
         center={[centerLat, centerLng]}
         zoom={13}
-        className="w-full h-full translucent-map-tiles z-0 filter brightness-90 contrast-125 invert-0"
+        className="w-full h-full translucent-map-tiles z-0 filter brightness-95 contrast-125"
         zoomControl={false}
       >
         <TileLayer
@@ -111,7 +126,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
             <Marker
               key={gig.id}
               position={[gig.latitude, gig.longitude]}
-              icon={createFnsmPinIcon(gig.category, isUrgent, gig.creditReward)}
+              icon={createFnsmPinIcon(gig.category, isUrgent, gig.creditReward, gig.isCommunityEvent)}
               eventHandlers={{
                 click: () => {
                   soundService.playRadarPingSound();
@@ -155,16 +170,17 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
           {/* Active Status Badge */}
           <div className="fnsm-app-container px-3 py-1.5 rounded-xl border border-cyan-400/50 text-cyan-400 font-orbitron font-extrabold text-[10px] flex items-center gap-1.5 bg-[#05070D]/90 shadow-[0_0_15px_rgba(0,229,255,0.25)]">
             <Crosshair className="w-3.5 h-3.5 animate-spin text-cyan-400" />
-            <span className="tracking-wider">SIGNAL RADAR ACTIVE</span>
+            <span className="tracking-wider">CIVIC RADAR ACTIVE</span>
           </div>
         </div>
 
         {/* Category Filters Bar */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none pointer-events-auto">
           {[
-            { id: 'ALL', label: 'ALL SIGNALS', icon: MapPin },
-            { id: 'URGENT', label: 'URGENT ⚠️', icon: AlertTriangle },
-            { id: 'DELIVERY', label: 'DELIVERIES 📦', icon: Package },
+            { id: 'ALL', label: 'ALL MISSIONS', icon: MapPin },
+            { id: 'CIVIC', label: 'CIVIC DRIVES 🧹', icon: Sparkles },
+            { id: 'EMERGENCY', label: 'EMERGENCY 🩸', icon: AlertTriangle },
+            { id: 'EVENTS', label: 'HUSTLE EVENTS 📅', icon: Filter },
             { id: 'ALLIES', label: 'ALLIES 👥', icon: Users }
           ].map((item) => {
             const isActive = mapFilter === item.id;
@@ -194,10 +210,15 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
       {selectedMapGig && (
         <div className="absolute bottom-4 left-3 right-3 z-30 fnsm-app-container rounded-2xl p-4 border border-cyan-400/80 shadow-[0_0_30px_rgba(0,229,255,0.35)] space-y-3 bg-[#05070D]/95 text-white animate-in slide-in-from-bottom-5">
           <div className="flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="font-orbitron font-extrabold text-cyan-400 uppercase tracking-wider text-[11px] bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">
                 {selectedMapGig.category}
               </span>
+              {selectedMapGig.isCommunityEvent && (
+                <span className="font-orbitron font-black text-emerald-400 text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/40">
+                  {selectedMapGig.eventDate || 'COMMUNITY DRIVE'}
+                </span>
+              )}
               {selectedMapGig.urgency === 'URGENT' && (
                 <span className="font-orbitron font-black text-crimson-400 text-[10px] bg-crimson-500/20 px-2 py-0.5 rounded border border-crimson-500/40 animate-pulse">
                   HIGH PRIORITY ⚠️
@@ -222,6 +243,15 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
             </p>
           </div>
 
+          {selectedMapGig.isCommunityEvent && (
+            <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-[11px] font-orbitron">
+              <span className="text-cyan-300 font-bold">VOLUNTEER SQUAD:</span>
+              <span className="text-white font-extrabold">
+                👥 {selectedMapGig.joinedVolunteersCount || 5} / {selectedMapGig.requiredVolunteers || 10} Heroes Joined
+              </span>
+            </div>
+          )}
+
           <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-full overflow-hidden border border-cyan-400">
@@ -244,7 +274,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({ onSelectGig }) => {
             }}
             className="w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-orbitron font-black text-xs rounded-xl uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(0,229,255,0.4)] flex items-center justify-center gap-1.5"
           >
-            <span>INSPECT SIGNAL DETAILS</span>
+            <span>JOIN MISSION & DISPATCH</span>
             <span>→</span>
           </button>
         </div>

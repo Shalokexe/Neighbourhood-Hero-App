@@ -60,7 +60,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateT
         <div className="p-3 bg-[#05070D] border-t border-cyan-500/20 text-xs text-slate-200 space-y-1">
           <p className="font-orbitron font-bold text-cyan-300 flex items-start gap-1.5 leading-relaxed">
             <span className="text-[#FF2A54] font-black">►</span>
-            <span>Live help dispatch active in {currentUser.cityName}. Neighbors requesting immediate support!</span>
+            <span>Civic Cleanups, Emergency Blood Requests & Community Drives active in {currentUser.cityName}. Heroes assembling for Sunday Hustle Drives!</span>
           </p>
         </div>
       </div>

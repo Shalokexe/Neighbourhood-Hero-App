@@ -59,6 +59,18 @@ export const GigCard: React.FC<GigCardProps> = ({ gig, onSelect, isAcceptedByMe 
         {gig.title}
       </h3>
 
+      {/* Community Event Volunteer Badge */}
+      {gig.isCommunityEvent && (
+        <div className="flex items-center justify-between my-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-orbitron">
+          <span className="text-emerald-300 font-extrabold flex items-center gap-1">
+            📅 {gig.eventDate || 'COMMUNITY DRIVE'}
+          </span>
+          <span className="text-slate-200 font-bold">
+            👥 {gig.joinedVolunteersCount || 5}/{gig.requiredVolunteers || 10} Volunteers Joined
+          </span>
+        </div>
+      )}
+
       {/* Location Subtext & Status */}
       <div className="flex items-center justify-between text-[11px] text-slate-300 font-semibold pt-1 border-t border-white/10">
         <span className="truncate max-w-[210px] text-slate-400">
