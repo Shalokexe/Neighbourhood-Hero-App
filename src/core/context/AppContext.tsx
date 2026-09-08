@@ -101,6 +101,7 @@ interface AppContextType {
   // Celebrations & Notifications
   celebrationEvent: { title: string; subtitle: string; credits?: number } | null;
   clearCelebration: () => void;
+  triggerCelebration: (event: { title: string; subtitle: string; credits?: number }) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -645,7 +646,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         adminAdjustCredits,
         adminResolveReport,
         celebrationEvent,
-        clearCelebration
+        clearCelebration,
+        triggerCelebration: (evt) => setCelebrationEvent(evt)
       }}
     >
       {children}

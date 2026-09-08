@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
 import { GigCard } from '../../shared/components/GigCard';
 import { Gig } from '../../shared/types/domain';
-import { ShieldAlert, Zap, Radio, ChevronLeft, ChevronRight, Triangle, Battery, Signal, Sparkles } from 'lucide-react';
+import { HeroDailyDutyModal } from '../../shared/components/HeroDailyDutyModal';
+import { ShieldAlert, Zap, Radio, ChevronLeft, ChevronRight, Triangle, Battery, Signal, Sparkles, Flame, Calendar, CheckCircle2 } from 'lucide-react';
 
 interface HomeScreenProps {
   onSelectGig: (gig: Gig) => void;
@@ -14,6 +15,7 @@ interface HomeScreenProps {
 export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateToPost }) => {
   const { filteredGigs, gigs, currentUser, selectedCategory, setSelectedCategory } = useApp();
   const [activeFnsmTab, setActiveFnsmTab] = useState<'ACTIVITIES' | 'URGENT_TASKS'>('ACTIVITIES');
+  const [showDutyModal, setShowDutyModal] = useState(false);
 
   // Filter Gigs for Activities vs Urgent Tasks
   const activitiesGigs = filteredGigs.filter(g => g.urgency !== 'URGENT');
@@ -63,6 +65,35 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateT
             <span>Civic Cleanups, Emergency Blood Requests & Community Drives active in {currentUser.cityName}. Heroes assembling for Sunday Hustle Drives!</span>
           </p>
         </div>
+      </div>
+
+      {/* 2.5 HERO DAILY STREAK BANNER CARD */}
+      <div 
+        onClick={() => setShowDutyModal(true)}
+        className="glass-card rounded-xl p-3 border border-amber-500/40 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-[#05070D] flex items-center justify-between cursor-pointer hover:border-amber-400 transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)] group"
+      >
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-400 group-hover:scale-110 transition-transform">
+            <Flame className="w-5 h-5 animate-pulse fill-amber-400" />
+          </div>
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="font-orbitron font-black text-xs text-amber-300 uppercase tracking-wider">
+                🔥 {currentUser.currentStreak || 5}-DAY CIVIC PATROL STREAK
+              </span>
+              <span className="text-[9px] bg-amber-500/20 border border-amber-400/40 text-amber-200 px-1.5 py-0.5 rounded font-mono">
+                {currentUser.streakMultiplier || 1.25}x XP
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-300 font-mono">
+              Tap to check in today & view Sunday Hustle Drive calendar!
+            </p>
+          </div>
+        </div>
+
+        <span className="text-[10px] bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-2 py-1 rounded font-orbitron font-extrabold border border-amber-500/40">
+          LOG →
+        </span>
       </div>
 
       {/* 3. SLANTED POLYGON TABS (Matches PS4 FNSM App Tabs) */}
@@ -182,6 +213,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectGig, onNavigateT
           CLOSE FNSM APP
         </span>
       </div>
+
+      {/* Hero Daily Duty & Streak Modal */}
+      <HeroDailyDutyModal
+        isOpen={showDutyModal}
+        onClose={() => setShowDutyModal(false)}
+      />
     </div>
   );
 };

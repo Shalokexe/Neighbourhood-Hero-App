@@ -5,7 +5,8 @@ import { VoiceAssistantModal } from './VoiceAssistantModal';
 import { AuthModal } from '../../features/auth/AuthModal';
 import { DailyBountiesModal } from '../../features/bounties/DailyBountiesModal';
 import { HeroCursorSelectorModal } from './HeroCursorSelectorModal';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles, Hexagon, Wand2 } from 'lucide-react';
+import { HeroDailyDutyModal } from './HeroDailyDutyModal';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles, Hexagon, Wand2, Flame } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
@@ -41,6 +42,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showBountiesModal, setShowBountiesModal] = useState(false);
   const [showCursorModal, setShowCursorModal] = useState(false);
+  const [showDutyModal, setShowDutyModal] = useState(false);
 
   const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
   const activeLocalities = LOCALITIES_SEED.filter(l => l.cityId === selectedCityId);
@@ -111,6 +113,16 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           >
             <Bell className="w-3.5 h-3.5" />
             <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF2A54] animate-ping" />
+          </button>
+
+          {/* Daily Streak Flame Button */}
+          <button
+            onClick={() => setShowDutyModal(true)}
+            className="flex items-center gap-1 p-1.5 rounded-lg bg-amber-500/20 border border-amber-500/50 text-amber-300 hover:scale-105 transition-all shadow-[0_0_10px_rgba(245,158,11,0.4)] animate-pulse"
+            title="Daily Hero Duty & Streak Log"
+          >
+            <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+            <span className="text-[10px] font-orbitron font-extrabold">{currentUser.currentStreak || 5}d</span>
           </button>
 
           {/* Rewards Credit Counter */}
@@ -264,6 +276,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       <HeroCursorSelectorModal
         isOpen={showCursorModal}
         onClose={() => setShowCursorModal(false)}
+      />
+
+      {/* Hero Daily Duty & Streak Modal */}
+      <HeroDailyDutyModal
+        isOpen={showDutyModal}
+        onClose={() => setShowDutyModal(false)}
       />
     </header>
   );

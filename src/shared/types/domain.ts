@@ -27,6 +27,12 @@ export interface UserProfile {
   isBlocked: boolean;
   createdAt: string;
   lastActiveAt: string;
+
+  // Hero Daily Duty & Streak System
+  currentStreak?: number;
+  longestStreak?: number;
+  lastCheckInDate?: string;
+  streakMultiplier?: number;
 }
 
 export interface City {

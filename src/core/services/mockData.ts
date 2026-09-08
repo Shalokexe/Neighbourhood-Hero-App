@@ -28,7 +28,11 @@ export const DEMO_USERS: UserProfile[] = [
     isVerified: true,
     isBlocked: false,
     createdAt: '2026-07-15T08:00:00Z',
-    lastActiveAt: new Date().toISOString()
+    lastActiveAt: new Date().toISOString(),
+    currentStreak: 5,
+    longestStreak: 12,
+    lastCheckInDate: '2026-09-07T00:00:00Z',
+    streakMultiplier: 1.25
   },
   {
     id: 'user_simran',
