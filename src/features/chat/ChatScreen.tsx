@@ -102,7 +102,36 @@ export const ChatScreen: React.FC<ChatScreenProps> = ({ gigId, onBack }) => {
       )}
 
       {/* Messages Window Container */}
-      <div className="fnsm-app-container rounded-2xl p-4 border border-cyan-500/30 h-[380px] flex flex-col justify-between overflow-hidden shadow-[0_0_20px_rgba(0,229,255,0.1)]">
+      <div className="fnsm-app-container rounded-2xl p-4 border border-cyan-500/30 h-[400px] flex flex-col justify-between overflow-hidden shadow-[0_0_20px_rgba(0,229,255,0.1)]">
+        
+        {/* WALKIE-TALKIE VOICE DISPATCH BANNER */}
+        <div className="mb-2 p-2.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-cyan-500/15 to-[#05070D] border border-amber-500/40 flex items-center justify-between shadow-md">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                const audio = new Audio('https://cdn.freesound.org/previews/518/518888_11300977-lq.mp3');
+                audio.volume = 0.4;
+                audio.play().catch(() => {});
+              }}
+              className="p-2 rounded-lg bg-amber-500/20 border border-amber-400/50 text-amber-300 hover:scale-105 transition-all shadow-[0_0_10px_rgba(245,158,11,0.3)] animate-pulse"
+              title="Play Walkie-Talkie Voice Dispatch Note"
+            >
+              <Radio className="w-4 h-4 text-amber-400 fill-amber-400" />
+            </button>
+            <div>
+              <span className="text-[9px] font-orbitron font-extrabold text-amber-300 uppercase tracking-widest block">
+                🎙️ ON-SITE WALKIE-TALKIE VOICE NOTE (0:12)
+              </span>
+              <span className="text-[10px] text-slate-300 font-mono">
+                "Arrived at Ajit Sarovar lakefront! Squad assembling near south gate!"
+              </span>
+            </div>
+          </div>
+          <span className="text-[9px] bg-amber-500/20 text-amber-300 font-mono px-1.5 py-0.5 rounded border border-amber-500/30">
+            PLAY ▶
+          </span>
+        </div>
+
         {activeMessages.length === 0 ? (
           <div className="my-auto text-center space-y-2">
             <MessageSquare className="w-8 h-8 text-cyan-400/40 mx-auto" />

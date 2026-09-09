@@ -6,7 +6,8 @@ import { AuthModal } from '../../features/auth/AuthModal';
 import { DailyBountiesModal } from '../../features/bounties/DailyBountiesModal';
 import { HeroCursorSelectorModal } from './HeroCursorSelectorModal';
 import { HeroDailyDutyModal } from './HeroDailyDutyModal';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles, Hexagon, Wand2, Flame } from 'lucide-react';
+import { HeroSosModal } from './HeroSosModal';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles, Hexagon, Wand2, Flame, Siren } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
@@ -43,6 +44,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   const [showBountiesModal, setShowBountiesModal] = useState(false);
   const [showCursorModal, setShowCursorModal] = useState(false);
   const [showDutyModal, setShowDutyModal] = useState(false);
+  const [showSosModal, setShowSosModal] = useState(false);
 
   const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
   const activeLocalities = LOCALITIES_SEED.filter(l => l.cityId === selectedCityId);
@@ -67,8 +69,17 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           </div>
         </button>
 
-        {/* Right Action Widgets: Hero Cursor, Voice, Reels, Spin, Notifications, Credits & Profile */}
+        {/* Right Action Widgets: Hero Cursor, SOS, Voice, Reels, Spin, Notifications, Credits & Profile */}
         <div className="flex items-center gap-1">
+          {/* Emergency SOS Radar Trigger Button */}
+          <button
+            onClick={() => setShowSosModal(true)}
+            className="p-1.5 rounded-lg bg-rose-600/30 border border-rose-500/80 text-rose-300 hover:scale-105 transition-all shadow-[0_0_12px_rgba(244,63,94,0.5)] animate-pulse"
+            title="Broadcast Emergency SOS Radar Alert"
+          >
+            <Siren className="w-3.5 h-3.5 text-rose-400 fill-rose-400/30" />
+          </button>
+
           {/* Hero Cursor Selector Trigger */}
           <button
             onClick={() => setShowCursorModal(true)}
@@ -282,6 +293,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       <HeroDailyDutyModal
         isOpen={showDutyModal}
         onClose={() => setShowDutyModal(false)}
+      />
+
+      {/* Hero Emergency SOS Modal */}
+      <HeroSosModal
+        isOpen={showSosModal}
+        onClose={() => setShowSosModal(false)}
       />
     </header>
   );

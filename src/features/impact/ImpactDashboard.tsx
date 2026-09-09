@@ -1,5 +1,6 @@
 import React from 'react';
-import { Leaf, Recycle, Clock, MapPin, ArrowLeft, ShieldCheck, Award, HeartHandshake } from 'lucide-react';
+import { Leaf, Recycle, Clock, MapPin, ArrowLeft, ShieldCheck, Award, HeartHandshake, Sparkles } from 'lucide-react';
+import { BeforeAfterSlider } from '../../shared/components/BeforeAfterSlider';
 
 interface ImpactDashboardProps {
   onBack: () => void;
@@ -21,12 +22,21 @@ export const ImpactDashboard: React.FC<ImpactDashboardProps> = ({ onBack }) => {
         <div className="text-right">
           <h1 className="font-orbitron font-extrabold text-white text-base tracking-widest uppercase flex items-center gap-1.5 justify-end">
             <Leaf className="w-4 h-4 text-emerald-400 fill-emerald-400/20" />
-            TRICITY GREEN IMPACT
+            TRICITY CIVIC IMPACT
           </h1>
           <p className="text-[10px] text-emerald-400 font-bold tracking-wider font-orbitron">
-            SUSTAINABILITY & CARBON METRICS
+            TRANSFORMATION & PROOF OF WORK
           </p>
         </div>
+      </div>
+
+      {/* BEFORE / AFTER TRANSFORMATION SLIDER SHOWCASE */}
+      <div className="space-y-2">
+        <h2 className="font-orbitron font-extrabold text-xs text-cyan-300 uppercase tracking-widest flex items-center gap-1.5">
+          <Sparkles className="w-4 h-4 text-cyan-400" />
+          <span>BEFORE & AFTER CIVIC TRANSFORMATIONS</span>
+        </h2>
+        <BeforeAfterSlider />
       </div>
 
       {/* Hero Banner Card */}
