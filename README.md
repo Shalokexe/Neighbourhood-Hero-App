@@ -19,7 +19,7 @@
 
   <!-- Spider-Web Animated Typing SVG -->
   <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+BULLY+MAGUIRE+APPROVED+NEIGHBORHOOD+APP;WE+ARE+THE+NEW+BHARAT.;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+BULLY+MAGUIRE+APPROVED+CIVIC+EVENT+APP;CIVIC+DRIVES+%E2%80%A2+LAKE+CLEANUPS+%E2%80%A2+EMERGENCY+BLOOD;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
   </p>
 
   <!-- Dynamic Shields Badges -->
@@ -36,8 +36,8 @@
     <a href="https://fastapi.tiangolo.com/">
       <img src="https://img.shields.io/badge/Backend-Python%20FastAPI-10B981?style=for-the-badge&logo=fastapi" alt="FastAPI" />
     </a>
-    <a href="https://www.postgresql.org/">
-      <img src="https://img.shields.io/badge/Spatial%20DB-PostgreSQL%20%2B%20PostGIS-336791?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
+    <a href="https://leafletjs.com/">
+      <img src="https://img.shields.io/badge/Holographic%20Map-FNSM%20Leaflet%20Radar-FF2A54?style=for-the-badge&logo=leaflet" alt="FNSM Map" />
     </a>
   </p>
 
@@ -49,15 +49,16 @@
 
 ---
 
-## 🕸️ THE NEW BHARAT MANIFESTO
+## 🕸️ THE NEW BHARAT MANIFESTO & CIVIC EVENT PLATFORM
 
 ```text
                🕸️ ───────────────────────────────────────────────────────────── 🕸️
               |  "We don't wait for corrupted political systems or slow          |
               |   bureaucracy to fix our streets. We are the NEW BHARAT —        |
-              |   a generation of unmasked everyday superheroes taking charge     |
-              |   of our neighborhoods in Kharar, Mohali, Chandigarh & Panchkula.|
-              |   Post Problems • Help Neighbors • Level Up • Earn Merch!"       |
+              |   a high-impact Civic Action & Event Reporting Platform          |
+              |   connecting citizens for Lake Cleanups (Ajit Sarovar), Emergency|
+              |   Blood Donations, Storm Drain Clearances & Sunday Hustle Drives!|
+              |   Organize Events • Assemble Volunteer Squads • Level Up!"       |
                🕸️ ───────────────────────────────────────────────────────────── 🕸️
 ```
 
@@ -73,13 +74,13 @@
 
 ```text
   🕸️ ┌──────────────────────────┐      🕸️ ┌──────────────────────────┐      🕸️ ┌──────────────────────────┐
-  │  │ 🎙️ VOICE / TEXT POST   │ ──────►  │ 🛰️ HYPERLOCAL RADAR MAP  │ ──────►  │ ⚡ UNMASKED HERO ACTION  │
-  │  │ (English/Hindi/Panj)  │          │ (Kharar/Mohali/Chd/Pkl)  │          │  (Real-Time Chat & Proof)│
+  │  │ 🎙️ CIVIC DISPATCH HUB   │ ──────►  │ 🛰️ FNSM HOLOGRAPHIC MAP  │ ──────►  │ ⚡ VOLUNTEER SQUAD RSVP  │
+  │  │ (Cleanups & Emergency)   │          │ (Sonar Sweep & Pin Radar)│          │  (Hustle Sunday Drives)  │
   │  └──────────────────────────┘          └──────────────────────────┘          └────────────┬─────────────┘
   │                                                                                           │
   │  ┌──────────────────────────┐          ┌──────────────────────────┐                       │
-  │  │ 🎁 MERCH & CAFÉ PASSES   │ ◄─────── │ 🏆 LEVEL UP & XP STREAKS │ ◄─────────────────────┘
-  │  │ (Free Vouchers & Shirts) │          │  (Daily Spin & Bounties) │
+  │  │ 🎁 CAFÉ PASSES & MERCH   │ ◄─────── │ 🔥 DAILY DUTY & STREAKS  │ ◄─────────────────────┘
+  │  │ (Free Vouchers & Perks)  │          │ (Flame Multipliers & XP) │
   └─►└──────────────────────────┘          └────────────┬─────────────┘
 ```
 
@@ -89,37 +90,37 @@
 
 ---
 
-## 🕸️ POWER-UP GAMIFIED FEATURES
+## 🕸️ POWER-UP GAMIFIED & CIVIC FEATURES
 
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
+      <h3>🗺️ FNSM Holographic Radar Map</h3>
+      <p>Interactive game-style dark map with sonar radar sweep animations, signal filters (<code>CIVIC DRIVES 🧹</code>, <code>EMERGENCY 🩸</code>, <code>HUSTLE EVENTS 📅</code>), and real-time HUD preview drawers.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🧹 High-Impact Civic & Event Reporting</h3>
+      <p>Citizens post crucial events like <b>Ajit Sarovar Waterfront Cleanups</b>, <b>Emergency O+ Blood Donors</b>, and <b>Storm Drain Flooding Clearance</b> with volunteer squad RSVP progress counters (<code>👥 24 / 50 Joined</code>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🔥 Daily Hero Duty & Streak System</h3>
+      <p>Flame streak counter widget (<code>🔥 5-Day Patrol Streak</code>), daily check-in credit rewards, streak multipliers up to <b>2.0x</b>, and weekly <b>Hustle Sunday</b> drive calendar!</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🦸 Marvel & DC Custom Cursor Selector</h3>
+      <p>Choose your unmasked superhero cursor emblem! Choose from <b>Spider-Man (Peter Parker)</b>, <b>Miles Morales</b>, <b>Spider-Gwen</b>, <b>Wolverine</b>, <b>Captain America</b>, <b>Hulk</b>, <b>Batman</b>, <b>Superman</b>, or <b>Flash</b>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
       <h3>🎙️ Multilingual AI Voice Assistant</h3>
-      <p>Uber / Rapido style voice dictation supporting <b>English</b>, <b>Hindi (हिन्दी)</b>, and <b>Punjabi (ਪੰਜਾਬੀ)</b>. Speak your task and AI automatically parses title, category, and credit rewards!</p>
+      <p>Voice dictation supporting <b>English</b>, <b>Hindi (हिन्दी)</b>, and <b>Punjabi (ਪੰਜਾਬੀ)</b>. Speak your task and AI automatically parses title, category, and credit rewards!</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🌌 Co-Star Stark Monochrome Theme</h3>
-      <p>Minimalist editorial dark luxury styling inspired by Co-Star astrology app aesthetics with high-contrast typography and celestial grid cards.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🎁 Daily Hero Spin Wheel & Bounties</h3>
-      <p>Spin the daily wheel for free <b>+10 to +50 Gig Credits</b>, maintain 3-day streaks 🔥, and claim bonus merchandise rewards!</p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>📸 Proof-of-Work Photo Verification</h3>
-      <p>Helpers upload photo evidence (package handed over, desk assembled, plants watered) before claiming rewards!</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🌱 Community Sustainability Dashboard</h3>
-      <p>Track community metrics: <b>184.5 kg CO2 saved</b> via walking errands & <b>92 household items repaired</b>.</p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🎬 [ROADMAP] Hero Insta-Reels Engine</h3>
-      <p>Upcoming Gen-Z short video clips feed allowing heroes to showcase 15-second mission highlights and build community clout!</p>
+      <h3>🎬 Hero Reels Feed Engine</h3>
+      <p>Gen-Z short video clips feed allowing heroes to showcase 15-second mission highlights, community cleanup before/afters, and build clout!</p>
     </td>
   </tr>
 </table>
