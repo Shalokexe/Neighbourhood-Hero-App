@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useApp } from '../../core/context/AppContext';
-import { RewardItem } from '../../shared/types/domain';
-import { Gift, Zap, CheckCircle2, Ticket, AlertTriangle, ArrowLeft, Hexagon } from 'lucide-react';
+import { RewardItem, Redemption } from '../../shared/types/domain';
+import { QrPassModal } from '../../shared/components/QrPassModal';
+import { Gift, Zap, CheckCircle2, Ticket, AlertTriangle, ArrowLeft, Hexagon, QrCode } from 'lucide-react';
 
 interface RewardsScreenProps {
   onBack: () => void;
@@ -12,6 +13,7 @@ export const RewardsScreen: React.FC<RewardsScreenProps> = ({ onBack }) => {
   const [selectedReward, setSelectedReward] = useState<RewardItem | null>(null);
   const [redemptionResult, setRedemptionResult] = useState<{ success: boolean; message: string; code?: string } | null>(null);
   const [activeTab, setActiveTab] = useState<'store' | 'wallet'>('store');
+  const [activeQrRedemption, setActiveQrRedemption] = useState<Redemption | null>(null);
 
   const handleRedeemConfirm = () => {
     if (!selectedReward) return;
@@ -82,8 +84,18 @@ export const RewardsScreen: React.FC<RewardsScreenProps> = ({ onBack }) => {
           </div>
           <p className="text-xs">{redemptionResult.message}</p>
           {redemptionResult.code && (
-            <div className="mt-2 p-2 bg-[#05070D] rounded-lg text-center font-mono font-bold text-amber-300 text-sm border border-amber-500/40 tracking-widest">
-              VOUCHER CODE: {redemptionResult.code}
+            <div className="mt-2 p-2 bg-[#05070D] rounded-lg text-center font-mono font-bold text-amber-300 text-sm border border-amber-500/40 tracking-widest flex items-center justify-between">
+              <span>CODE: {redemptionResult.code}</span>
+              <button
+                onClick={() => {
+                  const newlyAdded = redemptions.find(r => r.redemptionCode === redemptionResult.code) || redemptions[0];
+                  if (newlyAdded) setActiveQrRedemption(newlyAdded);
+                }}
+                className="px-2.5 py-1 rounded bg-amber-500 text-slate-950 font-bold text-[10px] flex items-center gap-1 uppercase"
+              >
+                <QrCode className="w-3 h-3" />
+                <span>VIEW SCANNABLE QR PASS</span>
+              </button>
             </div>
           )}
         </div>
@@ -193,27 +205,32 @@ export const RewardsScreen: React.FC<RewardsScreenProps> = ({ onBack }) => {
             redemptions.map((red) => (
               <div
                 key={red.id}
-                className="fnsm-app-container rounded-2xl p-4 border border-amber-500/40 space-y-2 bg-gradient-to-r from-amber-500/10 to-transparent shadow-[0_0_15px_rgba(245,158,11,0.1)]"
+                onClick={() => setActiveQrRedemption(red)}
+                className="fnsm-app-container rounded-2xl p-4 border border-amber-500/40 space-y-2 bg-gradient-to-r from-amber-500/10 to-transparent shadow-[0_0_15px_rgba(245,158,11,0.1)] cursor-pointer hover:border-amber-400 transition-all group"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-orbitron font-extrabold text-amber-400 uppercase tracking-widest">
                     {red.partnerName}
                   </span>
-                  <span className="text-[10px] font-orbitron bg-emerald-500/20 text-emerald-300 font-extrabold px-2 py-0.5 rounded border border-emerald-500/30">
-                    ACTIVE SPIDEY PASS
+                  <span className="text-[10px] font-orbitron bg-emerald-500/20 text-emerald-300 font-extrabold px-2 py-0.5 rounded border border-emerald-500/30 flex items-center gap-1">
+                    <QrCode className="w-3 h-3 text-emerald-400" />
+                    SCANNABLE QR PASS
                   </span>
                 </div>
 
-                <h4 className="font-orbitron font-bold text-white text-sm">
+                <h4 className="font-orbitron font-bold text-white text-sm group-hover:text-amber-300 transition-colors">
                   {red.rewardName}
                 </h4>
 
-                <div className="bg-[#05070D] p-3 rounded-xl border border-amber-500/40 text-center font-mono font-bold text-amber-300 text-base tracking-widest shadow-inner">
-                  {red.redemptionCode}
+                <div className="bg-[#05070D] p-3 rounded-xl border border-amber-500/40 flex items-center justify-between font-mono font-bold text-amber-300 text-sm tracking-widest shadow-inner">
+                  <span>{red.redemptionCode}</span>
+                  <span className="text-[10px] font-orbitron bg-amber-500/20 text-amber-200 px-2 py-1 rounded border border-amber-400/40">
+                    TAP TO SCAN →
+                  </span>
                 </div>
 
                 <p className="text-[11px] text-slate-400 text-center font-fnsm">
-                  Show code to merchant at checkout. Claimed on {new Date(red.createdAt).toLocaleDateString()}
+                  Tap card to view 2D QR Code & Barcode for cashier scanning.
                 </p>
               </div>
             ))
@@ -256,6 +273,12 @@ export const RewardsScreen: React.FC<RewardsScreenProps> = ({ onBack }) => {
           </div>
         </div>
       )}
+
+      {/* SCANNABLE QR CODE PASS MODAL */}
+      <QrPassModal
+        redemption={activeQrRedemption}
+        onClose={() => setActiveQrRedemption(null)}
+      />
     </div>
   );
 };
