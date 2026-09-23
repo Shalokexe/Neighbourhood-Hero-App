@@ -33,6 +33,10 @@ export interface UserProfile {
   longestStreak?: number;
   lastCheckInDate?: string;
   streakMultiplier?: number;
+
+  // Hero Suit Locker System
+  equippedSuitId?: string;
+  unlockedSuitIds?: string[];
 }
 
 export interface City {

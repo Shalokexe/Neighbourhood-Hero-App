@@ -7,7 +7,8 @@ import { DailyBountiesModal } from '../../features/bounties/DailyBountiesModal';
 import { HeroCursorSelectorModal } from './HeroCursorSelectorModal';
 import { HeroDailyDutyModal } from './HeroDailyDutyModal';
 import { HeroSosModal } from './HeroSosModal';
-import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles, Hexagon, Wand2, Flame, Siren } from 'lucide-react';
+import { HeroSuitLockerModal } from './HeroSuitLockerModal';
+import { MapPin, Zap, UserCheck, ShieldAlert, Gift, ChevronDown, CheckCircle2, Mic, Bell, Trophy, UserPlus, Leaf, Sparkles, Hexagon, Wand2, Flame, Siren, Shirt } from 'lucide-react';
 
 interface HeaderNavProps {
   onOpenRewards: () => void;
@@ -45,6 +46,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   const [showCursorModal, setShowCursorModal] = useState(false);
   const [showDutyModal, setShowDutyModal] = useState(false);
   const [showSosModal, setShowSosModal] = useState(false);
+  const [showSuitModal, setShowSuitModal] = useState(false);
 
   const activeCity = CITIES_SEED.find(c => c.id === selectedCityId) || CITIES_SEED[0];
   const activeLocalities = LOCALITIES_SEED.filter(l => l.cityId === selectedCityId);
@@ -69,8 +71,17 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           </div>
         </button>
 
-        {/* Right Action Widgets: Hero Cursor, SOS, Voice, Reels, Spin, Notifications, Credits & Profile */}
+        {/* Right Action Widgets: Suit Locker, Hero Cursor, SOS, Voice, Reels, Spin, Notifications, Credits & Profile */}
         <div className="flex items-center gap-1">
+          {/* Hero Suit Locker Trigger */}
+          <button
+            onClick={() => setShowSuitModal(true)}
+            className="p-1.5 rounded-lg bg-purple-500/20 border border-purple-500/50 text-purple-300 hover:scale-105 transition-all shadow-[0_0_10px_rgba(168,85,247,0.4)]"
+            title="Open FNSM Hero Suit Locker (Unlock Classic, Miles, Gwen, Iron Spider & Symbiote Suits)"
+          >
+            <Shirt className="w-3.5 h-3.5 text-purple-400" />
+          </button>
+
           {/* Emergency SOS Radar Trigger Button */}
           <button
             onClick={() => setShowSosModal(true)}
@@ -299,6 +310,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       <HeroSosModal
         isOpen={showSosModal}
         onClose={() => setShowSosModal(false)}
+      />
+
+      {/* Hero Suit Locker Modal */}
+      <HeroSuitLockerModal
+        isOpen={showSuitModal}
+        onClose={() => setShowSuitModal(false)}
       />
     </header>
   );
