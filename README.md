@@ -19,7 +19,7 @@
 
   <!-- Spider-Web Animated Typing SVG -->
   <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+BULLY+MAGUIRE+APPROVED+CIVIC+EVENT+APP;CIVIC+DRIVES+%E2%80%A2+LAKE+CLEANUPS+%E2%80%A2+EMERGENCY+BLOOD;No+masks.+No+excuses.+Just+citizens+helping+citizens.;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=900&size=24&pause=1000&color=FF2A54&center=true&vCenter=true&width=750&lines=%F0%9F%95B7%EF%B8%8F+BULLY+MAGUIRE+APPROVED+CIVIC+EVENT+APP;CIVIC+DRIVES+%E2%80%A2+LAKE+CLEANUPS+%E2%80%A2+EMERGENCY+BLOOD;SUIT+LOCKER+%E2%80%A2+SCANNABLE+QR+VOUCHERS;Kharar+%E2%80%A2+Mohali+%E2%80%A2+Chandigarh+%E2%80%A2+Panchkula" alt="Spidey Typing SVG" />
   </p>
 
   <!-- Dynamic Shields Badges -->
@@ -79,8 +79,8 @@
   │  └──────────────────────────┘          └──────────────────────────┘          └────────────┬─────────────┘
   │                                                                                           │
   │  ┌──────────────────────────┐          ┌──────────────────────────┐                       │
-  │  │ 🎁 CAFÉ PASSES & MERCH   │ ◄─────── │ 🔥 DAILY DUTY & STREAKS  │ ◄─────────────────────┘
-  │  │ (Free Vouchers & Perks)  │          │ (Flame Multipliers & XP) │
+  │  │ 🛍️ SCANNABLE QR PASSES   │ ◄─────── │ 🕸️ HERO SUIT LOCKER     │ ◄─────────────────────┘
+  │  │ (Merchant Vouchers)      │          │ (Miles, Gwen & Symbiote) │
   └─►└──────────────────────────┘          └────────────┬─────────────┘
 ```
 
@@ -95,22 +95,32 @@
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
-      <h3>🗺️ FNSM Holographic Radar Map</h3>
-      <p>Interactive game-style dark map with sonar radar sweep animations, signal filters (<code>CIVIC DRIVES 🧹</code>, <code>EMERGENCY 🩸</code>, <code>HUSTLE EVENTS 📅</code>), and real-time HUD preview drawers.</p>
+      <h3>🕸️ FNSM Hero Suit & Emblem Locker</h3>
+      <p>Unlock & equip superhero suits using earned credits: <b>Classic Red/Blue (Peter)</b>, <b>Miles Morales Tech Track (+20% Cleanup XP)</b>, <b>Ghost-Spider Gwen</b>, <b>Iron Spider</b>, <b>Bully Maguire Symbiote (2.0x Drive Multiplier)</b>, and <b>Wolverine Logan X-Suit</b>!</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🧹 High-Impact Civic & Event Reporting</h3>
-      <p>Citizens post crucial events like <b>Ajit Sarovar Waterfront Cleanups</b>, <b>Emergency O+ Blood Donors</b>, and <b>Storm Drain Flooding Clearance</b> with volunteer squad RSVP progress counters (<code>👥 24 / 50 Joined</code>).</p>
+      <h3>🛍️ Scannable 2D QR Code Pass Generator</h3>
+      <p>Redeem earned Civic Credits for real scannable <b>2D QR Code & Barcode Vouchers</b> for local cafes, canteens & stores in Kharar, Mohali & Chandigarh. Includes interactive cashier stamp verification!</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3>🔥 Daily Hero Duty & Streak System</h3>
-      <p>Flame streak counter widget (<code>🔥 5-Day Patrol Streak</code>), daily check-in credit rewards, streak multipliers up to <b>2.0x</b>, and weekly <b>Hustle Sunday</b> drive calendar!</p>
+      <h3>📸 Before & After Proof-of-Work Slider</h3>
+      <p>Interactive drag slider showcasing real civic transformations: <b>Ajit Sarovar Lake Waterfront Plastic Cleanup</b>, <b>Phase 7 Monsoon Storm Drain Clearance</b>, and <b>Sector 70 Green Belt Tree Plantation</b>.</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🦸 Marvel & DC Custom Cursor Selector</h3>
-      <p>Choose your unmasked superhero cursor emblem! Choose from <b>Spider-Man (Peter Parker)</b>, <b>Miles Morales</b>, <b>Spider-Gwen</b>, <b>Wolverine</b>, <b>Captain America</b>, <b>Hulk</b>, <b>Batman</b>, <b>Superman</b>, or <b>Flash</b>.</p>
+      <h3>🚨 Hero Emergency SOS Radar Broadcast</h3>
+      <p>Instant 24/7 emergency radar broadcast (Blood Donors, Medical Aid, Road Accidents, Safety Risks) alerting all verified top heroes within a 3.5km radius with emergency audio siren effects!</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🗺️ FNSM Holographic Radar Map</h3>
+      <p>Interactive game-style dark map with sonar radar sweep animations, signal filters (<code>CIVIC DRIVES 🧹</code>, <code>EMERGENCY 🩸</code>, <code>HUSTLE EVENTS 📅</code>), and real-time HUD preview drawers.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🔥 Daily Hero Duty & Streak System</h3>
+      <p>Flame streak counter widget (<code>🔥 5-Day Patrol Streak</code>), daily check-in credit rewards, streak multipliers up to <b>2.0x</b>, and weekly <b>Hustle Sunday</b> drive calendar!</p>
     </td>
   </tr>
   <tr>
